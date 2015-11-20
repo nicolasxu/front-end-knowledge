@@ -207,6 +207,18 @@ function frontEnd () {
 	function Browser() {
 		function dom_api() {
 
+			function file_api() {
+
+			}
+			function localStorage() {
+
+			}
+			function desktopNotification() {
+
+			}
+			function drag_drop() {
+
+			}
 		}
 
 		function dom_event() {
@@ -216,10 +228,32 @@ function frontEnd () {
 		function IE_problem() {
 
 		}
+
+		function jsonp() {
+
+		}
+
+		function cors() {
+
+		}
 	}
 
 	function Libraries () {
+		function jquery() {
 
+		}
+		function d3js() {
+
+		}
+		function requirejs() {
+
+		}
+		function momentjs() {
+
+		}
+		function lowdash() {
+
+		}
 	}
 
 	function components() {
@@ -238,6 +272,24 @@ function frontEnd () {
 		function bootstrap() {
 
 		}
+
+		function image_maginify() {
+			// like those on nike
+		}
+
+		function promise() {
+			function jquery() {}
+			function async() {
+
+			}
+			function angular() {
+
+			}
+		}
+
+		function socketIO() {
+
+		}
 	}
 
 	function Frameworks() {
@@ -252,7 +304,55 @@ function frontEnd () {
 
 	function html5() {
 
+		function quiz() {
+
+			function quiz1() {
+				var question = "Is <keygen> a valid HTML5 tag?";
+				// answer: yes
+				// explanation:
+				// The <keygen> element is new in HTML5.
+
+			}
+
+			function quiz2() {
+				var question = "Does the <bdo> tag change the direction of text?";
+				// answer: yes
+				// explanation:
+				// bdo stands for Bi-Directional Override.
+				// <p><bdo dir="rtl">123456This paragraph will go right-to-left.</bdo></p>  
+
+			}
+		}
+
 	}
+
+	function security() {
+		function ssl() {
+
+		}
+
+		function https() {
+
+		}
+
+		function csrf() {
+
+		}
+
+		function xss ()  {
+			/* 
+			Cross-Site Scripting (XSS) attacks are a type of injection, 
+			in which malicious scripts are injected into otherwise benign and 
+			trusted web sites. XSS attacks occur when an attacker uses a web 
+			application to send malicious code, generally in the form of a 
+			browser side script, to a different end user.
+
+			*/
+
+		}
+	}
+
+
 
 	function css() {
 
@@ -521,7 +621,15 @@ function frontEnd () {
 
 
 		}
+	}
 
+	function taskRunner() {
+		function gulp() {
 
+		}
+
+		function grunt() {
+
+		}
 	}
 }
