@@ -287,6 +287,10 @@ function frontEnd () {
 			}
 		}
 
+		function input_validation () {
+
+		}
+
 		function socketIO() {
 
 		}
@@ -321,6 +325,12 @@ function frontEnd () {
 				// bdo stands for Bi-Directional Override.
 				// <p><bdo dir="rtl">123456This paragraph will go right-to-left.</bdo></p>  
 
+			}
+
+			function quiz3() {
+				var question = "If you have a page of search results and want to highlight the search term, what HTML tag would you use?"
+				// answer: <mark>, not <strong>, <em>, or <highlight>(no such tag)
+				// explanation: http://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_mark
 			}
 		}
 
