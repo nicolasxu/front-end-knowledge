@@ -46,12 +46,12 @@ function frontEnd () {
             					your Javascript is God Tier and you are absolutely sure you \
             					know what you are doing.";
         
-        [new String("pancake") == new String("pancake"), 
-        // false same for any class after new, since new return a object
-         "pancake" == "pancake",            // true
-         3 == 3,  													// true
-         new Number(3) == new Number(3) ,  	// false
-        ]
+	      var aboutNew = [new String("pancake") == new String("pancake"), 
+	        // false same for any class after new, since new return a object
+	         "pancake" == "pancake",            // true
+	         3 == 3,  													// true
+	         new Number(3) == new Number(3) ,  	// false
+	        ]
 
         function snippet() {
         	var b = new Boolean(false);
@@ -143,7 +143,6 @@ function frontEnd () {
 					var y = 1, x = y = typeof x;
 					x;
 					// it will log "undefined" string
-
 				}
 
 				function quiz4() {
@@ -210,6 +209,10 @@ function frontEnd () {
 
 		}
 
+		function dom_event() {
+			var eventReference = 'https://developer.mozilla.org/en-US/docs/Web/Events';
+		}
+
 		function IE_problem() {
 
 		}
@@ -252,6 +255,273 @@ function frontEnd () {
 	}
 
 	function css() {
+
+		function spcificity() {
+			/*
+			explanation:
+			http://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
+			
+			Specificity hierarchy Link
+				Every selector has its place in the specificity hierarchy. There are four distinct categories which define the specificity level of a given selector:
+				1. Inline styles (Presence of style in document).
+				An inline style lives within your XHTML document. It is attached directly to the element to be styled. E.g. <h1 style="color: #fff;">
+				2. IDs (# of ID selectors)
+				ID is an identifier for your page elements, such as #div.
+				3. Classes, attributes and pseudo-classes (# of class selectors).
+				This group includes .classes, [attributes] and pseudo-classes such as :hover, :focus etc.
+				4. Elements and pseudo-elements (# of Element (type) selectors).
+				Including for instance :before and :after.
+
+			How to measure specificity? Link
+				Memorize how to measure specificity. 
+				“Start at 0, 
+				add 1000 for style attribute, 
+				add 100 for each ID, 
+				add 10 for each attribute, class or pseudo-class, 
+				add 1 for each element name or pseudo-element. So in
+				body #content .data img:hover
+				the specificity value would be 122 (0,1,2,2 or 0122): 100 for #content, 10 for .data, 10 for :hover, 1 for body and 1 for img.” [CSS Specificity]
+
+			 */
+		}
+
+		function quiz() {
+			function quiz1() {
+				var question = "Does setting margin-top and margin-bottom have an affect on an inline element?";
+				// answer: No
+			}
+
+			function quiz2() {
+				var question = "Does setting padding-top and padding-bottom on an inline element add to its dimensions?";
+				// answer: no
+			}
+
+			function quiz3() {
+				var question = "The pseudo class :checked will select inputs with type radio or checkbox, but not <option> elements.";
+				// answer false
+				// explanation:
+				// $("select option:checked").text() will get the text between option tag
+			}
+
+			function quiz4() {
+				var question = ":root pseudo class will refer to the html tag?"
+				// answer true
+				// explanation: $(":root")
+				// [<html>... <html>]
+			}
+
+			function quiz5() {
+				var question = "tranlsate() can move element along the z-index?";
+				// answer false
+				// explanation:
+				/*
+				div {
+    			transform: translate(50px,100px);
+				}
+				The translate() method moves an element from its current position (according to the parameters given for the X-axis and the Y-axis).
+				 */
+			}
+
+			function quiz6() {
+				var question = "what is the color of sausage? ";
+				/*
+				<ul class="shopping-list" id="awesome">
+    			<li><span>Milk</span></li>
+    			<li class="favorite" id="must-buy"><span class="highlight">Sausage</span></li>
+				</ul>
+
+				// css:
+				ul#awesome {
+  				color: red;
+				}
+				ul.shopping-list li.favorite span {
+  				color: blue;
+				}
+
+				*/
+			
+				// answer: blue
+				// explanation: how to measure specificity? 
+				// http://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
+			}
+
+			function quiz7() {
+				var question = "what is the color of sausage?";
+				/*
+				
+				<ul class="shopping-list" id="awesome">
+				    <li><span>Milk</span></li>
+				    <li class="favorite" id="must-buy"><span class="highlight">Sausage</span></li>
+				</ul>
+
+				// css
+				
+				ul#awesome #must-buy {
+				    color: red;
+				}
+				.favorite span {
+				    color: blue!important;
+				}
+				 */
+				
+				// answer: blue
+			}
+
+			function quiz8() {
+				var question = "what is the color of sausage?";
+				/*
+				
+				<ul class="shopping-list" id="awesome">
+				  <li><span>Milk</span></li>
+				  <li class="favorite" id="must-buy"><span class="highlight">Sausage</span></li>
+				</ul>
+
+				// css:
+
+				#awesome .favorite:not(#awesome) .highlight {
+				    color: red;
+				}
+				#awesome .highlight:nth-of-type(1):nth-last-of-type(1) {
+				    color: blue;
+				}
+
+				 */
+				
+				// answer: red
+				// explanation:
+				// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+				// The :not exception
+				// The negation pseudo-class :not is not considered a pseudo-class 
+				//   in the specificity calculation. But selectors placed into the 
+				//   negation pseudo-class count as normal selectors when determining 
+				//   the count of selector types
+			}
+
+			function quiz9() {
+				// succeeding: 接连的；随后的
+				var question = "What will happen to the position of #example?";
+				/*
+				<p id="example">Hello</p>
+
+				#example {
+				    margin-bottom: -5px;
+				}
+				 */
+				
+				// answer: All elements succeeding #example with move 5px upwards
+				// 
+				// explanation: margin top and left will affect the position of this element, 
+				// but margin bottom and right will only affect the elements after this element. 
+			}
+
+			function quiz10() {
+				var question = "Are unused style resources still downloaded by the browser?";
+				/*
+				<div id="test1">
+				  <span id="test2"></span>
+				</div>
+
+				#i-am-useless {
+				  background-image: url('mypic.jpg');
+				}
+				*/
+				
+				// answer: no
+				// explanation: css will all be downloaded, but unused img will not be downloaded
+			}
+
+			function quiz11() {
+				// on page load, display:none element image will also be downloaded
+				// if this element is not within another display:none element
+				
+				var question = "On page load, will mypic.jpg get downloaded by the browser?";
+				/*
+				HTML:
+
+					<div id="test1">
+					    <span id="test2"></span>
+					</div>
+					CSS:
+
+					#test2 {
+					    background-image: url('mypic.jpg');
+					    display: none;
+					}
+					
+				 */ 
+					// answer: yes
+			}
+
+			function quiz12() {
+
+				var question = "On page load, will mypic.jpg get downloaded by the browser?";
+				/*
+				
+				HTML:
+
+				<div id="test1">
+				    <span id="test2"></span>
+				</div>
+				CSS:
+
+				#test1 {
+				    display: none;
+				}
+				#test2 {
+				    background-image: url('mypic.jpg');
+				    visibility: hidden;
+				}
+				
+				 */
+				// answer: no
+				// explanation: image in 2nd level element within display:none element will not be downloaded
+			}
+
+			function quiz13() {
+
+				var question = "What is the use of the only selector?";
+				/*
+									@media only screen and (max-width: 1024px) {
+					    margin: 0;
+					}
+
+					Stops older browsers from parsing the remainder of the selector
+					Apply the style for screen only and ignore the device max-width
+					It does nothing
+					Skip
+				 */
+				// answer: Stops older browsers from parsing the remainder of the selector
+			}
+
+			function quiz14() {
+
+				var question = "Does overflow: hidden create a new block formatting context?";
+				/*
+				
+				HTML:
+
+					<div>
+					    <p>I am floated</p>
+					    <p>So am I</p>
+					</div>
+					CSS:
+
+					div {
+					    overflow: hidden;
+					}
+					p {
+					    float: left;
+					}
+				 */
+				// answer: yes
+			}
+
+
+
+
+
+		}
+
 
 	}
 }
