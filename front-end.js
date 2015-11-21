@@ -118,88 +118,162 @@ function frontEnd () {
 				// gfedcba
 			}
 
-			function quiz() {
 
-				function quiz1() {
-					/*
-					var f = function g(){ return 23; };
-  				typeof g();
-  				*/
-  				// result is error, g is not defined
-				}
+		}
 
-				function quiz2() {
+		function quiz() {
 
-					(function(x){
-				    delete x;
-				    return x;
-				  })(1);
-				  // result is 1, 
-				  // delete is only effective on an object's properties. It has no effect on variable or function names.
-				}
+			function quiz1() {
+				/*
+				var f = function g(){ return 23; };
+				typeof g();
+				*/
+				// result is error, g is not defined
+			}
 
-				function quiz3() {
-					// http://perfectionkills.com/javascript-quiz/
-					var y = 1, x = y = typeof x;
-					x;
-					// it will log "undefined" string
-				}
+			function quiz2() {
 
-				function quiz4() {
+				(function(x){
+			    delete x;
+			    return x;
+			  })(1);
+			  // result is 1, 
+			  // delete is only effective on an object's properties. It has no effect on variable or function names.
+			}
+
+			function quiz3() {
+				// http://perfectionkills.com/javascript-quiz/
+				var y = 1, x = y = typeof x;
+				x;
+				// it will log "undefined" string
+			}
+
+			function quiz4() {
 
 
-				  var foo = {
-				    bar: function() { return this.baz; },
-				    baz: 1
-				  };
-				  (function(){
-				    return typeof arguments[0]();
-				  })(foo.bar);
-				  // result is "undefined"
-				  // function foo.bar passed in as a callback, 
-				  // in callback, this will always point to root object, which is window
-				}
+			  var foo = {
+			    bar: function() { return this.baz; },
+			    baz: 1
+			  };
+			  (function(){
+			    return typeof arguments[0]();
+			  })(foo.bar);
+			  // result is "undefined"
+			  // function foo.bar passed in as a callback, 
+			  // in callback, this will always point to root object, which is window
+			}
 
-				function quiz5() {
-					var foo = {
-			    	bar: function(){ return this.baz; },
-			    	baz: 1
-			  	}
-			  	typeof (f = foo.bar)();
+			function quiz5() {
+				var foo = {
+		    	bar: function(){ return this.baz; },
+		    	baz: 1
+		  	}
+		  	typeof (f = foo.bar)();
 
-			  	// result is "undefined"
-				}
+		  	// result is "undefined"
+			}
 
-				function quiz6() {
+			function quiz6() {
 
-					// for example:
-					(function(){return 2}, function(){return 3})();
+				// for example:
+				(function(){return 2}, function(){return 3})();
 
-					// quiz:
-					var f = (function f(){ return "1"; }, function g(){ return 2; })();
-  				typeof f;
+				// quiz:
+				var f = (function f(){ return "1"; }, function g(){ return 2; })();
+				typeof f;
 
-  				// result: "number"
-				}
+				// result: "number"
+			}
 
-				function quiz7() {
-					var x = [typeof x, typeof y][1];
-  				typeof typeof x;
+			function quiz7() {
+				var x = [typeof x, typeof y][1];
+				typeof typeof x;
 
-  				// result: "string"
-  				// typeof typeof anything will be string, since result of 1st typeof is string
-				}
+				// result: "string"
+				// typeof typeof anything will be string, since result of 1st typeof is string
+			}
 
-				function quiz8 () {
-					with (function(x, undefined){}) length;
-					// the result is 2
-					
-					// also
-					function ss(a,b,c,d){}
-					ss.length;
-					// result is 4
-				}
+			function quiz8 () {
+				with (function(x, undefined){}) length;
+				// the result is 2
+				
+				// also
+				function ss(a,b,c,d){}
+				ss.length;
+				// result is 4
+			}
 
+			function quiz9 () {
+				var question = "What is alerted?";
+
+				/*
+					var foo = 1;
+					function bar() {
+						foo = 10;
+						return;
+						function foo() {}
+					}
+					bar();
+					alert(foo);
+				 */
+				// answer:1
+			}
+
+			function quiz10() {
+
+				var question  = "What value is alerted?";
+				/*
+					var foo = function bar() {}; 
+					alert(typeof bar);
+				 */
+				// answer: "underfined"
+				// explanation: name here will be omitted
+			}
+
+			function quiz11() {
+				var question = "what is alerted?";
+				/*
+					x = 1;
+					function bar() {
+					    this.x = 2;
+					    return x;
+					}
+					var foo = new bar();
+					alert(foo.x);
+					What value is alerted?
+		
+
+				 */
+				// answer: 2
+				// explanation: http://www.bennadel.com/blog/2522-providing-a-return-value-in-a-javascript-constructor.htm
+				// if not return complex object, e.g.: {} or [], new F() will always newly created object
+			}
+
+			function quiz12 () {
+				var question = "what is alerted?";
+
+				/*
+					function foo(a) {
+					    arguments[0] = 2;
+					    alert(a);
+					}
+					foo(1);
+				 */
+				// answer: 2
+				// explanation: overwrite arguments will over write param within the function scope
+			}
+
+			function quiz13() {
+				var question = "what is alerted?";
+				/*
+				
+					function foo(){}
+					delete foo.length;
+					alert(typeof foo.length);
+				 */
+				// answer: "number"
+				// explanation: every function has a length value telling how much params it takes
+				//    in the definition. delete Function.length will have no effect. 
 			}
 		}
 	}
@@ -259,6 +333,10 @@ function frontEnd () {
 	function components() {
 		function scroll() {
 
+		}
+
+		function type_ahead() {
+			
 		}
 
 		function image_cropper() {
@@ -332,8 +410,61 @@ function frontEnd () {
 				// answer: <mark>, not <strong>, <em>, or <highlight>(no such tag)
 				// explanation: http://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_mark
 			}
-		}
 
+			function quiz4() {
+				var question = "What does the scoped attribute do?";
+				/*
+				
+				<article>
+				    <h1>Hello World</h1>
+				    <style scoped>
+				        p {
+				            color: #FF0;
+				        }
+				    </style>
+				    <p>This is my text</p>
+				</article>
+				 
+				<article>
+				    <h1>This is awesome</h1>
+				    <p>I am some other text</p>
+				</article>
+				 */
+				 // answer: Applies style rules to all children of the scoped parent element
+			}
+
+			function quiz5() {
+				var question = "Does main1.css have to be downloaded and parsed before Hello World is alerted?";
+
+				/*
+					<head>
+					    <link href="main1.css" rel="stylesheet">
+					    <script>
+					        alert('Hello World');
+					    </script>
+					</head>
+				 */
+				// answer: yes
+				// questionable...
+			}
+
+			function quiz6() {
+				var question = "Does main1.css have to be downloaded and parsed before main2.css can be fetched?";
+				/*
+				<head>
+				    <link href="main1.css" rel="stylesheet">
+				    <link href="main2.css" rel="stylesheet">
+				</head>
+				 */
+				// answer: no
+				// explanation: 1) HTML is donloaded first
+				// 2) HTML is parsed, and download all other resources as long as browser encounters them
+				//    3 css files can start downloading parallelly 
+				// 3) inline script is executed as long as browser encounters it. 
+				// 4) external javascript is ensured to execute in their appearence order, except async is added
+				//    in script tag
+			}
+		}
 	}
 
 	function security() {
@@ -625,11 +756,6 @@ function frontEnd () {
 				 */
 				// answer: yes
 			}
-
-
-
-
-
 		}
 	}
 
