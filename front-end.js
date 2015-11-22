@@ -6,9 +6,44 @@ function frontEnd () {
 			var description = " Accessing outer variable stack from  \
                      			lexical inner scope creates a closure. The outer variable stack is still \
                      			alive even if outer function returns. ";
-      var link = " http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/111200#111200";
-      var snippets = '';
+		  var link = " http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/111200#111200";
+		  var snippets = '';
+		}
 
+		function bind_function () {
+			// Function.prototype.bind(thisArg, arg1, arg2....)
+			
+
+			// example: 
+			var obj = {
+		  method: function(name){
+		    	this.name = name;
+		  	}
+			};
+		 
+			setTimeout( obj.method.bind(obj, "John"), 100 );
+		}
+
+		function strict_mode() {
+			// ECMAScript 5 Strict Mode
+			// example:
+			/*
+			
+			(function(){
+			  "use strict";
+
+			  // Define your library strictly...
+			})();
+			*/
+		
+			// detail explanation: http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
+			// in strict mode:
+			// 1. foo = "bar" without defining foo is error
+			// 2. eval is not allowed
+			// 3. overwriting arguments is not allowed: arguments = [...]; // not allowed
+			// 4. with(){} is not allowed
+			// 5. Attempts to delete undeletable properties will throw (delete Object.prototype)
+			// 
 		}
 
 		function pitfall() {
@@ -70,26 +105,6 @@ function frontEnd () {
 					var a = [];
           a['name'] = 'Hubert';   //  No! Don't do this!
 				}
-
-				function isArray(value) {
-					return value && typeof value === 'object' && value.constructor === Array;
-				}
-
-				function isArray2(value) {
-					return Object.prototype.toString.apply(value) === '[object Array]';
-				}
-
-				function for_in_loop () {
-
-					var obj = [1,2,3];
-					Array.prototype.foo = 'bar';
-					for (var key in obj) {
-					    if (obj.hasOwnProperty(key)) {
-					        //stuff...
-					       console.log(obj[key]);
-					    }
-					}
-				}
 			}
 
 			function line_return () {
@@ -111,14 +126,36 @@ function frontEnd () {
 			}
 		}
 
-		function tricks() {
+		function useful_code_snippets() {
 			
 			function reverse_letter() {
 				'abcdefg'.split('').reverse().join(''); 
 				// gfedcba
 			}
+			function isArray(value) {
+				return value && typeof value === 'object' && value.constructor === Array;
+			}
 
+			function isArray2(value) {
+				return Object.prototype.toString.apply(value) === '[object Array]';
+			}
 
+			function isArray3() {
+				// use ES5 native method
+				Array.isArray([]); // return true
+			}
+
+			function for_in_loop () {
+
+				var obj = [1,2,3];
+				Array.prototype.foo = 'bar';
+				for (var key in obj) {
+				    if (obj.hasOwnProperty(key)) {
+				        //stuff...
+				       console.log(obj[key]);
+				    }
+				}
+			}
 		}
 
 		function quiz() {
@@ -281,6 +318,19 @@ function frontEnd () {
 	function Browser() {
 		function dom_api() {
 
+			function redirect() {
+				var origin = "http://stackoverflow.com/questions/503093/how-can-i-make-a-redirect-page-using-jquery";
+
+				window.location.href="url"; //simulates normal navigation to a new page
+				window.location.replace("url");//removes current url from history and replaces with new url
+				window.location.assign("url");//adds new url to history stack and redirects to the new url
+
+				window.history.back();//Simulates a back button click
+				window.history.go(-1);//Simulates a back button click
+				window.history.back(-1);//Simulates a back button click
+				window.navigate("page.html");//Same as window.location="url" 
+			}
+
 			function file_api() {
 
 			}
@@ -314,6 +364,25 @@ function frontEnd () {
 
 	function Libraries () {
 		function jquery() {
+
+			function this_in_Each_loop() {
+				
+			}
+			function check_if_visible() {
+				var source = "http://stackoverflow.com/questions/178325/checking-if-an-element-is-hidden?page=2&tab=active#tab-top";
+
+				// best way: use css selector
+				$('element:hidden');
+				$('element:visible');
+
+				$('element').is(":visible"); // jquery way
+				// or check css directly
+				if ($(this).css("display") == "none" || $(this).css("visibility") == "hidden") {
+				    // The element is not visible
+				} else {
+				    // The element is visible
+				}
+			}
 
 		}
 		function d3js() {
