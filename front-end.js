@@ -46,9 +46,24 @@ function frontEnd () {
 			// 
 		}
 
+		function hash_in_a_tag() {
+			var source = "http://stackoverflow.com/questions/134845/href-attribute-for-javascript-links-or-javascriptvoid0?page=1&tab=active#tab-top";
+			/* 
+			If no href attribute, then a tag just behave like span
+			If put href="#", when clicked, it will take you to the top of the page
+			*/
+			/*
+			The verdict:
+			It is best to use href="javascript:void(0)"
+			e.g.:
+			<a href="javascript:void(0)">this is a link</a>
+			 */
+		}
+
 		function pitfall() {
 
-			function truth_table () {
+			function equal_table () {
+				var source = "http://dorey.github.io/JavaScript-Equality-Table/";
 
 				''        ==   '0'           // false
 				0         ==   ''            // true
@@ -124,11 +139,49 @@ function frontEnd () {
 					*/
 				}
 			}
+
+			function function_var_def() {
+				var source = "http://stackoverflow.com/questions/336859/var-functionname-function-vs-function-functionname";
+				var detailed_text = "http://kangax.github.io/nfe/";
+				var functionOne = function() {
+    			// Function expression
+				};
+				function functionTwo() {
+    			// Function declarations
+				}
+				// The difference is that functionOne is defined at run-time, whereas 
+				// functionTwo is defined at parse-time for a script block. For example:
+
+				/*
+				<script>
+				  // Error
+				  functionOne();
+
+				  var functionOne = function() {
+				  };
+				</script>
+
+				<script>
+				  // No error
+				  functionTwo();
+
+				  function functionTwo() {
+				  }
+				</script>
+
+				<script>
+				  if (test) {
+				     // Error or misbehavior
+				     function functionThree() { doSomething(); }
+				  }
+				</script>
+				 */
+			}
 		}
 
 		function useful_code_snippets() {
 			
-			function reverse_letter() {
+			function reverse_string_letter() {
 				'abcdefg'.split('').reverse().join(''); 
 				// gfedcba
 			}
@@ -154,6 +207,96 @@ function frontEnd () {
 				        //stuff...
 				       console.log(obj[key]);
 				    }
+				}
+			}
+
+			function string_contain_substr() {
+				
+				var source = "http://stackoverflow.com/questions/1789945/how-can-i-check-if-one-string-contains-another-substring";
+				// 1. indexOf
+				var s = "foo";
+				alert(s.indexOf("oo") > -1);
+
+				// 2. in ES6
+				console.log("foo".includes("o"));  // true
+				// 
+				// if (!String.prototype.contains) {
+				//   String.prototype.contains= function() {
+				//     return String.prototype.indexOf.apply(this, arguments) !== -1;
+				//     // this will point to String object. It is not a callback, 
+				//     // so this will not point to root.
+				//   };
+				// }
+				// 3. Regrex
+				/oo/.test("foo"); // true
+			}
+
+			function copy_object() {
+				// jquery way:
+				// Shallow copy
+				var newObject = jQuery.extend({}, oldObject);
+				// Deep copy
+				var newObject = jQuery.extend(true, {}, oldObject);
+
+				// pure javascript:
+				var obj = JSON.parse(JSON.stringify(obj)); // won't copy function, won't copy 
+			}
+
+			function delete_obj() {
+				delete myJSONObject.regex;
+				// or,
+				delete myJSONObject['regex'];
+				// or,
+				var prop = "regex";
+				delete myJSONObject[prop];
+
+				// if you delete array item, it will set the index to undefined
+				var array = [1,2,3,4];
+				delete array[2];
+				/* Expected result --> [1,2,4]
+				 * Actual result   --> [1,2,undefined,4]
+				 */
+			}
+
+			function load_js_file() {
+				// javascript:
+				function includeJs(jsFilePath) {
+			    
+			    var js = document.createElement("script");
+			    js.type = "text/javascript";
+			    js.src = jsFilePath;
+			    document.body.appendChild(js);
+				}
+				includeJs("/path/to/some/file.js");
+
+				// or use requireJS
+			}
+
+			function select_checked_element() {
+				var source = "http://stackoverflow.com/questions/901712/check-checkbox-checked-property";
+				// code:
+				if(document.getElementById('isAgeSelected').checked) {
+				    $("#txtAge").show();
+				} else {
+				    $("#txtAge").hide();
+				}
+
+				// example
+				$('#isAgeSelected').click(function () {
+				    $("#txtAge").toggle(this.checked);
+				});
+				/*
+				<input type="checkbox" id="isAgeSelected"/>
+				<div id="txtAge" style="display:none">Age is something</div>​
+				*/
+			}
+
+			function remove_same_element_array() {
+				// code:
+				for(var i = array.length - 1; i >= 0; i--) {
+			    if(array[i] === number) {
+			       array.splice(i, 1);
+			    }
 				}
 			}
 		}
@@ -331,6 +474,15 @@ function frontEnd () {
 				window.navigate("page.html");//Same as window.location="url" 
 			}
 
+			function get_query_string_value() {
+				var source = "http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript?page=2&tab=active#tab-top";
+				// snippet:
+				function getParameterByName(name) {
+				    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+				    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+				}
+			}
+
 			function file_api() {
 
 			}
@@ -366,7 +518,7 @@ function frontEnd () {
 		function jquery() {
 
 			function this_in_Each_loop() {
-				
+
 			}
 			function check_if_visible() {
 				var source = "http://stackoverflow.com/questions/178325/checking-if-an-element-is-hidden?page=2&tab=active#tab-top";
@@ -382,6 +534,11 @@ function frontEnd () {
 				} else {
 				    // The element is visible
 				}
+			}
+			function select_dom_contain_text() {
+				var source = "http://api.jquery.com/contains-selector/";
+				$( "div:contains('John')" ).css( "text-decoration", "underline" );
+
 			}
 
 		}
