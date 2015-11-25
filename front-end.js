@@ -2,6 +2,22 @@
 function frontEnd () {
 
 	function Javascript_language() {
+
+		function () {
+			// empty an array
+			var arr = [1,2,3,4,5];
+			arr = [];
+		}
+
+		function check_string_empty() {
+			if (strValue) {
+			    //do something
+			    // empty, null, or undefined
+			}
+			// note:
+			var str = " "; // is not empty string
+		}
+
 		function closure() {
 			var description = " Accessing outer variable stack from  \
                      			lexical inner scope creates a closure. The outer variable stack is still \
@@ -180,6 +196,62 @@ function frontEnd () {
 		}
 
 		function useful_code_snippets() {
+
+			function replace_all_occurance_of_string() {
+				var str = "Test abc test test abc test test";
+				str = str.replace(/abc/g, '---');
+			}
+
+			function append_to_array() {
+				// 1. append one element
+				var arr = [
+				    "Hi",
+				    "Hello",
+				    "Bonjour"
+				];
+				// append new value to the array
+				arr.push("Hola"); 
+
+				// 2. append an array
+				var a =['a','b'];
+				var b=['c','d'];
+				var c = a.concat(b);
+			}
+
+			function captalize_first_letter() {
+				var source = "http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascript";
+				function capitalizeFirstLetter(string) {
+				  return string.charAt(0).toUpperCase() + string.slice(1);
+				}
+			}
+			function validateEmail() {
+
+				function validateEmail(email) {
+				    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+				    return re.test(email);
+				}
+				// anything@anything.anything
+				function validateEmail(email) {
+				    var re = /\S+@\S+\.\S+/;
+				    return re.test(email);
+				}
+			}
+
+			function validateIsNumber() {
+				var source = "http://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric/174921#174921";
+				function IsNumeric(input){
+				    return (input - 0) == input && (''+input).trim().length > 0;
+				}
+			}
+
+			function check_if_undefined() {
+				var source = "http://stackoverflow.com/questions/27509/detecting-an-undefined-object-property";
+
+				if (typeof something === "undefined") {
+				  alert("something is undefined");
+				}
+
+			}
 			
 			function reverse_string_letter() {
 				'abcdefg'.split('').reverse().join(''); 
@@ -298,6 +370,65 @@ function frontEnd () {
 			       array.splice(i, 1);
 			    }
 				}
+			}
+
+			function loop_array() {
+				// plain javascript 
+				function logArrayElements(element, index, array) {
+				  console.log('a[' + index + '] = ' + element);
+				  // this, point to root object
+				}
+
+				// Note elision, there is no member at 2 so it isn't visited
+				[2, 5, , 9].forEach(logArrayElements); 
+				
+				// jquery version
+				$.each([3,4,5], function(index, value){
+					console.log(this);
+					// note: this will point to each object in the array
+				});
+			}
+
+			function get_timestamp() {
+				var milliseconds = new Date().getTime();
+
+				// unix time (in seconds)
+				var unix = Math.round(new Date().getTime()/1000);
+			}
+
+			function uuid() {
+				var source = "http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript";
+				// in browser
+				'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+				    var r = crypto.getRandomValues(new Uint8Array(1))[0]%16|0, v = c == 'x' ? r : (r&0x3|0x8);
+				    return v.toString(16);
+				});
+
+				// nodejs
+				'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+				    var r = crypto.randomBytes(1)[0]%16|0, v = c == 'x' ? r : (r&0x3|0x8);
+				    return v.toString(16);
+				});
+
+				// use npm package
+				"https://www.npmjs.com/package/guid";
+				Guid.raw();
+				// -> '6fdf6ffc-ed77-94fa-407e-a7b86ed9e59d'
+			}
+
+			function element_in_array() {
+				// plain javascript way:
+				function contains(a, obj) {
+			    for (var i = 0; i < a.length; i++) {
+			        if (a[i] === obj) {
+			            return true;
+			        }
+			    }
+			    return false;
+				}
+
+				// jquery way:
+				$.inArray(value, array)
 			}
 		}
 
@@ -474,12 +605,135 @@ function frontEnd () {
 				window.navigate("page.html");//Same as window.location="url" 
 			}
 
+			function why_need_encode_url() {
+				var source = "http://stackoverflow.com/questions/2152738/why-do-you-need-to-encode-urls";
+				// space => %20
+				/*
+					The space character is excluded because significant spaces may disappear and 
+					insignificant spaces may be introduced when URI are transcribed or typeset or 
+					subjected to the treatment of word- processing programs. Whitespace is also used 
+					to delimit URI in many contexts.
+				*/
+			}
+
+			function encode_uri() {
+
+				var myOtherUrl = 
+				  "http://example.com/index.html?url=" + encodeURIComponent(myUrl);
+
+				  //encodeURI(): is used for encoding existing url
+				  //encodeURIComponent() : assumes that its argument is a 
+				  //  portion (such as the protocol, hostname, path, or query string) of a URI
+			}
+
+			function get_current_URL() {
+				window.location.href;
+			}
 			function get_query_string_value() {
 				var source = "http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript?page=2&tab=active#tab-top";
 				// snippet:
 				function getParameterByName(name) {
 				    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
 				    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+				}
+			}
+
+			function add_remove_class() {
+				// pure javascript
+				var source = "http://stackoverflow.com/questions/195951/change-an-elements-class-with-javascript";
+				document.getElementById("MyElement").className = "MyClass";
+				document.getElementById("MyElement").className += " MyClass";
+				document.getElementById("MyElement").className =
+			  document.getElementById("MyElement").className.replace
+			    ( /(?:^|\s)MyClass(?!\S)/g , '' );
+
+			  // jquery
+			  $('#MyElement').addClass('MyClass');
+			  $('#MyElement').removeClass('MyClass');
+			  if ( $('#MyElement').hasClass('MyClass') ) {}
+			  $('#MyElement').toggleClass('MyClass');
+
+				// HTML5
+				document.getElementById("MyElement").classList.add('class');
+				document.getElementById("MyElement").classList.remove('class');
+				if ( document.getElementById("MyElement").classList.contains('class') ) {}
+				document.getElementById("MyElement").classList.toggle('class');
+			}
+
+
+			function get_selected_text() {
+				var source = "http://stackoverflow.com/questions/5379120/get-the-highlighted-selected-text";
+				// select text in textarea is different than selecting text in p tag
+				// code:
+				function getSelectionText() {
+			    var text = "";
+			    if (window.getSelection) {
+			      text = window.getSelection().toString(); // non IE
+			    } else if (document.selection && document.selection.type != "Control") {
+			      text = document.selection.createRange().text; // for IE
+			    }
+			    return text;
+				}
+			}
+
+			function select_text() {
+				var source = "http://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse";
+
+				function SelectText(element) {
+					// element example: "#select_me"
+			    var doc = document
+			        , text = doc.getElementById(element)
+			        , range, selection
+			    ;    
+			    if (doc.body.createTextRange) {
+			        range = document.body.createTextRange();
+			        range.moveToElementText(text);
+			        range.select();
+			    } else if (window.getSelection) {
+			        selection = window.getSelection();        
+			        range = document.createRange();
+			        range.selectNodeContents(text);
+			        selection.removeAllRanges();
+			        selection.addRange(range);
+			    }
+				}
+			}
+
+			function create_trigger_event() {
+				var event = new Event('build');
+
+				// Listen for the event.
+				elem.addEventListener('build', function (e) {  }, false);
+
+				// Dispatch the event.
+				elem.dispatchEvent(event);
+			}
+
+			function create_event_custom() {
+
+				var event = new CustomEvent('build', { 'detail': elem.dataset.time });
+				// handler
+				function eventHandler(e) {
+				  log('The time is: ' + e.detail);
+				}
+			}
+
+			function trigger_built_in_event() {
+				function simulateClick() {
+				  var event = new MouseEvent('click', {
+				    'view': window,
+				    'bubbles': true,
+				    'cancelable': true
+				  });
+				  var cb = document.getElementById('checkbox'); 
+				  var canceled = !cb.dispatchEvent(event);
+				  if (canceled) {
+				    // A handler called preventDefault.
+				    alert("canceled");
+				  } else {
+				    // None of the handlers called preventDefault.
+				    alert("not canceled");
+				  }
 				}
 			}
 
@@ -517,6 +771,22 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function selector_usage() {
+				jQuery(this).find("img"); // under this object, find img tags
+
+			}
+
+			function append_table_row() {
+				var source = "http://stackoverflow.com/questions/171027/add-table-row-in-jquery";
+				/*
+					jQuery since version 1.4(?) automatically detects if the element 
+					you are trying to insert (using any of the append(), prepend(), before(), 
+					or after() methods) is a <tr> and inserts it into the first <tbody> in 
+					your table or wraps it into a new <tbody> if one doesn't exist.
+				 */
+				$('#myTable').append('<tr><td>my data</td><td>more data</td></tr>');
+			}
+
 			function this_in_Each_loop() {
 
 			}
@@ -538,7 +808,13 @@ function frontEnd () {
 			function select_dom_contain_text() {
 				var source = "http://api.jquery.com/contains-selector/";
 				$( "div:contains('John')" ).css( "text-decoration", "underline" );
+			}
 
+			function return_false () {
+				// don't use return false in jQquery or dom event handler
+				// It is best to explicitely call e.preventDefault(), or 
+				// e.stopPropagation()
+				var source = "http://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false";
 			}
 
 		}
@@ -563,6 +839,13 @@ function frontEnd () {
 
 		function type_ahead() {
 			
+		}
+
+		function file_upload() {
+			var source = "http://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously";
+			var gitHub_repo = "https://github.com/FineUploader/fine-uploader";
+			// simple ajax uploader
+			var gitHub_repo2 = "https://github.com/LPology/Simple-Ajax-Uploader";
 		}
 
 		function image_cropper() {
@@ -717,6 +1000,17 @@ function frontEnd () {
 			*/
 
 		}
+
+		function json_hijacking() {
+			var source = "http://haacked.com/archive/2009/06/25/json-hijacking.aspx/";
+			var stackoverflow = "http://stackoverflow.com/questions/2669690/why-does-google-prepend-while1-to-their-json-responses";
+			// if the site request is 
+			// 1) GET
+			// 2) return [] of json
+			// it is vulnerable
+			// adding while(1); will stop it, since legitimate will parse out the real array
+			//  
+		}
 	}
 
 
@@ -750,6 +1044,22 @@ function frontEnd () {
 				the specificity value would be 122 (0,1,2,2 or 0122): 100 for #content, 10 for .data, 10 for :hover, 1 for body and 1 for img.” [CSS Specificity]
 
 			 */
+		}
+
+		function properties() {
+			// 1. white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit;
+			var explanation = "http://www.w3schools.com/cssref/pr_text_white-space.asp";
+
+			// 2. clip: auto|shape|initial|inherit;
+			//    object.style.clip="rect(0px,50px,50px,0px)"
+			var explanation_clip = "http://www.w3schools.com/cssref/pr_pos_clip.asp";
+
+			// 3. content: attr(data-content); /* dynamic content for the pseudo element */
+			//    data-content is attribute in the tag
+		}
+
+		function style_half_character() {
+			var source = "http://stackoverflow.com/questions/23569441/is-it-possible-to-apply-css-to-half-of-a-character";
 		}
 
 		function quiz() {
