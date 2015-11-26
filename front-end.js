@@ -3,27 +3,22 @@ function frontEnd () {
 
 	function Javascript_language() {
 
-		function () {
-			// empty an array
-			var arr = [1,2,3,4,5];
-			arr = [];
-		}
-
-		function check_string_empty() {
-			if (strValue) {
-			    //do something
-			    // empty, null, or undefined
-			}
-			// note:
-			var str = " "; // is not empty string
-		}
-
 		function closure() {
 			var description = " Accessing outer variable stack from  \
                      			lexical inner scope creates a closure. The outer variable stack is still \
                      			alive even if outer function returns. ";
 		  var link = " http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/111200#111200";
 		  var snippets = '';
+		}
+
+		function new_operator() {
+			var source = "http://stackoverflow.com/questions/1646698/what-is-the-new-keyword-in-javascript";
+			/*
+				1. It creates a new object. The type of this object, is simply object.
+				2. It sets this new object's internal, inaccessible, [[prototype]] property to be the constructor function's external, accessible, prototype object (every function object automatically has a prototype property).
+				3. It executes the constructor function, using the newly created object whenever this is mentioned.
+				4. It returns the newly created object, unless the constructor function returns a non-primitive value. In this case, that non-primitive value will be returned.
+			*/
 		}
 
 		function bind_function () {
@@ -62,20 +57,6 @@ function frontEnd () {
 			// 
 		}
 
-		function hash_in_a_tag() {
-			var source = "http://stackoverflow.com/questions/134845/href-attribute-for-javascript-links-or-javascriptvoid0?page=1&tab=active#tab-top";
-			/* 
-			If no href attribute, then a tag just behave like span
-			If put href="#", when clicked, it will take you to the top of the page
-			*/
-			/*
-			The verdict:
-			It is best to use href="javascript:void(0)"
-			e.g.:
-			<a href="javascript:void(0)">this is a link</a>
-			 */
-		}
-
 		function pitfall() {
 
 			function equal_table () {
@@ -104,7 +85,6 @@ function frontEnd () {
 				typeof {},       			  // 'object'
 				typeof null == object,   // true
 				];
-
 			}
 
 			function new_operator () {
@@ -131,7 +111,7 @@ function frontEnd () {
         }
 			}
 
-			function array() {
+			function wrong_array_operation() {
 				function wrongCode() {
 					var a = [];
           a['name'] = 'Hubert';   //  No! Don't do this!
@@ -196,6 +176,67 @@ function frontEnd () {
 		}
 
 		function useful_code_snippets() {
+
+			function string_formatting() {
+				var lib_to_use = "http://epeli.github.io/underscore.string/#home";
+
+				numberFormat(1000, 2);
+				// => "1,000.00"
+
+				numberFormat(123456789.123, 5, ".", ",");
+				// => "123,456,789.12300"
+
+			}
+
+			function check_if_string_start_with() {
+				// How to check if a string “StartsWith” another string?
+				var source = "http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string";
+
+				function stringStartsWith (string, prefix) {
+				    return string.slice(0, prefix.length) == prefix;
+				}
+				// or
+				/^Hello/.test('Hello world')
+				// or
+				haystack.lastIndexOf(needle, 0) === 0
+
+			}
+			function empty_array () {
+				// empty an array
+				var arr = [1,2,3,4,5];
+				arr = [];
+			}
+
+			function check_string_empty() {
+				if (strValue) {
+				    //do something
+				    // empty, null, or undefined
+				}
+				// note:
+				var str = " "; // is not empty string
+			}
+
+			function set_default_param_in_function () {
+				var source = "http://stackoverflow.com/questions/894860/set-a-default-parameter-value-for-a-javascript-function";
+
+				function foo(a, b){
+				  a = typeof a !== 'undefined' ? a : 42;
+				  b = typeof b !== 'undefined' ? b : 'default_b';
+				}
+
+			}
+
+			function check_key_exist_in_object() {
+				var source = "http://stackoverflow.com/questions/1098040/checking-if-a-key-exists-in-a-javascript-object";
+				// wrong way
+				var obj = { key: undefined };
+				obj["key"] != undefined // false, but the key exists!
+
+				// right way
+				"key" in obj // true, regardless of the actual value
+				// if only in the ojbect itself, not on prototype chain
+				obj.hasOwnProperty("key") // true
+			}
 
 			function replace_all_occurance_of_string() {
 				var str = "Test abc test test abc test test";
@@ -592,6 +633,41 @@ function frontEnd () {
 	function Browser() {
 		function dom_api() {
 
+			function hash_in_a_tag() {
+				var source = "http://stackoverflow.com/questions/134845/href-attribute-for-javascript-links-or-javascriptvoid0?page=1&tab=active#tab-top";
+				/* 
+				If no href attribute, then a tag just behave like span
+				If put href="#", when clicked, it will take you to the top of the page
+				*/
+				/*
+				The verdict:
+				It is best to use href="javascript:void(0)"
+				e.g.:
+				<a href="javascript:void(0)">this is a link</a>
+				 */
+			}
+
+			function localStorage_object() {
+				// localstorage can only strong key value pair, the value is string, not object
+				
+				var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+
+				// Put the object into storage
+				localStorage.setItem('testObject', JSON.stringify(testObject));
+
+				// Retrieve the object from storage
+				var retrievedObject = localStorage.getItem('testObject');
+
+				console.log('retrievedObject: ', JSON.parse(retrievedObject));
+			}
+
+			function refreshi_page() {
+				$('#something').click(function() {
+				    location.reload(); // reload from cache
+				    // location.reload(true) // reload from server
+				})
+			}
+
 			function redirect() {
 				var origin = "http://stackoverflow.com/questions/503093/how-can-i-make-a-redirect-page-using-jquery";
 
@@ -770,6 +846,98 @@ function frontEnd () {
 
 	function Libraries () {
 		function jquery() {
+
+			function check_click_outside_element() {
+				var source = "http://stackoverflow.com/questions/152975/how-to-detect-a-click-outside-an-element?page=1&tab=active#tab-top";
+
+				$(document).click(function(event) { 
+				    if(!$(event.target).closest('#menucontainer').length) {
+				        if($('#menucontainer').is(":visible")) {
+				            $('#menucontainer').hide()
+				        }
+				    }        
+				})
+			}
+
+			function cancel_ajax_request() {
+				// how can I cancel/abort an Ajax request that 
+				// I have not yet received the response from?
+				var source = "http://stackoverflow.com/questions/446594/abort-ajax-requests-using-jquery";
+				var xhr = $.ajax({
+				    type: "POST",
+				    url: "some.php",
+				    data: "name=John&location=Boston",
+				    success: function(msg){
+				       alert( "Data Saved: " + msg );
+				    }
+				});
+
+				//kill the request
+				xhr.abort();
+
+				/*
+					As of jQuery 1.5 the returned object is a wrapper for the 
+					native XMLHttpRequest object called jqXHR. This object appears
+					to expose all of the native properties and methods so the above 
+					example still works. See The jqXHR Object (jQuery API documentation).
+				*/
+			}
+
+			function get_selected_text_option() {
+				var source = "http://stackoverflow.com/questions/1643227/get-selected-text-from-a-drop-down-list-select-box-using-jquery";
+ 				$("#myselect option:selected").text();
+
+				$("#myselect :selected").text();
+
+ 				$("#myselect").children(":selected").text();
+
+				$("#myselect").find(":selected").text();
+
+				$("#dropdownID").change(function(){
+				  alert($('option:selected', $(this)).text());
+				});
+			}
+
+			function add_color_console_log() {
+				console.log('%c Oh my heavens! ', 'background: #222; color: #bada55');
+
+			}
+
+			function disable_browser_plugin() {
+				var source = "http://stackoverflow.com/questions/21692646/how-does-facebook-disable-the-browsers-integrated-developer-tools/21692733#21692733";
+				// The logic is 
+				// 1. redefine the console to be unwritable, 
+				// 2. redefine the "_commandLineAPI" plugin api object, which
+				
+				Object.defineProperty(window, "console", {
+				    value: console,
+				    writable: false,
+				    configurable: false
+				});
+
+				var i = 0;
+				function showWarningAndThrow() {
+				    if (!i) {
+				        setTimeout(function () {
+				            console.log("%cWarning message", "font: 2em sans-serif; color: yellow; background-color: red;");
+				        }, 1);
+				        i = 1;
+				    }
+				    throw "Console is disabled";
+				}
+
+				var l, n = {
+				        set: function (o) {
+				            l = o;
+				        },
+				        get: function () {
+				            showWarningAndThrow();
+				            return l;
+				        }
+				};
+				Object.defineProperty(console, "_commandLineAPI", n);
+				Object.defineProperty(console, "__commandLineAPI", n);
+			}
 
 			function selector_usage() {
 				jQuery(this).find("img"); // under this object, find img tags
