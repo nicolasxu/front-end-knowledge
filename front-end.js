@@ -9,6 +9,29 @@ function frontEnd () {
                      			alive even if outer function returns. ";
 		  var link = " http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/111200#111200";
 		  var snippets = '';
+
+		  // closure in a loop
+		  var funcs = [];
+			for (var i = 0; i < 3; i++) {          // let's create 3 functions
+			    funcs[i] = function() {            // and store them in funcs
+			        console.log("My value: " + i); // each should log its value.
+			    };
+			}
+			for (var j = 0; j < 3; j++) {
+			    funcs[j]();                        // and now let's run each one to see
+			}
+
+			// fix closure in a loop
+			var funcs_ = [];
+			function createfunc(i) {
+			    return function() { console.log("My value: " + i); };
+			}
+			for (var i = 0; i < 3; i++) {
+			    funcs_[i] = createfunc(i);
+			}
+			for (var j = 0; j < 3; j++) {
+			    funcs_[j]();                        // and now let's run each one to see
+			}
 		}
 
 		function new_operator() {
@@ -176,6 +199,68 @@ function frontEnd () {
 		}
 
 		function useful_code_snippets() {
+
+			function for_in_loop_no_array() {
+				var source = "http://stackoverflow.com/questions/500504/why-is-using-for-in-with-array-iteration-such-a-bad-idea";
+				// e.g.:
+				var arr = ['a','b','c'];
+				for (var key in arr) { ... }	
+				// for... in will go through the prototype chain, so not recommended for 
+				// looping through the array, forEach() is right choice for array
+			}
+			function enum_in_javascript() {
+				var source = "http://stackoverflow.com/questions/287903/enums-in-javascript";
+
+				var SIZE = {
+				  SMALL : {value: 0, name: "Small", code: "S"}, 
+				  MEDIUM: {value: 1, name: "Medium", code: "M"}, 
+				  LARGE : {value: 2, name: "Large", code: "L"}
+				};
+
+				var currentSize = SIZE.MEDIUM;
+				if (currentSize == SIZE.MEDIUM) {
+				  // this alerts: "1: Medium"
+				  alert(currentSize.value + ": " + currentSize.name);
+				}
+			}
+			function count_size_of_object () {
+				var source = "http://stackoverflow.com/questions/5223/length-of-a-javascript-object-that-is-associative-array";
+				
+				Object.size = function(obj) {
+				    var size = 0, key;
+				    for (key in obj) {
+				        if (obj.hasOwnProperty(key)) size++;
+				    }
+				    return size;
+				};
+				// Get the size of an object
+				var size = Object.size(myArray);
+			}
+			function format_date() {
+				// 1. use Moment.js
+				var a = moment([2010, 1, 14, 15, 25, 50, 125]);
+				a.format("dddd, MMMM Do YYYY, h:mm:ss a"); // "Sunday, February 14th 2010, 3:25:50 pm"
+				a.format("ddd, hA");                       // "Sun, 3PM"
+
+				// 2. use plain javascript
+				var d = (new Date()+'').split(' ');
+				// ["Tue", "Sep", "03", "2013", "21:54:52", "GMT-0500", "(Central", "Daylight", "Time)"]
+				[d[3], d[1], d[2], d[4]].join(' ');
+				// "2013 Sep 03 21:58:03" 
+			}
+			function multi_line_code() {
+				var myString = "foo \
+					bar";
+			}
+
+			function trim_string() {
+				// It is already part of native javascript
+				var source = "http://stackoverflow.com/questions/498970/trim-string-in-javascript";
+
+				String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');};
+
+
+			}
 
 			function string_formatting() {
 				var lib_to_use = "http://epeli.github.io/underscore.string/#home";
@@ -632,6 +717,13 @@ function frontEnd () {
 
 	function Browser() {
 		function dom_api() {
+
+			function change_url_without_loading () {
+				var source = "http://stackoverflow.com/questions/824349/modify-the-url-without-reloading-the-page";
+				// only works for HTML5
+				window.history.pushState('page2', 'Title', '/page2.php');
+				// MDN: https://developer.mozilla.org/en-US/docs/Web/API/History_API
+			}
 
 			function hash_in_a_tag() {
 				var source = "http://stackoverflow.com/questions/134845/href-attribute-for-javascript-links-or-javascriptvoid0?page=1&tab=active#tab-top";
