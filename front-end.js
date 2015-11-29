@@ -200,6 +200,54 @@ function frontEnd () {
 
 		function useful_code_snippets() {
 
+			function number_to_hex_back() {
+				var hexString = (11).toString(16); // b
+				var yourNumber = parseInt(hexString, 16); // 10
+			}
+
+			function round_to_fix() {
+				var source = "http://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-in-javascript";
+				+num.toFixed(2); // toFixed() returns it to a string, and then back into an integer / float.
+			}
+
+			function parse_int() {
+				// parse integer from string
+				parseInt("3434", 10); 
+				// 1st para: string
+				// 2nd para: what radix the string is (the base in mathematical numeral systems) 2 to 36
+				parseInt("01010101", 2) // result: 85
+			}
+
+			function get_date_simple() {
+				var source = "http://stackoverflow.com/questions/1531093/how-to-get-current-date-in-javascript";
+
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; //January is 0!
+				var yyyy = today.getFullYear();
+
+				if(dd<10) {
+				    dd='0'+dd
+				} 
+
+				if(mm<10) {
+				    mm='0'+mm
+				} 
+
+				today = mm+'/'+dd+'/'+yyyy;
+				document.write(today);
+			}
+
+			function str_end_with_sth() {
+				var source = "http://stackoverflow.com/questions/280634/endswith-in-javascript";
+				// polyfill:
+				String.prototype.endsWith = function(suffix) {
+    			return this.indexOf(suffix, this.length - suffix.length) !== -1;
+				};
+				// simple:
+				if( "mystring#".substr(-1) === "#" ) {}
+			}
+
 			function merge_two_obj() {
 				// jquery:
 				var settings = $.extend({}, defaults, options);
@@ -304,8 +352,6 @@ function frontEnd () {
 				var source = "http://stackoverflow.com/questions/498970/trim-string-in-javascript";
 
 				String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');};
-
-
 			}
 
 			function string_formatting() {
@@ -316,7 +362,6 @@ function frontEnd () {
 
 				numberFormat(123456789.123, 5, ".", ",");
 				// => "123,456,789.12300"
-
 			}
 
 			function check_if_string_start_with() {
@@ -330,7 +375,6 @@ function frontEnd () {
 				/^Hello/.test('Hello world')
 				// or
 				haystack.lastIndexOf(needle, 0) === 0
-
 			}
 			function empty_array () {
 				// empty an array
@@ -354,7 +398,6 @@ function frontEnd () {
 				  a = typeof a !== 'undefined' ? a : 42;
 				  b = typeof b !== 'undefined' ? b : 'default_b';
 				}
-
 			}
 
 			function check_key_exist_in_object() {
@@ -796,9 +839,55 @@ function frontEnd () {
 				// adding [pragma: no-cache] in the response headers
 				// adding [cache-control: no-cache] in the response headers
 			}
+
+			function detect_mobile_browser() {
+				var source = "http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery";
+
+				// user agent detect
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ 					// some code..
+				}
+				// here is another ua detect choice:
+				// http://detectmobilebrowsers.com/
+				
+				// css way:
+				/*
+					@media only screen and (max-width: 760px) {
+					  #some-element { display: none; }
+					}
+				*/
+			}
 		}
 		function dom_api() {
 
+			function simulate_form_submit() {
+				var source = "http://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit";
+				// copy 
+				function post(path, params, method) {
+				    method = method || "post"; // Set method to post by default if not specified.
+
+				    // The rest of this code assumes you are not using a library.
+				    // It can be made less wordy if you use one.
+				    var form = document.createElement("form");
+				    form.setAttribute("method", method);
+				    form.setAttribute("action", path);
+
+				    for(var key in params) {
+				        if(params.hasOwnProperty(key)) {
+				            var hiddenField = document.createElement("input");
+				            hiddenField.setAttribute("type", "hidden");
+				            hiddenField.setAttribute("name", key);
+				            hiddenField.setAttribute("value", params[key]);
+
+				            form.appendChild(hiddenField);
+				         }
+				    }
+
+				    document.body.appendChild(form);
+				    form.submit();
+				}
+
+			}
 			function copy_to_clip_board() {
 				var source = "http://stackoverflow.com/questions/17527870/how-does-trello-access-the-users-clipboard";
 
@@ -1083,6 +1172,24 @@ function frontEnd () {
 				$('#list').val(); // give you the selected value, not text
 			}
 
+			function build_select_option_from_array() {
+				var source = "http://stackoverflow.com/questions/170986/what-is-the-best-way-to-add-options-to-a-select-from-an-array-with-jquery";
+				var myOptions = {
+					"Value 1" : "Text 1",
+					"Value 2" : "Text 2",
+					"Value 3" : "Text 3"
+				}
+				$.each(selectValues, function(key, value) {   
+		      $('#mySelect')
+		        .append($("<option></option>")
+		        	.attr("value",key)
+		        	.text(value)); 
+				});
+
+				// or you can use this plug in:
+				var jquery_plugin = "http://www.texotela.co.uk/code/jquery/select/";
+			}
+
 			function check_element_is_off_screen() {
 				var source = "http://stackoverflow.com/questions/8897289/how-to-check-if-an-element-is-off-screen";
 				// to be done
@@ -1312,6 +1419,15 @@ function frontEnd () {
 
 	function html5() {
 
+		function pitfall() {
+			function self_closing_script_tag_wrong() {
+				// wrong:
+				// <script src="foobar.js" /> <!-- self-closing script tag -->
+				// 
+				// right:
+				// <script src="foobar.js"></script>
+			}
+		}
 		function quiz() {
 
 			function quiz1() {
@@ -1391,6 +1507,10 @@ function frontEnd () {
 				//    in script tag
 			}
 		}
+
+		function snippet() {
+
+		}
 	}
 
 	function security() {
@@ -1461,7 +1581,7 @@ function frontEnd () {
 			 */
 		}
 
-		function properties() {
+		function css_properties_explanation() {
 			// 1. white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit;
 			var explanation = "http://www.w3schools.com/cssref/pr_text_white-space.asp";
 
@@ -1471,6 +1591,72 @@ function frontEnd () {
 
 			// 3. content: attr(data-content); /* dynamic content for the pseudo element */
 			//    data-content is attribute in the tag
+			// 4. user-select: none
+			//    disable user selecting a text
+			var user_select_explanation = "http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting";
+
+		}
+		function horizontal_center() {
+			var source = "http://stackoverflow.com/questions/114543/horizontally-center-a-div-in-a-div?";
+			// method 1:
+			// works on all browser
+			/*
+				#inner {
+    		width: 50%;
+    		margin: 0 auto;
+			} 
+			*/
+			// method 2: unknown width
+			// works IE8+, doesn't matter the inner width
+			/*
+			#inner {
+			  display: table;
+			  margin: 0 auto;
+			}
+			 */
+			// method 3: unknown width
+			/*
+				#outer {
+				  width: 100%;
+				  text-align: center;
+				}
+
+				#inner {
+				  display: inline-block;
+				}
+			 */
+			// method 4: both horizontal & vertical center
+			//<div class="content">This works with any content</div>
+			/*
+			.content {
+			  position: absolute;
+			  left: 50%;
+			  top: 50%;
+			  -webkit-transform: translate(-50%, -50%);
+			  transform: translate(-50%, -50%);
+			}
+
+			 */
+ 
+		}
+		function set_placeholder_color_style() {
+			var source = "http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css";
+			// <input type="text" placeholder="Value">
+
+			// ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			//     color:    #909;
+			// }
+			// :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+			//    color:    #909;
+			//    opacity:  1;
+			// }
+			// ::-moz-placeholder { /* Mozilla Firefox 19+ */
+			//    color:    #909;
+			//    opacity:  1;
+			// }
+			// :-ms-input-placeholder { /* Internet Explorer 10-11 */
+			//    color:    #909;
+			// }
 		}
 
 		function style_half_character() {
