@@ -200,13 +200,59 @@ function frontEnd () {
 
 		function useful_code_snippets() {
 
+			function merge_two_obj() {
+				// jquery:
+				var settings = $.extend({}, defaults, options);
+
+				// javascript way:
+				function merge_options(obj1,obj2){
+				  var obj3 = {};
+				  // should add obj.hasOwnProperty to avoid going up the prototype chain
+				  for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+				  for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+				  return obj3;
+				}
+			}
+			function convert_string_to_boolean() {
+				var source = "http://stackoverflow.com/questions/263965/how-can-i-convert-a-string-to-boolean-in-javascript";
+				// warning!! every non-empty string will be converted to true
+				var myBool = Boolean("false");  // === true
+				var myBool2 = !!"false";  // === true
+
+				// universal solution with JSON parse
+				function getBool(val) {
+				  return !!JSON.parse(String(val).toLowerCase());
+				}
+				// example:
+				getBool("1"); //true
+				getBool("0"); //false
+				getBool("true"); //true
+				getBool("false"); //false
+				getBool("TRUE"); //true
+				getBool("FALSE"); //false
+			}
+
+			function loop_through_object() {
+				var source = "http://stackoverflow.com/questions/684672/loop-through-javascript-object";
+				for (var key in p) {
+				  if (p.hasOwnProperty(key)) {
+				    alert(key + " -> " + p[key]);
+				  }
+				}
+			}
 			function for_in_loop_no_array() {
 				var source = "http://stackoverflow.com/questions/500504/why-is-using-for-in-with-array-iteration-such-a-bad-idea";
 				// e.g.:
 				var arr = ['a','b','c'];
-				for (var key in arr) { ... }	
+				for (var key in arr) {  }	// wrong choice for looping through array
 				// for... in will go through the prototype chain, so not recommended for 
 				// looping through the array, forEach() is right choice for array
+			}
+			function insert_item_into_array() {
+				var source = "http://stackoverflow.com/questions/586182/how-do-i-insert-an-item-into-an-array-at-a-specific-index";
+
+				arr.splice(index, 0, item_to_add) // at index, delete 0 items, and then add item_to_add
+				arr.splice(2, 0, "Lene");
 			}
 			function enum_in_javascript() {
 				var source = "http://stackoverflow.com/questions/287903/enums-in-javascript";
@@ -716,7 +762,96 @@ function frontEnd () {
 	}
 
 	function Browser() {
+
+		function mobile_browser() {
+			function safari_ios6_caching_ajax_result () {
+				var source = "http://stackoverflow.com/questions/12506897/is-safari-on-ios-6-caching-ajax-results";
+				// the problem is true if you use phoneGap
+				// solution:
+				
+				// 1. javascript:
+				var xhr = new XMLHttpRequest();
+				xhr.open("post", 'uploader.php', true);
+				xhr.setRequestHeader("pragma", "no-cache"); // prevent ajax caching
+
+				// 2. jquery:
+				//Check for iOS 6.0 and set Ajax header like this:
+				$.ajaxSetup({ cache: false });
+				// 3. jquery only no cache POST
+				$.ajaxSetup({
+				    type: 'POST',
+				    headers: { "cache-control": "no-cache" }
+				});
+				// 4. server side solution also works: java
+				httpResponse.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+				// 5. change request url
+				var currentTime = new Date();
+				var n = currentTime.getTime();
+				postUrl = "http://www.example.com/test.php?nocache="+n;
+				$.post(postUrl, callbackFunction);
+
+				// summary
+				// adding [cache-control: no-cache] in the request headers
+				// adding a variable URL parameter such as the current time
+				// adding [pragma: no-cache] in the response headers
+				// adding [cache-control: no-cache] in the response headers
+			}
+		}
 		function dom_api() {
+
+			function copy_to_clip_board() {
+				var source = "http://stackoverflow.com/questions/17527870/how-does-trello-access-the-users-clipboard";
+
+				// 1. trello solution
+				// the logic is to create an invisible textarea (1px size), then fill and select the text to copy,
+				// when user press ctrl or meta key. 
+				// If user then press C, then the content is copied to clipboard. If user release the key,
+				// then textarea is removed from dom. 
+				
+				// 2. another solution
+				// use clipboardjs
+				var package_url = "https://zenorocha.github.io/clipboard.js/";
+			}
+			function can_not_choose_open_new_page_tab_or_window () {
+				var source = "http://stackoverflow.com/questions/4907843/open-a-url-in-a-new-tab-and-not-a-new-window-using-javascript";
+
+				// not possible
+			}
+
+			function doc_ready_jquery_equal_to() {
+				var source = "http://stackoverflow.com/questions/799981/document-ready-equivalent-without-jquery";
+				document.addEventListener("DOMContentLoaded", function(event) { 
+				  //do work
+				  // same as $(document).ready(function(){
+				  // 
+				  // });
+				  
+				});
+			}
+
+			function why_need_encode_url() {
+				var source = "http://stackoverflow.com/questions/2152738/why-do-you-need-to-encode-urls";
+				// space => %20
+				/*
+					The space character is excluded because significant spaces may disappear and 
+					insignificant spaces may be introduced when URI are transcribed or typeset or 
+					subjected to the treatment of word- processing programs. Whitespace is also used 
+					to delimit URI in many contexts.
+				*/
+			}
+			function encode_uri_best_practice() {
+				var source = "http://stackoverflow.com/questions/75980/best-practice-escape-or-encodeuri-encodeuricomponent";
+				// 1. escape() Don't use it, as it has been deprecated since ECMAScript v3.
+				// 2. encodeURI()
+				//    will encode uri only, not the query string after it. 
+				//    encodeURI("http://www.google.com/a file with spaces.html")
+				//    http://www.google.com/a%20file%20with%20spaces.html
+				// 3. encodeURIComponent() 
+				//    is for encoding query string value part only
+				//    param1 = encodeURIComponent("http://xyz.com/?a=12&b=55")
+				//		Then you may create the URL you need:
+				//		url = "http://domain.com/?param1=" + param1 + "&param2=99";
+			}
 
 			function change_url_without_loading () {
 				var source = "http://stackoverflow.com/questions/824349/modify-the-url-without-reloading-the-page";
@@ -773,16 +908,6 @@ function frontEnd () {
 				window.navigate("page.html");//Same as window.location="url" 
 			}
 
-			function why_need_encode_url() {
-				var source = "http://stackoverflow.com/questions/2152738/why-do-you-need-to-encode-urls";
-				// space => %20
-				/*
-					The space character is excluded because significant spaces may disappear and 
-					insignificant spaces may be introduced when URI are transcribed or typeset or 
-					subjected to the treatment of word- processing programs. Whitespace is also used 
-					to delimit URI in many contexts.
-				*/
-			}
 
 			function encode_uri() {
 
@@ -938,6 +1063,38 @@ function frontEnd () {
 
 	function Libraries () {
 		function jquery() {
+
+			function select_option() {
+				var source = "http://stackoverflow.com/questions/196684/jquery-get-specific-option-tag-text";
+				/*
+				<select id='list'>
+				    <option value='1'>Option A</option>
+				    <option value='2'>Option B</option>
+				    <option value='3'>Option C</option>
+				</select>
+				*/
+				
+				// get text of 2nd
+				$("#list option[value='2']").text();
+
+				// get selected
+				$('#list option:selected').text();
+				// or
+				$('#list').val(); // give you the selected value, not text
+			}
+
+			function check_element_is_off_screen() {
+				var source = "http://stackoverflow.com/questions/8897289/how-to-check-if-an-element-is-off-screen";
+				// to be done
+			}
+			function move_element_into_another_element() {
+				var source = "http://stackoverflow.com/questions/1279957/how-to-move-an-element-into-another-element";
+				$("#source")
+    			.appendTo("#destination");
+
+    		$("#source")
+    			.prependTo("#destination");
+			}
 
 			function check_click_outside_element() {
 				var source = "http://stackoverflow.com/questions/152975/how-to-detect-a-click-outside-an-element?page=1&tab=active#tab-top";
@@ -1272,8 +1429,6 @@ function frontEnd () {
 			//  
 		}
 	}
-
-
 
 	function css() {
 
