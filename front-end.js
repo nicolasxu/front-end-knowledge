@@ -1659,6 +1659,29 @@ function frontEnd () {
 			// }
 		}
 
+		function table_cell_padding_and_border() {
+			var source = "http://stackoverflow.com/questions/339923/set-cellpadding-and-cellspacing-in-css";
+
+			/*
+				table {border-collapse: collapse;}
+				td    {padding: 6px;}
+			*/
+		}
+
+		function css_triangle() {
+			var source = "http://stackoverflow.com/questions/7073484/how-do-css-triangles-work";
+			/*
+			#triangle-up {
+			    width: 0;
+			    height: 0;
+			    border-left: 50px solid transparent;
+			    border-right: 50px solid transparent;
+			    border-bottom: 100px solid red;
+			}
+			*/
+			// for more interesting answers, go to the source link
+		}
+
 		function style_half_character() {
 			var source = "http://stackoverflow.com/questions/23569441/is-it-possible-to-apply-css-to-half-of-a-character";
 		}
