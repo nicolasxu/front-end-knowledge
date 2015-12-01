@@ -1,4 +1,3 @@
-
 function frontEnd () {
 
 	function Javascript_language() {
@@ -199,7 +198,81 @@ function frontEnd () {
 			}
 		}
 
+		function pass_by_value_or_reference() {
+			var source = "http://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language";
+
+			function changeStuff(a, b, c) {
+			  a = a * 10;
+			  b.item = "changed";
+			  c = {item: "changed"};
+			}
+
+			var num = 10;
+			var obj1 = {item: "unchanged"};
+			var obj2 = {item: "unchanged"};
+
+			changeStuff(num, obj1, obj2);
+
+			console.log(num);
+			console.log(obj1.item);    
+			console.log(obj2.item);
+			// 10
+			// changed
+			// unchanged
+		}
+
 		function useful_code_snippets() {
+
+			function if_object_is_empty() {
+				var source = "http://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object";
+				// 1. method for ECMA5
+				Object.keys({}).length; // 0
+				// 2. method for Pre-ECMA5
+				function isEmpty(obj) {
+			    for(var prop in obj) {
+			      if(obj.hasOwnProperty(prop))
+			        return false;
+			    }
+				  return true;
+				}
+				// 3. lodash, jquery, underscore
+				jQuery.isEmptyObject({}); // true
+				_.isEmpty({}); // true
+				_.isEmpty({}); // true
+			}
+
+			function what_is_exclamation_before_func() {
+				var source = "http://stackoverflow.com/questions/3755606/what-does-the-exclamation-mark-do-before-the-function";
+				!function() {} ()
+				// equals
+				(function(){})();
+
+			}
+			function loop_deep_object() {
+				var source = "http://stackoverflow.com/questions/921789/how-to-loop-through-javascript-object-literal-with-objects-as-members";
+				var validation_messages = {
+			    "key_1": {
+			    	"your_name": "jimmy",
+			    	"your_msg": "hello world"
+			    },
+			    "key_2": {
+			    	"your_name": "billy",
+			    	"your_msg": "foo equals bar"
+			    }
+				}
+
+				// 
+				for (var key in validation_messages) {
+				  if (validation_messages.hasOwnProperty(key)) {
+			      var obj = validation_messages[key];
+			      for (var prop in obj) {
+		         if (obj.hasOwnProperty(prop)) {
+		            alert(prop + " = " + obj[prop]);
+		          }
+			      }
+				  }
+				}
+			}
 
 			function name_space() {
 				var source = "http://stackoverflow.com/questions/881515/how-do-i-declare-a-namespace-in-javascript";
@@ -929,6 +1002,20 @@ function frontEnd () {
 		}
 		function dom_api() {
 
+			function scroll_to_window_top () {
+				var source = "http://stackoverflow.com/questions/1144805/how-do-i-scroll-to-the-top-of-the-page-with-jquery";
+				// 1. native javascript way
+				window.scrollTo(0 /* x */, 0 /* y */);
+
+				// 2. jquery with animate
+				$("a[href='#top']").click(function(e) {
+				  $("html, body").animate({ scrollTop: 0 }, "slow");
+				  // it actually animate on an DOM property
+				  // window.document.body.scrollTop
+				  e.preventDefault();
+				});
+
+			}
 			function native_get_select_option_value() {
 				var source = "http://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript";
 				/*
@@ -1216,6 +1303,7 @@ function frontEnd () {
 
 		function dom_event() {
 			var eventReference = 'https://developer.mozilla.org/en-US/docs/Web/Events';
+			var list_of_events = "http://www.w3schools.com/jsref/dom_obj_event.asp"
 		}
 
 		function IE_problem() {
@@ -1234,9 +1322,72 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function bind_event_on_dynamic_created_element() {
+				var source = "http://stackoverflow.com/questions/203198/event-binding-on-dynamically-created-elements";
+				$(staticAncestors).on(eventName, dynamicChild, function() {});
+				$(document).on( eventName, selector, function(){} );
+				$("#dataTable tbody").on("click", "tr", function(event){
+				    alert($(this).text());
+				});
+
+				// note: when you binding, elements in the selector must exist, 
+				// because event is bound to the selected elements. 
+				
+				// Note: Delegated events do not work for SVG.
+				
+				// pure native javascript way for event delegation
+				document.addEventListener( 'click', function ( e ) {
+			    if ( hasClass( e.target, 'bu' ) ) {            
+			        // .bu clicked
+			        // do your thing
+			    } else if ( hasClass( e.target, 'test' ) ) {
+			        // .test clicked
+			        // do your other thing
+			    }   
+				}, false ); 
+				function hasClass( elem, className ) {
+				    return elem.className.split( ' ' ).indexOf( className ) > -1;
+				}
+				
+			}
+
+			function press_enter_key_then_trigger_button_click() {
+				var source = "http://stackoverflow.com/questions/155188/trigger-a-button-click-with-javascript-on-the-enter-key-in-a-text-box";
+				// html
+				/*
+				<input type="text" id="txtSearch" />
+				<input type="button" id="btnSearch" value="Search" onclick="doSomething();" />
+				*/
+				// 1. jquery method
+				$("#id_of_textbox").keyup(function(event){
+				  if(event.keyCode == 13){
+				    $("#id_of_button").click();
+				  }
+				  // 1. keycode list: http://www.w3schools.com/charsets/ref_html_utf8.asp
+				  // 2. use this
+				  var x = event.which || event.keyCode;  // Use either which or keyCode, depending on browser support
+				  // 3. If you want to convert the returned Unicode value into a character, use the fromCharCode() method.
+				  // 4. Both the keyCode and which property is provided for compatibility only. 
+				  //    The latest version of the DOM Events Specification recommend using the key 
+				  //    property instead (if available).
+				  // 5. If you want to find out whether the "ALT", "CTRL", "META" or "SHIFT" key was 
+				  //    pressed when a key event occured, use the altKey, ctrlKey, metaKey or shiftKey property.
+				  // 6. check printable char, best use onkeypress
+				  //    check "F1", "CAPS LOCK" or "Home", best use onkeydown or onkeyup event.
+				  // 7. detail explanation: http://www.w3schools.com/jsref/event_key_keycode.asp
+
+
+				});
+				// 2. native javascript embeded
+				/*
+				<input type="text" id="txtSearch" onkeydown="if (event.keyCode == 13) document.getElementById('btnSearch').click()"/>
+				<input type="button" id="btnSearch" value="Search" onclick="doSomething();" />
+				*/
+			}
+
 			function click_toggle_class() {
 
-				$('button').bind('click', function(e) { 
+				$('button').on('click', function(e) { 
 			    e.preventDefault();
 			    $('.inner').toggleClass('open');
 				});
