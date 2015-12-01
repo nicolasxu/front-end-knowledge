@@ -4,8 +4,8 @@ function frontEnd () {
 	function Javascript_language() {
 
 		function closure() {
-			var description = " Accessing outer variable stack from  \
-                     			lexical inner scope creates a closure. The outer variable stack is still \
+			var description = " Accessing outer variable status from  \
+                     			lexical inner scope creates a closure. The outer variable status is still \
                      			alive even if outer function returns. ";
 		  var link = " http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/111200#111200";
 		  var snippets = '';
@@ -106,7 +106,8 @@ function frontEnd () {
 				typeof '333',    				// 'string'
 				typeof [],       			  // 'object'
 				typeof {},       			  // 'object'
-				typeof null == object,   // true
+				typeof null == 'object',   // true
+				typeof new Number(3)		// 'object' // don't new any Number, it is not designed to do so
 				];
 			}
 
@@ -200,9 +201,77 @@ function frontEnd () {
 
 		function useful_code_snippets() {
 
+			function name_space() {
+				var source = "http://stackoverflow.com/questions/881515/how-do-i-declare-a-namespace-in-javascript";
+				var your_namespace = your_namespace || {};
+				your_namespace.Foo = {toAlert:'test'};
+				your_namespace.Bar = function(arg) {
+				    alert(arg);
+				};
+				with(your_namespace) {
+				  Bar(Foo.toAlert);
+				}
+			}
+
+			function get_random_in_range() {
+				var source = "http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range";
+				// Returns a random number between min (inclusive) and max (exclusive)
+				function getRandomArbitrary(min, max) {
+				    return Math.random() * (max - min) + min;
+				}
+				// Returns a random integer between min (inclusive) and max (inclusive)
+				function getRandomInt(min, max) {
+				  return Math.floor(Math.random() * (max - min + 1)) + min;
+				} 
+			}
+
+			function format_money() {
+				var source = "http://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-money-in-javascript?page=1&tab=active#tab-top";
+				// 1. use integer to represent money value, e.g: 100 is 1 dollar
+				
+				// must run toFixed() first to introduce '.' in the string
+				(1111134).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+			}
+
+			function sort_array_obj() {
+				var source = "http://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript";
+
+				var objs = [ 
+				    { first_nom: 'Lazslo', last_nom: 'Jamf'     },
+				    { first_nom: 'Pig',    last_nom: 'Bodine'   },
+				    { first_nom: 'Pirate', last_nom: 'Prentice' }
+				];
+				function compare(a,b) {
+				  if (a.last_nom < b.last_nom)
+				    return -1;
+				  if (a.last_nom > b.last_nom)
+				    return 1;
+				  return 0;
+				}
+
+				objs.sort(compare);
+			}
+
+			function get_variable_type() {
+				var source = "http://stackoverflow.com/questions/332422/how-do-i-get-the-name-of-an-objects-type-in-javascript";
+				function get_type(thing){
+				    if(thing===null)return "[object Null]"; // special case
+				    return Object.prototype.toString.call(thing);
+				}
+
+				// example results:
+				get_type(null)                    // - [object Null]
+				get_type(window)                  // - [object Window]
+				get_type([])                      // - [object Array]
+				get_type(['1'])                   // - [object Array]
+				get_type({})                      // - [object Object]
+				get_type(document)                // - [object HTMLDocument]
+				get_type(document.getElementById) // - [object Function]
+			}
+
 			function number_to_hex_back() {
 				var hexString = (11).toString(16); // b
-				var yourNumber = parseInt(hexString, 16); // 10
+				var yourNumber = parseInt(hexString, 16); // parse as hex, always return decimal
 			}
 
 			function round_to_fix() {
@@ -212,7 +281,7 @@ function frontEnd () {
 
 			function parse_int() {
 				// parse integer from string
-				parseInt("3434", 10); 
+				parseInt("3434", 10);  // parse the source as decimal
 				// 1st para: string
 				// 2nd para: what radix the string is (the base in mathematical numeral systems) 2 to 36
 				parseInt("01010101", 2) // result: 85
@@ -860,6 +929,19 @@ function frontEnd () {
 		}
 		function dom_api() {
 
+			function native_get_select_option_value() {
+				var source = "http://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript";
+				/*
+				<select id="ddlViewBy">
+				  <option value="1">test1</option>
+				  <option value="2" selected="selected">test2</option>
+				  <option value="3">test3</option>
+				</select>
+				 */
+				var e = document.getElementById("ddlViewBy");
+				var strUserValue = e.options[e.selectedIndex].value; // get value
+				var strUser = e.options[e.selectedIndex].text; // get text
+			}
 			function simulate_form_submit() {
 				var source = "http://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit";
 				// copy 
@@ -886,7 +968,6 @@ function frontEnd () {
 				    document.body.appendChild(form);
 				    form.submit();
 				}
-
 			}
 			function copy_to_clip_board() {
 				var source = "http://stackoverflow.com/questions/17527870/how-does-trello-access-the-users-clipboard";
@@ -1152,6 +1233,45 @@ function frontEnd () {
 
 	function Libraries () {
 		function jquery() {
+
+			function click_toggle_class() {
+
+				$('button').bind('click', function(e) { 
+			    e.preventDefault();
+			    $('.inner').toggleClass('open');
+				});
+
+				var example = "http://jsfiddle.net/n5XfG/2596/";
+			}
+
+			function diff_between_onload_and_doc_ready() {
+				var source = "http://stackoverflow.com/questions/3698200/window-onload-vs-document-ready";
+				/*
+				The "ready" is specific to jquery, occurs after the HTML document has been loaded, 
+				while the onload event, standard DOM event, occurs later, when all content (e.g. images) 
+				also has been loaded.
+
+				The onload event is a standard event in the DOM, while the ready 
+				event is specific to jQuery. The purpose of the ready event is that 
+				it should occur as early as possible after the document has loaded, 
+				so that code that adds functionality to the elements in the page 
+				doesn't have to wait for all content to load.
+
+				 */
+			}
+			function get_window_document_screen_dimension() {
+				var source = "http://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window";
+
+				// 1. screen dimension
+				screen.width;
+				screen.height;
+				// 2. document dimension
+				$(document).width();
+				$(document).height();
+				// 3. viewport/window dimension
+				$(window).width();
+				$(window).height();
+			}
 
 			function select_option() {
 				var source = "http://stackoverflow.com/questions/196684/jquery-get-specific-option-tag-text";
@@ -1552,7 +1672,7 @@ function frontEnd () {
 
 	function css() {
 
-		function spcificity() {
+		function specificity() {
 			/*
 			explanation:
 			http://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
@@ -1594,96 +1714,251 @@ function frontEnd () {
 			// 4. user-select: none
 			//    disable user selecting a text
 			var user_select_explanation = "http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting";
-
+			// 5. pointer-events: none;
+			var pointer_events_explanation = "https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events";
 		}
-		function horizontal_center() {
-			var source = "http://stackoverflow.com/questions/114543/horizontally-center-a-div-in-a-div?";
-			// method 1:
-			// works on all browser
-			/*
-				#inner {
-    		width: 50%;
-    		margin: 0 auto;
-			} 
-			*/
-			// method 2: unknown width
-			// works IE8+, doesn't matter the inner width
-			/*
-			#inner {
-			  display: table;
-			  margin: 0 auto;
+		function snippets() {
+
+			function css_style_select() {
+				var source = "http://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-css-only-without-javascript";
+				var code = "http://jsfiddle.net/danield770/YvCHW/4232/";
+
 			}
-			 */
-			// method 3: unknown width
-			/*
-				#outer {
-				  width: 100%;
-				  text-align: center;
+
+			function html_enties_in_css() {
+				var source = "http://stackoverflow.com/questions/190396/adding-html-entities-using-css-content";
+				var all_html_enties = "http://www.evotech.net/blog/2007/04/named-html-entities-in-numeric-order/";
+				// use escaped unicode in css content
+				/*
+				.breadcrumbs a:before {
+				  content: '>\0000a0';
 				}
 
-				#inner {
-				  display: inline-block;
+
+				 */
+			}
+
+			function micro_clearfix() {
+				var source = "http://stackoverflow.com/questions/211383/which-method-of-clearfix-is-best";
+				/*
+				.container:before,
+				.container:after {
+				  content:"";
+				  display:table;
 				}
-			 */
-			// method 4: both horizontal & vertical center
-			//<div class="content">This works with any content</div>
-			/*
-			.content {
-			  position: absolute;
-			  left: 50%;
-			  top: 50%;
-			  -webkit-transform: translate(-50%, -50%);
-			  transform: translate(-50%, -50%);
+				.container:after {
+				  clear:both;
+				}
+				.container {
+				  zoom:1;  //For IE 6/7 (trigger hasLayout) 
+				}
+				 */
 			}
 
-			 */
- 
-		}
-		function set_placeholder_color_style() {
-			var source = "http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css";
-			// <input type="text" placeholder="Value">
-
-			// ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-			//     color:    #909;
-			// }
-			// :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-			//    color:    #909;
-			//    opacity:  1;
-			// }
-			// ::-moz-placeholder { /* Mozilla Firefox 19+ */
-			//    color:    #909;
-			//    opacity:  1;
-			// }
-			// :-ms-input-placeholder { /* Internet Explorer 10-11 */
-			//    color:    #909;
-			// }
-		}
-
-		function table_cell_padding_and_border() {
-			var source = "http://stackoverflow.com/questions/339923/set-cellpadding-and-cellspacing-in-css";
-
-			/*
-				table {border-collapse: collapse;}
-				td    {padding: 6px;}
-			*/
-		}
-
-		function css_triangle() {
-			var source = "http://stackoverflow.com/questions/7073484/how-do-css-triangles-work";
-			/*
-			#triangle-up {
-			    width: 0;
-			    height: 0;
-			    border-left: 50px solid transparent;
-			    border-right: 50px solid transparent;
-			    border-bottom: 100px solid red;
+			function full_height_without_absolute_pos() {
+				var source = "http://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space";
+				var code = "http://jsfiddle.net/danield770/FC7eY/";
 			}
-			*/
-			// for more interesting answers, go to the source link
-		}
 
-		function style_half_character() {
-			var source = "http://stackoverflow.com/questions/23569441/is-it-possible-to-apply-css-to-half-of-a-character";
+			function show_bootstrap_dropdown_on_hover() {
+				var source = "http://stackoverflow.com/questions/8878033/how-to-make-twitter-bootstrap-menu-dropdown-on-hover-rather-than-click";
+				/*
+				ul.nav li.dropdown:hover > ul.dropdown-menu {
+				  display: block;    
+				}
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				    Dropdown
+				    <b class="caret"></b>    <-- remove this line
+				</a>
+
+
+				 */
+			}
+
+			function transition_condition () {
+				var source = "http://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css";
+				// You can't animate a property if one of the property status is auto
+			}
+
+			function pure_css_hover_transition_menu() {
+				var source = "";
+				// markup
+				/*
+				<p>Here (scaleY(1))</p>
+				<ul>
+				  <li>Coffee</li>
+				  <li>Tea</li>
+				  <li>Milk</li>
+				</ul>
+				 */
+				// css
+				/*
+				ul {
+				  background-color: #eee;
+				  transform: scaleY(0);    
+				  transform-origin: top;
+				  transition: transform 0.26s ease;
+				  position: absolute;
+    			top: 20px;
+				}
+
+				p:hover ~ ul {
+				  transform: scaleY(1);
+				}
+				ul:hover {
+				  transform: scaleY(1);
+				}
+				*/
+			}
+
+			function make_div_100_of_browser_window() {
+				var source = "http://stackoverflow.com/questions/1575141/make-div-100-height-of-browser-window";
+				// 1. view port height method
+				//    1vh to 100vh
+				// div {
+				//   height:100vh;
+				// }
+				
+				// 2. height 100% method
+				// html, body {
+				//   height: 100%;
+				// }
+				// #right {
+				//   height: 100%;
+				// }
+				// 
+				// 3. absolute position method
+				// #right {
+				//   position: absolute;
+				//   top: 0;
+				//   bottom: 0;
+				// }
+				// 4. flex method
+				// to be added
+			}
+
+			function make_cursor_hand() {
+				var source = "http://stackoverflow.com/questions/3087975/how-can-i-make-the-cursor-a-hand-when-a-user-hovers-over-a-list-item";
+				// li { cursor: pointer; cursor: hand; }
+				//Actually to expand on the previous answers, different browsers use different names.
+			}
+
+			function disable_resize_textarea() {
+				var source = "http://stackoverflow.com/questions/5235142/how-to-disable-resizable-property-of-textarea";
+				/*
+				textarea {
+				    resize: none;
+				}
+				*/
+			}
+
+			function disable_bullet_in_ol () {
+				var source = "http://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets";
+				/*
+				ul {
+					  list-style-type: none;
+					}
+				*/
+			}
+
+			function align_label_checkbox() {
+				// <div>
+    // 			<input type="checkbox" id="cb" /> <label for="cb">Label text</label>
+  		// 	</div>
+  		// 	input[type="checkbox"] {
+				// 	vertical-align: middle;
+				// }
+			}
+			function horizontal_center() {
+				var source = "http://stackoverflow.com/questions/114543/horizontally-center-a-div-in-a-div?";
+				// method 1:
+				// works on all browser
+				/*
+					#inner {
+	    		width: 50%;
+	    		margin: 0 auto;
+				} 
+				*/
+				// method 2: unknown width
+				// works IE8+, doesn't matter the inner width
+				/*
+				#inner {
+				  display: table;
+				  margin: 0 auto;
+				}
+				 */
+				// method 3: unknown width
+				/*
+					#outer {
+					  width: 100%;
+					  text-align: center;
+					}
+
+					#inner {
+					  display: inline-block;
+					}
+				 */
+				// method 4: both horizontal & vertical center
+				//<div class="content">This works with any content</div>
+				/*
+				.content {
+				  position: absolute;
+				  left: 50%;
+				  top: 50%;
+				  -webkit-transform: translate(-50%, -50%);
+				  transform: translate(-50%, -50%);
+				}
+
+				 */
+			}
+			function set_placeholder_color_style() {
+				var source = "http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css";
+				// <input type="text" placeholder="Value">
+
+				// ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+				//     color:    #909;
+				// }
+				// :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+				//    color:    #909;
+				//    opacity:  1;
+				// }
+				// ::-moz-placeholder { /* Mozilla Firefox 19+ */
+				//    color:    #909;
+				//    opacity:  1;
+				// }
+				// :-ms-input-placeholder { /* Internet Explorer 10-11 */
+				//    color:    #909;
+				// }
+			}
+
+			function table_cell_padding_and_border() {
+				var source = "http://stackoverflow.com/questions/339923/set-cellpadding-and-cellspacing-in-css";
+
+				/*
+					table {border-collapse: collapse;}
+					td    {padding: 6px;}
+				*/
+			}
+
+			function css_triangle() {
+				var source = "http://stackoverflow.com/questions/7073484/how-do-css-triangles-work";
+				/*
+				#triangle-up {
+				    width: 0;
+				    height: 0;
+				    border-left: 50px solid transparent;
+				    border-right: 50px solid transparent;
+				    border-bottom: 100px solid red;
+				}
+				*/
+				// for more interesting answers, go to the source link
+			}
+
+			function style_half_character() {
+				var source = "http://stackoverflow.com/questions/23569441/is-it-possible-to-apply-css-to-half-of-a-character";
+			}
+
+
 		}
 
 		function quiz() {
