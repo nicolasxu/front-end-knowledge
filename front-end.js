@@ -1322,6 +1322,71 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function use_jquery_center_div() {
+				var source = "http://stackoverflow.com/questions/210717/using-jquery-to-center-a-div-on-the-screen";
+				var example = "http://jsfiddle.net/DerekL/GbDw9/";
+				/*
+				<div class="container">
+				  <div class="target">1<br>parent</div>
+				  <div class="target">2<br>window</div>
+				</div>
+				 */
+				jQuery.fn.center = function(parent) {
+			    if (parent) {
+			      parent = this.parent();
+			    } else {
+			      parent = window;
+			    }
+			    this.css({
+		        "position": "absolute",
+		        // use this.outerHeight() and this.outerWidth() instead of just 
+		        // this.height() and this.width(). Otherwise, if the object has a 
+		        // border or padding, it will end up slightly off-center.
+		        "top": ((($(parent).height() - this.outerHeight()) / 2) + $(parent).scrollTop() + "px"),
+		        "left": ((($(parent).width() - this.outerWidth()) / 2) + $(parent).scrollLeft() + "px")
+			    });
+					return this;
+				}
+				$("div.target:nth-child(1)").center(true);
+				$("div.target:nth-child(2)").center(false);
+			}
+			function style_iframe() {
+
+				var source = "http://stackoverflow.com/questions/217776/how-to-apply-css-to-iframe";
+				var head = jQuery("#iframe").contents().find("head");
+				var css = '<style type="text/css">' +
+				          '#banner{display:none}; ' +
+				          '</style>';
+				jQuery(head).append(css);
+			}
+			function load_page_from_server_append() {
+				/*
+				<html>
+				  <header>
+				    <script src="/js/jquery.js" type="text/javascript"></script>
+				  </header>
+				  <body>
+				    <div id='include-from-outside'></div>
+				    <script type='text/javascript'>
+				      $('#include-from-outside').load('http://example.com/included.html');
+				    </script> 
+				  </body>
+					</html>
+				*/
+				// $( "#result" ).load( "ajax/test.html" );
+				// $( "#result" ).load( "ajax/test.html", function() {
+				//   alert( "Load was performed." );
+				// });
+			}
+
+			function hide_jquery_ui_dialog_close_button() {
+				var source = "http://stackoverflow.com/questions/896777/how-to-remove-close-button-on-the-jquery-ui-dialog";
+				$("#div2").dialog({
+				  closeOnEscape: false,
+				  open: function(event, ui) {
+				  	$(this).closest('.ui-dialog').find('.ui-dialog-titlebar-close').hide();}
+				});
+			}
 			function bind_event_on_dynamic_created_element() {
 				var source = "http://stackoverflow.com/questions/203198/event-binding-on-dynamically-created-elements";
 				$(staticAncestors).on(eventName, dynamicChild, function() {});
@@ -1348,7 +1413,6 @@ function frontEnd () {
 				function hasClass( elem, className ) {
 				    return elem.className.split( ' ' ).indexOf( className ) > -1;
 				}
-				
 			}
 
 			function press_enter_key_then_trigger_button_click() {
@@ -1869,11 +1933,180 @@ function frontEnd () {
 			var pointer_events_explanation = "https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events";
 		}
 		function snippets() {
+			function css3_background_stretch() {
+				var source = "http://stackoverflow.com/questions/376253/stretch-and-scale-css-background";
+				/*
+				#my_container {
+				    background-size: 100% auto; // width and height, can be %, px or whatever. 
+				}
+				*/
+				/*
+				body {
+			    background-image: url(bg.jpg);
+			    -webkit-background-size: cover;
+			    -moz-background-size: cover;
+			    -o-background-size: cover;
+			    background-size: cover;
+				}
+				// cover means stretching the image either vertically or horizontally 
+				so it never tiles/repeats.
+				*/
+			}
+			function vertical_center() {
+				var source = "http://stackoverflow.com/questions/396145/how-to-vertically-center-a-div-for-all-browsers";
+				/*
+				<div class="outer">
+				<div class="middle">
+				<div class="inner">
+
+				<h1>The Content</h1>
+
+				<p>Once upon a midnight dreary...</p>
+
+				</div>
+				</div>
+				</div>
+				*/
+				/*
+				.outer {
+				    display: table;
+				    position: absolute;
+				    height: 100%;
+				    width: 100%;
+				}
+
+				.middle {
+				    display: table-cell;
+				    vertical-align: middle;
+				}
+
+				.inner {
+				    margin-left: auto;
+				    margin-right: auto; 
+				    width: 100px; //whatever width you want
+				}
+				*/
+			}
+			function remove_border_input_box() {
+				var source = "http://stackoverflow.com/questions/3397113/how-to-remove-border-outline-around-text-input-boxes-chrome";
+				/*
+				textarea:focus, input:focus{
+				  outline: 0;
+				}
+				// remove all border on focused element
+				*:focus {
+				  outline: 0;
+				}
+				*/
+			}
+
+			function vertical_center_text_in_div() {
+				var source = "http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css";
+				// html
+				/*
+				<div Id="box">
+				  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</div>
+				*/
+				// 1. line height method, 
+				//    only one line text, height is known and fixed
+				/*
+				#box {
+				  height: 90px;
+				  line-height: 90px;
+				}
+				*/
+				// 2. line height allow multiple lines
+				// <div>
+				//   <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+				// </div>
+				/*
+				div {
+				  width: 250px;
+				  height: 100px;
+				  line-height: 100px;
+				  text-align: center;
+				}
+
+				span {
+				  display: inline-block;
+				  vertical-align: middle;
+				  line-height: normal;      
+				}
+				*/
+			  // 3. table display method
+			  /*
+			  div {
+				  display: table;
+				  width: 250px;
+				  height: 100px;
+				  text-align: center;
+				}
+
+				span {
+				  display: table-cell;
+				  vertical-align: middle;
+				}
+			  */
+				// 4. flexbox
+				// <div class="box">
+				//     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
+				// </div>
+				/*
+				display: flex;
+				justify-content: center; 
+				align-items: center; 
+				*/
+				// 5. table cell only, works on multi lines (recommended)
+				// http://jsfiddle.net/TB43r/
+				// <div id="box">
+				//   Some text Some textSome textSome textSome
+				//   <h1>h1 title</h1>
+				// </div>
+				/*
+					display: table-cell;
+					vertical-align: middle;
+				 */
+			}
+			function force_reload_cached_css_file() {
+				var source = "http://stackoverflow.com/questions/118884/what-is-an-elegant-way-to-force-browsers-to-reload-cached-css-js-files?page=1&tab=votes#tab-top";
+				// use file version
+				//<script src="/myJavascript.js?version=4"></script>
+				// version should be a hash number
+			}
+			function hide_close_button_jquery_ui_css() {
+				var source = "http://stackoverflow.com/questions/896777/how-to-remove-close-button-on-the-jquery-ui-dialog";
+				// howver, this will affect all the dialog, please refer to the jquery way to do it.
+				// css way
+				/*
+				.ui-dialog-titlebar-close{
+				  display: none;
+				}
+
+				*/
+			}
+			function parent_selector() {
+				// there is no css parent selector
+				// but you can use the following jquery 
+				// $("a.active").parents('li').css("property", "value");
+			}
+
+			function make_background_transparent_but_not_the_front_text() {
+				var source = "http://stackoverflow.com/questions/806000/how-to-give-text-or-an-image-a-transparent-background-using-css";
+
+				// you can use 
+				// 1. Either use a semi-transparent PNG image or 
+				// 2. use CSS3:
+				// e.g. set this to parent element
+				// background-color:rgba(255,0,0,0.5);
+				// 
+				// If you just use opacity: 0.5 on parent, and opacity: 1 on child, then
+				// the child real opacity is the multiplication of 0.5 and 1. 
+			}
 
 			function css_style_select() {
 				var source = "http://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-css-only-without-javascript";
 				var code = "http://jsfiddle.net/danield770/YvCHW/4232/";
-
 			}
 
 			function html_enties_in_css() {
@@ -1886,7 +2119,7 @@ function frontEnd () {
 				}
 
 
-				 */
+				*/
 			}
 
 			function micro_clearfix() {
@@ -1903,7 +2136,7 @@ function frontEnd () {
 				.container {
 				  zoom:1;  //For IE 6/7 (trigger hasLayout) 
 				}
-				 */
+				*/
 			}
 
 			function full_height_without_absolute_pos() {
@@ -2014,9 +2247,9 @@ function frontEnd () {
 
 			function align_label_checkbox() {
 				// <div>
-    // 			<input type="checkbox" id="cb" /> <label for="cb">Label text</label>
-  		// 	</div>
-  		// 	input[type="checkbox"] {
+    		// 			<input type="checkbox" id="cb" /> <label for="cb">Label text</label>
+  			// 	</div>
+  			// 	input[type="checkbox"] {
 				// 	vertical-align: middle;
 				// }
 			}
@@ -2060,7 +2293,7 @@ function frontEnd () {
 				  transform: translate(-50%, -50%);
 				}
 
-				 */
+				*/
 			}
 			function set_placeholder_color_style() {
 				var source = "http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css";
@@ -2108,8 +2341,6 @@ function frontEnd () {
 			function style_half_character() {
 				var source = "http://stackoverflow.com/questions/23569441/is-it-possible-to-apply-css-to-half-of-a-character";
 			}
-
-
 		}
 
 		function quiz() {
