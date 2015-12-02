@@ -1322,6 +1322,35 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function check_if_element_is_visible() {
+				var source = "http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling";
+				// 1. native javascript way
+				// Element.getBoundingClientRect() :  returns the size of an element and its position relative to the viewport
+				
+				function isScrolledIntoView(el) {
+			    var elemTop = el.getBoundingClientRect().top;
+			    var elemBottom = el.getBoundingClientRect().bottom;
+
+			    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+			    return isVisible;
+				}	
+			 
+				// 2. jquery way
+				function isScrolledIntoView(elem) {
+			    var $elem = $(elem);
+			    var $window = $(window);
+
+			    var docViewTop = $window.scrollTop();  // always >=0, number of px above viewport
+			    var docViewBottom = docViewTop + $window.height(); // not include padding and border: http://api.jquery.com/height/
+
+			    var elemTop = $elem.offset().top; // offset relative to document, not window
+			    var elemBottom = elemTop + $elem.height();
+
+			    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop)); 
+			    // in the comparsion, all these cordinates are relative to the document
+				}
+			}
+
 			function use_jquery_center_div() {
 				var source = "http://stackoverflow.com/questions/210717/using-jquery-to-center-a-div-on-the-screen";
 				var example = "http://jsfiddle.net/DerekL/GbDw9/";
