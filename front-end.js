@@ -1322,6 +1322,11 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function dollar_sign() {
+				var $email = $("#email"); // refers to the jQuery object representation of the dom object
+				var email_field = $("#email").get(0); // refers to the dom object itself
+			}
+
 			function check_if_element_is_visible() {
 				var source = "http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling";
 				// 1. native javascript way
