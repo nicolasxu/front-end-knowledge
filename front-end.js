@@ -122,16 +122,16 @@ function frontEnd () {
 	         new Number(3) == new Number(3) ,  	// false
 	        ]
 
-        function snippet() {
-        	var b = new Boolean(false);
-          b;        // Shows 'false' in console.
-          !b;       // ALSO shows 'false' in console.
-          !b == b;  // So this is true!
-          !!b == !b // Negate both sides and it's false! FUCK!
-          if (b) {
-            // Better fucking believe this will get executed.
-          }
-        }
+	      function snippet() {
+	      	var b = new Boolean(false);
+	        b;        // Shows 'false' in console.
+	        !b;       // ALSO shows 'false' in console.
+	        !b == b;  // So this is true!
+	        !!b == !b // Negate both sides and it's false! FUCK!
+	        if (b) {
+	          // Better fucking believe this will get executed.
+	        }
+	      }
 			}
 
 			function wrong_array_operation() {
@@ -223,6 +223,99 @@ function frontEnd () {
 		}
 
 		function useful_code_snippets() {
+
+			function standard_way_to_defind_class() {
+				function Person(name, gender){
+
+				   // Add object properties like this
+				   this.name = name;
+				   this.gender = gender;
+				}
+
+				// Add methods like this.  All Person objects will be able to invoke this
+				Person.prototype.speak = function(){
+				    alert("Howdy, my name is" + this.name);
+				};
+
+				// Instantiate new objects with 'new'
+				var person = new Person("Bob", "M");
+
+				// Invoke methods like this
+				person.speak(); // alerts "Howdy, my name is Bob"
+			}
+			function round_number() {
+				// keep money value in cents, so that you can always use Math.round()
+				var intvalue = Math.floor( floatvalue ); 
+				var intvalue = Math.ceil( floatvalue ); 
+				var intvalue = Math.round( floatvalue );
+
+				// note: floor of -3.1 is -4, not -3
+			}
+
+			function run_func_by_name_context() {
+				var source = "http://stackoverflow.com/questions/359788/how-to-execute-a-javascript-function-when-i-have-its-name-as-a-string";
+				//executeFunctionByName("Namespace.functionName", My, arguments);
+				function executeFunctionByName(functionName, context /*, args */) {
+				  var args = [].slice.call(arguments).splice(2);
+				  var namespaces = functionName.split(".");
+				  var func = namespaces.pop();
+				  for(var i = 0; i < namespaces.length; i++) {
+				    context = context[namespaces[i]];
+				  }
+				  return context[func].apply(this, args);
+				}
+
+			}
+
+			function pass_value_to_regex() {
+				var source = "http://stackoverflow.com/questions/494035/how-do-you-pass-a-variable-to-a-regular-expression-javascript";
+
+				var str = "Tom";
+				var re = new RegExp(str, "g");
+				"my Tom".replace(re, "Jim");
+			}
+
+			function check_null_underfined_NaN_emptyStr_0_false() {
+				var source = "http://stackoverflow.com/questions/5515310/is-there-a-standard-function-to-check-for-null-undefined-or-blank-variables-in";
+				if(value) {
+					/*
+					will evaluate to true if value is not:
+
+						null
+						undefined
+						NaN
+						empty string ("")
+						0
+						false
+						*/
+				}
+			}
+
+			function access_matched_regex_group() {
+				var myString = "something format_abc";
+				var myRegexp = /(?:^|\s)format_(.*?)(?:\s|$)/g;
+				var match = myRegexp.exec(myString);
+				alert(match[1]);  // abc
+			}
+			function merge_two_arrays_remove_duplicate() {
+				_.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+				// => [1, 2, 3, 101, 10]
+			}
+			function copy_array() {
+				var source = "http://stackoverflow.com/questions/7486085/copying-array-by-value-in-javascript";
+				myArray.slice(); // only works for number and string simple array
+				// check out the table for 
+				// slice, json, $.extend() approach
+			}
+
+			function find_primitive_value_in_array() {
+				// it works only for primitive value
+				var arrValues = ['sam', 'tom', 'shirley'];
+				if (arrValues.indexOf('Sam') > -1) 
+					{return true;}
+				else 
+					{return false;}
+			}
 
 			function plus_sign_before_function() {
 				var source = "http://stackoverflow.com/questions/13341698/javascript-plus-sign-in-front-of-function-name";
@@ -334,6 +427,13 @@ function frontEnd () {
 				
 				// must run toFixed() first to introduce '.' in the string
 				(1111134).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+			}
+
+			function format_money_number() {
+				var source = "http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript";
+				function numberWithCommas(x) {
+    			return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
 			}
 
 			function sort_array_obj() {
@@ -1032,6 +1132,37 @@ function frontEnd () {
 		}
 		function dom_api() {
 
+			function preview_image_before_load() {
+				var source = "http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded";
+				// 1. use URL.createObjectURL to load file
+				/*
+				<input type="file" accept="image/*" onchange="loadFile(event)">
+				<img id="output"/>
+				<script>
+				  var loadFile = function(event) {
+				    var output = document.getElementById('output');
+				    output.src = URL.createObjectURL(event.target.files[0]);
+				  };
+				</script>				
+				*/
+			
+				// 2. use FileReader.readAsDataURL()
+				/*
+				<input type="file" accept="image/*" onchange="loadFile(event)">
+				<img id="output"/>
+				<script>
+				  var loadFile = function(event) {
+				    var reader = new FileReader();
+				    reader.onload = function(){
+				      var output = document.getElementById('output');
+				      output.src = reader.result;
+				    };
+				    reader.readAsDataURL(event.target.files[0]);
+				  };
+				</script>
+				*/
+			}
+
 			function get_element_position_relative_to_viewport() {
 				element.getBoundingClientRect();
 			}
@@ -1368,6 +1499,54 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function get_id_of_element_fired_event() {
+				$(document).ready(function() {
+				  $("a").click(function(event) {
+				      alert(event.target.id);
+				  });
+				});
+
+				// method 2:
+				jQuery("classNameofDiv").click(function() {
+				  var contentPanelId = jQuery(this).attr("id");
+				  // in event handler, this always refers to the element that event is triggered on. 
+				  alert(contentPanelId);
+				});
+			}
+
+			function working_with_tabular_data() {
+				var jQuery_plugin = "https://github.com/DataTables/DataTables";
+			}
+
+			function html_encode_decode() {
+				var source = "http://stackoverflow.com/questions/1219860/html-encoding-in-javascript-jquery";
+				/*
+				what_is_html_encode;
+				Encoding data converts potentially unsafe characters to their HTML-encoded equivalent. 
+				If the string to be encoded is not DBCS, HTMLEncode converts characters as follows: 
+				The less-than character (<) is converted to &lt; . The greater-than character (>) 
+				is converted to &gt; 
+				*/
+				function htmlEncode(value){
+  			//create a in-memory div, set it's inner text(which jQuery automatically encodes)
+  			//then grab the encoded contents back out.  The div never exists on the page.
+  			// "<>" will be converted to "&lt;&gt;"
+				  return $('<div/>').text(value).html();
+				}
+
+				function htmlDecode(value){
+					// "&lt;&gt;" will be converted to "<>"
+				  return $('<div/>').html(value).text();
+				}
+			}
+
+			function empty_add_new() {
+				var source = "http://stackoverflow.com/questions/47824/how-do-you-remove-all-the-options-of-a-select-box-and-then-add-one-option-and-se";
+				$('#mySelect')
+				  .empty()
+				  .append('<option selected="selected" value="whatever">text</option>');
+			}
+
 			function check_if_element_is_attached_to_dom() {
 				$('#elemId').length;
 
@@ -1614,6 +1793,12 @@ function frontEnd () {
 				// or
 				$('#list').val(); // give you the selected value, not text
 			}
+			function select_by_name_attr() {
+				// <td name="tcol1" class="bold"> data2</td>
+				$('td[name=tcol1]') // matches exactly 'tcol1'
+
+				$('td[name^=tcol]') // matches those that begin with 'tcol'
+			}
 
 			function build_select_option_from_array() {
 				var source = "http://stackoverflow.com/questions/170986/what-is-the-best-way-to-add-options-to-a-select-from-an-array-with-jquery";
@@ -1783,10 +1968,20 @@ function frontEnd () {
 				// e.stopPropagation()
 				var source = "http://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false";
 			}
-
 		}
 		function d3js() {
+		}
 
+		function html2canvas() {
+			var github = "https://github.com/niklasvh/html2canvas";
+			// take a screenshot with javascript
+		}
+		function cytoscape() {
+			var website = "http://cytoscape.github.io/cytoscape.js/";
+			// library for analysis and visualisation
+			var source = "http://stackoverflow.com/questions/8308516/multigraphs-with-javascript";
+			var other_visulation_lib = "http://stackoverflow.com/questions/7034/graph-visualization-library-in-javascript";
+			var data_visulation_compare = "http://selection.datavisualization.ch/";
 		}
 		function requirejs() {
 
@@ -1852,6 +2047,21 @@ function frontEnd () {
 
 	function Frameworks() {
 		function angularJS() {
+
+			function send_event() {
+				// broadcast event down to decendents
+				function firstCtrl($scope) {
+				  $scope.$broadcast('someEvent', [1,2,3]);
+				}
+				// emit up to ancestor
+				function secondCtrl($scope){
+				  $scope.$emit('someEvent', [1,2,3]);
+				}
+				// if element at same level, get rootScope and then broadcast
+				function firstCtrl($rootScope){
+    			$rootScope.$broadcast('someEvent', [1,2,3]);
+				}
+			}
 
 		}
 
