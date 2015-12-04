@@ -202,6 +202,7 @@ function frontEnd () {
 			var source = "http://stackoverflow.com/questions/518000/is-javascript-a-pass-by-reference-or-pass-by-value-language";
 
 			function changeStuff(a, b, c) {
+				// all pass a copy of reference
 			  a = a * 10;
 			  b.item = "changed";
 			  c = {item: "changed"};
@@ -222,6 +223,35 @@ function frontEnd () {
 		}
 
 		function useful_code_snippets() {
+
+			function plus_sign_before_function() {
+				var source = "http://stackoverflow.com/questions/13341698/javascript-plus-sign-in-front-of-function-name";
+
+				+function() { console.log("Foo!"); }();  // is the same as
+				(function() { console.log("Foo!"); })();
+				//It forces the parser to treat the part following the + as an expression. 
+				//This is usually used for functions that are invoked immediately.
+				//+ is just one of the options. It can also be -, !, ~, or just about any other unary operator. 
+			}
+			function is_date_valid() {
+				var source = "http://stackoverflow.com/questions/1353684/detecting-an-invalid-date-date-instance-in-javascript";
+				// after you create Date obj, var userDate = new Date(1449107515435);
+				function isDateValid(inputDateObj) {
+					if ( Object.prototype.toString.call(d) === "[object Date]" ) {
+					  // it is a date
+					  if ( isNaN( d.getTime() ) ) {  // d.valueOf() could also work
+					    // date is not valid
+					    return false;
+					  } else {
+					    // date is valid
+					    return true; 
+					  }
+					} else {
+					  // not a date
+					  return false; 
+					}
+				}
+			}
 
 			function if_object_is_empty() {
 				var source = "http://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object";
@@ -1002,6 +1032,19 @@ function frontEnd () {
 		}
 		function dom_api() {
 
+			function get_element_position_relative_to_viewport() {
+				element.getBoundingClientRect();
+			}
+			function find_element_has_focus() {
+				var source = "http://stackoverflow.com/questions/497094/how-do-i-find-out-which-dom-element-has-the-focus";
+				// 1. DOM api
+				document.activeElement
+
+				// jquery way
+				$(":focus").get(0); // can oly get input, textarea focus
+				
+			}
+
 			function scroll_to_window_top () {
 				var source = "http://stackoverflow.com/questions/1144805/how-do-i-scroll-to-the-top-of-the-page-with-jquery";
 				// 1. native javascript way
@@ -1316,11 +1359,42 @@ function frontEnd () {
 
 		function cors() {
 
+			var explanation = "http://www.html5rocks.com/en/tutorials/cors/";
+			// browser plugin is not limited by Same Origin Policy, so POSTMAN 
+			// will work fine for testing ajax request.
 		}
 	}
 
 	function Libraries () {
 		function jquery() {
+
+			function check_if_element_is_attached_to_dom() {
+				$('#elemId').length;
+
+			}
+
+			function pre_load_images() {
+				var source = "http://stackoverflow.com/questions/476679/preloading-images-with-jquery";
+				function preload(arrayOfImages) {
+				  $(arrayOfImages).each(function () {
+				    $('<img />').attr('src',this).appendTo('body').css('display','none');
+				  });
+				}
+
+			}
+
+			function make_ajax_sync() {
+				// noremally ajax should be async, but you can make it sync
+				// doc: http://api.jquery.com/jQuery.ajax/
+			  jQuery.ajax({
+          url: 'http://example.com/catalog/create/' + targetNode.id + '?name=' + encode(to.inp[0].value),
+          success: function (result) {
+            if (result.isOk == false) alert(result.message);
+          },
+          async: false // make it false to enable sync
+			    });
+
+			}
 
 			function dollar_sign() {
 				var $email = $("#email"); // refers to the jQuery object representation of the dom object
@@ -1921,6 +1995,56 @@ function frontEnd () {
 
 	function css() {
 
+		function selectors() {
+			function same_level_selector_after() {
+				// ~ selector
+				/*
+				p ~ ul {
+					background: green;
+				}
+				*/
+				// select all the uls at same level, after p
+				// p and ul doesn't have to next to each other
+				
+			}
+			function same_level_selector_immediate_after() {
+				// + selector
+				/*
+				div + p {
+					background: yellow;
+				}
+				*/
+				// select one p immediately after div, 
+				// div and p must be at same level
+			}
+
+			function children_selector() {
+				// > selector
+				/*
+				div > p {
+					background: yellow;
+				}
+				*/
+				// select children p of div
+				// note the difference: ancestor, parent, children, descendent
+			}
+
+			function user_selection_selector() {
+				// ::selection
+				/*
+					::selection {
+						color: red;
+						background: yellow;
+					}
+					::-moz-selection {
+						color: red;
+						background: yellow;
+					}
+				*/
+				// it targets user selected text, example: http://www.w3schools.com/cssref/sel_selection.asp
+			}
+		}
+
 		function specificity() {
 			/*
 			explanation:
@@ -1967,6 +2091,106 @@ function frontEnd () {
 			var pointer_events_explanation = "https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events";
 		}
 		function snippets() {
+
+			function put_copyright_at_bottom() {
+				var source = "http://stackoverflow.com/questions/526035/html-css-positioning-float-bottom";
+				/*
+				<div id="container">
+				  <!-- Other elements here -->
+				  <div id="copyright">
+				    Copyright Foo web designs
+				  </div>
+				</div>
+				*/
+				/*
+				#container {
+				    position: relative;
+				}
+				#copyright {
+				    position: absolute;
+				    bottom: 0;
+				}
+				*/
+			}
+
+			function remove_iframe_border() {
+				var source = "http://stackoverflow.com/questions/65034/remove-border-from-iframe";
+				// use frameBorder attribute in iframe attribute
+				// example: 
+				// <iframe src="myURL" width="300" height="300" frameBorder="0">Browser not compatible.</iframe>
+			}
+			function placeholder_for_select() {
+				var source = "http://stackoverflow.com/questions/5805059/how-do-i-make-a-placeholder-for-a-select-box";
+				/*
+				<select>
+			    <option value="" disabled selected>Select your option</option>
+			    <option value="hurr">Durr</option>
+				</select>
+				 */
+			}
+			function make_img_gray_scale() {
+				var source = "http://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css";
+				/*
+				img {
+				  filter: gray; //IE6-9 
+				  filter: grayscale(1); // Firefox 35+ 
+				  -webkit-filter: grayscale(1); // Google Chrome, Safari 6+ & Opera 15+
+				}
+
+				// Disable grayscale on hover 
+				img:hover {
+				  filter: none;
+				  -webkit-filter: grayscale(0);
+				}
+
+				*/
+			}
+			function img_auto_fit_container_ratio_remains() {
+				/*
+				img {
+					max-width:100%;
+					max-height:100%;
+
+				}
+				*/
+			  // example: http://jsfiddle.net/xwrvxser/1/
+				// To resize an image proportionally, you have to set 
+				// either the height or width to "100%", but not both. 
+				// If you set both to "100%", your image will be stretched.
+			}
+
+			function inline_hover_style() {
+				var source = "";
+				// you can NOT use inline :hover style because the spec won't allow it. 
+				/*
+				:hover is a pseudo-selector and, for CSS, only has meaning within the 
+				style sheet. There isn't any inline-style equivalent (as it isn't defining 
+				the selection criteria).
+				*/
+				
+				// a walk around is to just add remove css class that use :hover
+			}
+
+			function import_css_file_in_css() {
+				// @import url("base.css");
+				// The @import rule must precede all other rules (except the @charset rule); and
+				// Additional @import statements require additional server requests.
+			}
+			function animate_display_property() {
+				var source = "http://stackoverflow.com/questions/3331353/transitions-on-the-display-property";
+				// display is not a animatable property, because display none to block
+				// will cause re-flow.
+				// visibility is animatable, since it only cause re-paint.
+				// but you can work around it by animating on other properties, such as 
+				// visibility, or height
+				// example: 
+				// http://codepen.io/mindfullsilence/pen/DtzjE
+			}
+
+			function no_previous_sibling_selector() {
+				var source = "http://stackoverflow.com/questions/1817792/is-there-a-previous-sibling-selector";
+
+			}
 			function css3_background_stretch() {
 				var source = "http://stackoverflow.com/questions/376253/stretch-and-scale-css-background";
 				/*
@@ -2020,6 +2244,27 @@ function frontEnd () {
 				    width: 100px; //whatever width you want
 				}
 				*/
+			}
+			function absolute_center_vertical_horizontal() {
+				var source = "http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div#_=_";
+				// Method 1: transform-translate, unknow height or width
+				/*
+				.centered-axis-xy {
+				    position: absolute;
+				    left: 50%;
+				    top: 50%;
+				    transform: translate(-50%,-50%);
+					}
+				 */
+					// good for responsive design or unknown dimensions in 
+					// general if you don't need to support IE8 and lower.
+					// Explanation: 
+					// The clue is, that left: 50% is relative to the parent while the 
+					// translate transform is relative to the elements width/height.
+					
+					// Method 2: traditional one, known height and width
+					// also known parents height and width
+					// http://output.jsbin.com/rexuk/2/
 			}
 			function remove_border_input_box() {
 				var source = "http://stackoverflow.com/questions/3397113/how-to-remove-border-outline-around-text-input-boxes-chrome";
