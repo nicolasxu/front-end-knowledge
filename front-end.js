@@ -43,6 +43,11 @@ function frontEnd () {
 			*/
 		}
 
+		function this_keyword() {
+			var source = "http://stackoverflow.com/questions/3127429/how-does-the-this-keyword-work";
+			// need to be reviewed constantly
+		}
+
 		function bind_function () {
 			// Function.prototype.bind(thisArg, arg1, arg2....)
 			
@@ -223,6 +228,27 @@ function frontEnd () {
 		}
 
 		function useful_code_snippets() {
+
+			function generate_5_random_letters() {
+				var source = "http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript";
+
+				function makeid() {
+			    var text = "";
+			    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+			    for( var i=0; i < 5; i++ )
+			        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+			    return text;
+				}
+
+			}
+
+			function convert_letter_to_askii_code() {
+				var source = "http://stackoverflow.com/questions/94037/convert-character-to-ascii-code-in-javascript";
+
+				"\n".charCodeAt(0);
+			}
 
 			function standard_way_to_defind_class() {
 				function Person(name, gender){
@@ -419,6 +445,8 @@ function frontEnd () {
 				function getRandomInt(min, max) {
 				  return Math.floor(Math.random() * (max - min + 1)) + min;
 				} 
+
+				Math.floor(Math.random() * 6) + 1  
 			}
 
 			function format_money() {
@@ -868,6 +896,8 @@ function frontEnd () {
 
 				// Note elision, there is no member at 2 so it isn't visited
 				[2, 5, , 9].forEach(logArrayElements); 
+				// 'this' in logArrayElements will refer to global object, 
+				// which is different from this in $.each()
 				
 				// jquery version
 				$.each([3,4,5], function(index, value){
@@ -1078,6 +1108,14 @@ function frontEnd () {
 
 	function Browser() {
 
+		function disable_same_origin_policy_Chrome() {
+			var source = "http://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome";
+			// mac: 
+			// open -a Google\ Chrome --args --disable-web-security
+			// linux:
+			// google-chrome --disable-web-security
+		}
+
 		function mobile_browser() {
 			function safari_ios6_caching_ajax_result () {
 				var source = "http://stackoverflow.com/questions/12506897/is-safari-on-ios-6-caching-ajax-results";
@@ -1131,6 +1169,33 @@ function frontEnd () {
 			}
 		}
 		function dom_api() {
+
+			function check_url_if_hash_tag_exist() {
+				var source = "http://stackoverflow.com/questions/298503/how-can-you-check-for-a-hash-in-a-url-using-javascript?ppp=fdsfds&fff=kkk";
+				// example.com/page.html#anotheranchor
+				if(window.location.hash) {
+				  // Fragment exists
+				} else {
+				  // Fragment doesn't exist
+				}
+
+				// check if query string exists
+				if(window.location.search) {
+
+				} else {
+					
+				}
+			}
+
+			function detect_run_when_javascript_disabled() {
+				var source = "http://stackoverflow.com/questions/121203/how-to-detect-if-javascript-is-disabled";
+				// when javascript is disabled, tag in <noscript> will show
+				/*
+				<noscript>
+				  <img src="no_js.gif" alt="Javascript not enabled" />
+				</noscript>
+				*/
+			}
 
 			function preview_image_before_load() {
 				var source = "http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded";
@@ -1499,10 +1564,20 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function replace_inner_html() {
+				document.all.regTitle.innerHTML = 'Hello World';
+				$("#regTitle").html("Hello World");
+			}
+
+			function select_value_from_dropdown_list() {
+				var source = "http://stackoverflow.com/questions/499405/change-the-selected-value-of-a-drop-down-list-with-jquery";
+				$("._statusDDL").val('2');
+				$( "#multiple" ).val([ "Multiple2", "Multiple3" ]);
+			}
+
 			function remove_multiple_css_classes() {
 				var source = "http://stackoverflow.com/questions/1485647/removing-multiple-classes-jquery";
 				$('element').removeClass('class1').removeClass('class2');
-				$("element").removeClass("class1 class2");
 			}
 
 			function set_important_use_css() {
@@ -2354,7 +2429,7 @@ function frontEnd () {
 				}
 
 				 */
-				}
+				
 			}
 
 			function nth_of_type_selector() {
