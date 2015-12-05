@@ -1499,28 +1499,26 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
-			function inheret_class() {
-				var source = "http://stackoverflow.com/questions/1065435/can-a-css-class-inherit-one-or-more-other-classes";
-				/* LESS */
-				/*
-				.rounded_corners {
-				  -moz-border-radius: 8px;
-				  -webkit-border-radius: 8px;
-				  border-radius: 8px;
-				}
-
-				#header {
-				  .rounded_corners;
-				}
-
-				#footer {
-				  .rounded_corners;
-				}
-				*/
-				
-				// you can also do it this way in html tag
-				// <div class="firstClass secondClass thirdclass fourthclass"></div>
+			function remove_multiple_css_classes() {
+				var source = "http://stackoverflow.com/questions/1485647/removing-multiple-classes-jquery";
+				$('element').removeClass('class1').removeClass('class2');
+				$("element").removeClass("class1 class2");
 			}
+
+			function set_important_use_css() {
+				var source = "http://stackoverflow.com/questions/2655925/how-to-apply-important-using-css";
+				var $elem = $('#someDiv').style('color', 'blue', 'important');
+				// or 
+				$('#elem').attr('style', 'width: 100px !important'); // this will delete all other
+				// style on this element
+				// or you can use this function to fix:
+				function addStyleAttribute($element, styleAttribute) {
+				  $element.attr('style', $element.attr('style') + '; ' + styleAttribute);
+				}
+				addStyleAttribute($('#elem'), 'width: 100px !important');
+				// example: http://jsbin.com/atulek/4/edit?html,js,output
+			}
+
 			function use_jquery_manipulate_pseudo_elements() {
 				var source = "http://stackoverflow.com/questions/5041494/selecting-and-manipulating-css-pseudo-elements-such-as-before-and-after-usin";
 
@@ -2069,7 +2067,8 @@ function frontEnd () {
 
 	function components() {
 		function scroll() {
-
+			// one page scroll: https://github.com/peachananr/onepage-scroll
+			// 
 		}
 
 		function type_ahead() {
@@ -2278,7 +2277,26 @@ function frontEnd () {
 
 	function css() {
 
+		function css_file_path_relative() {
+			var source = "http://stackoverflow.com/questions/940451/using-relative-url-in-css-file-what-location-is-it-relative-to";
+			/*
+			div#header { 
+			  background-image: url('images/header-background.jpg');
+			}
+			 */
+			// answer:
+			// Partial URLs are interpreted relative to the source of the style sheet 
+			// (the one linked in html file), 
+			// not relative to the html document
+			// 
+		}
+
 		function selectors() {
+
+			function css_30_you_must_remember() {
+				var source = "http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048";
+
+			}
 			function same_level_after_selector() {
 				// ~ selector
 				/*
@@ -2324,6 +2342,33 @@ function frontEnd () {
 					}
 				*/
 				// it targets user selected text, example: http://www.w3schools.com/cssref/sel_selection.asp
+			}
+
+			function first_child_selector() {
+				var source = "http://stackoverflow.com/questions/2717480/css-selector-for-first-element-with-class";
+				// it can only to select first child relative to a parent element,
+				// not working to select "first element with red class"
+				/*
+				.list:first-child {
+					background-color: yellow;
+				}
+
+				 */
+				}
+			}
+
+			function nth_of_type_selector() {
+				// if you want to select 2nd element with "red" class on it
+				/*
+				.red:nth-of-type(1)
+				{
+				  border:5px solid red;
+				} 
+				.red:first-of-type
+				{
+				  border:5px solid red;
+				} 
+				*/
 			}
 		}
 
@@ -2377,6 +2422,96 @@ function frontEnd () {
 			// 8. text-overflow: clip|ellipsis|string|initial|inherit
 		}
 		function snippets() {
+
+			function style_checkbox_radio_button_css3() {
+				// before, you can not do it in css alone,
+				// but now you can do it in css3
+				var source = "http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953";
+				var source2 = "http://stackoverflow.com/questions/4148499/how-to-style-checkbox-using-css";
+				// there are generators to help you, e.g.: http://www.csscheckbox.com/
+				
+				// html
+				/*
+					<input type="checkbox" id="c1" name="cc" />
+					<label for="c1"><span></span>Check Box 1</label>
+				*/
+				/*
+				
+				input[type="checkbox"] {
+				    display:none;
+				}
+				input[type="checkbox"] + label span {
+				    display:inline-block;
+				    width:19px;
+				    height:19px;
+				    margin:-1px 4px 0 0;
+				    vertical-align:middle;
+				    background:url(check_radio_sheet.png) left top no-repeat;
+				    cursor:pointer;
+				}
+				input[type="checkbox"]:checked + label span {
+				    background:url(check_radio_sheet.png) -19px top no-repeat;
+				}
+
+
+			  */
+			}
+
+			function hide_spinner_on_input_number() {
+				var source = "http://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box";
+				/*
+				input[type="number"]::-webkit-outer-spin-button,
+				input[type="number"]::-webkit-inner-spin-button {
+				    -webkit-appearance: none;
+				    margin: 0;
+				}
+				input[type="number"] {
+				    -moz-appearance: textfield;
+				}
+				<input type="number" />
+
+				 */
+			}
+
+			function resize_img_proportionally_css() {
+				// img.resize{
+				//   width:540px;  // you can use % 
+				//   height: auto;
+				// }
+				
+				// or use the max-width or max-height
+				/*
+				#your-img {
+				    height: auto; 
+				    width: auto; 
+				    max-width: 300px; 
+				    max-height: 300px;
+				} 
+				*/
+			}
+
+			function inheret_class() {
+				var source = "http://stackoverflow.com/questions/1065435/can-a-css-class-inherit-one-or-more-other-classes";
+				/* LESS */
+				/*
+				.rounded_corners {
+				  -moz-border-radius: 8px;
+				  -webkit-border-radius: 8px;
+				  border-radius: 8px;
+				}
+
+				#header {
+				  .rounded_corners;
+				}
+
+				#footer {
+				  .rounded_corners;
+				}
+				*/
+				
+				// you can also do it this way in html tag
+				// <div class="firstClass secondClass thirdclass fourthclass"></div>
+			}
 
 			function css_target_vendor_browser() {
 				var source = "http://stackoverflow.com/questions/952861/targeting-only-firefox-with-css";
@@ -2601,8 +2736,9 @@ function frontEnd () {
 					// also known parents height and width
 					// http://output.jsbin.com/rexuk/2/
 			}
-			function remove_border_input_box() {
+			function remove_border_input_box_button() {
 				var source = "http://stackoverflow.com/questions/3397113/how-to-remove-border-outline-around-text-input-boxes-chrome";
+				// remove  dotted outline on BUTTONS
 				/*
 				textarea:focus, input:focus{
 				  outline: 0;
@@ -2612,9 +2748,17 @@ function frontEnd () {
 				  outline: 0;
 				}
 				*/
+				/*
+				button::-moz-focus-inner {
+				  border: 0;
+				}
+				 */
 			}
 
 			function vertical_center_text_in_div() {
+
+				// css verticl-align = middle, only works for inline elements, not on block elem
+				// source = "http://phrogz.net/CSS/vertical-align/index.html"
 				var source = "http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css";
 				// html
 				/*
@@ -2895,6 +3039,10 @@ function frontEnd () {
 					#inner {
 					  display: inline-block;
 					}
+					example:
+					<div id="wrapper" style="text-align: center">    
+					  <div id="yourdiv" style="display: inline-block;">You text</div>
+					</div>
 				 */
 				// method 4: both horizontal & vertical center
 				//<div class="content">This works with any content</div>
