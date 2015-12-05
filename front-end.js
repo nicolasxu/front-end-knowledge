@@ -1499,6 +1499,79 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
+			function inheret_class() {
+				var source = "http://stackoverflow.com/questions/1065435/can-a-css-class-inherit-one-or-more-other-classes";
+				/* LESS */
+				/*
+				.rounded_corners {
+				  -moz-border-radius: 8px;
+				  -webkit-border-radius: 8px;
+				  border-radius: 8px;
+				}
+
+				#header {
+				  .rounded_corners;
+				}
+
+				#footer {
+				  .rounded_corners;
+				}
+				*/
+				
+				// you can also do it this way in html tag
+				// <div class="firstClass secondClass thirdclass fourthclass"></div>
+			}
+			function use_jquery_manipulate_pseudo_elements() {
+				var source = "http://stackoverflow.com/questions/5041494/selecting-and-manipulating-css-pseudo-elements-such-as-before-and-after-usin";
+
+				// css :after and :before rules aren't part of the DOM
+				// and therefore can't be altered using jQuery's DOM methods.
+				
+				// method 1: predetermined class
+				/*
+				p:before {
+				  content: "foo";
+				}
+				p.special:before {
+				  content: "bar";
+				}
+				*/
+			  $('p').on('click', function() {
+				  $(this).toggleClass('special');
+				});
+
+				// method 2: add styles directly to document's style
+				var str = "bar";
+				document.styleSheets[0].addRule('p.special:before','content: "'+str+'";');
+				// same
+				var str = "bar";
+				$('<style>p.special:before{content:"'+str+'"}</style>').appendTo('head');
+				// method 3: Alter a different DOM attribute
+				/*
+				<p>This is a paragraph.</p>
+				<p>This is another paragraph.</p>
+				 */
+				/*
+					p:before {
+					  content: attr(data-before);
+					  color: red;
+					  cursor: pointer;
+					}
+				*/
+				$('p').on('click', function () {
+				  $(this).attr('data-before','bar');
+				});
+			}
+			function remove_style() {
+				var source = "http://stackoverflow.com/questions/4036857/jquery-remove-style-added-with-css-function";
+				if(color != '000000') {
+					$("body").css("background-color", color); 
+				} else {
+					$("body").css("background-color", "");
+					// set css attribute empty to remove the style
+				}
+			}
+
 			function get_id_of_element_fired_event() {
 				$(document).ready(function() {
 				  $("a").click(function(event) {
@@ -2206,7 +2279,7 @@ function frontEnd () {
 	function css() {
 
 		function selectors() {
-			function same_level_selector_after() {
+			function same_level_after_selector() {
 				// ~ selector
 				/*
 				p ~ ul {
@@ -2214,8 +2287,7 @@ function frontEnd () {
 				}
 				*/
 				// select all the uls at same level, after p
-				// p and ul doesn't have to next to each other
-				
+				// p and ul doesn't have to next to each other	
 			}
 			function same_level_selector_immediate_after() {
 				// + selector
@@ -2299,8 +2371,61 @@ function frontEnd () {
 			var user_select_explanation = "http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting";
 			// 5. pointer-events: none;
 			var pointer_events_explanation = "https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events";
+			// 6. word-wrap:  normal|break-word|initial|inherit;
+			// 7. word-break: normal|break-all|keep-all|initial|inherit;
+			//    The word-break property specifies line breaking rules for non-CJK scripts.
+			// 8. text-overflow: clip|ellipsis|string|initial|inherit
 		}
 		function snippets() {
+
+			function css_target_vendor_browser() {
+				var source = "http://stackoverflow.com/questions/952861/targeting-only-firefox-with-css";
+
+				// <style type='text/css'>
+				// /*This will work for chrome */
+				// #categoryBackNextButtons
+				// {
+				//     width:490px;
+				// }
+				// /*This will work for firefox*/
+				// @-moz-document url-prefix() {
+				//     #categoryBackNextButtons{
+				//         width:486px;
+				//     }
+				// }
+				// </style>
+				// <!--[if IE]>
+				// <style type='text/css'>
+				// /*This will work for IE*/
+				// #categoryBackNextButtons
+				// {
+				//     width:486px;
+				// }
+				// </style>
+				// <![endif]-->
+			}
+			function base64_background() {
+				//.even { background: #fff url(data:image/gif;base64,R0lGODlhBgASALMAAOfn5+rq6uvr6+zs7O7u7vHx8fPz8/b29vj4+P39/f///wAAAAAAAAAAAAAAAAAAACwAAAAABgASAAAIMAAVCBxIsKDBgwgTDkzAsKGAhxARSJx4oKJFAxgzFtjIkYDHjwNCigxAsiSAkygDAgA7) repeat-x bottom}
+				// small img, e.g. pattern background, you can encode in css
+				// large image, it is best to put to seperate file
+			}
+			function disable_link_tag() {
+				// .not-active {
+				//   pointer-events: none;
+				//   cursor: default;
+				// }
+			}
+			function page_ankor_jump_keep_header() {
+				var source = "http://stackoverflow.com/questions/4086107/html-positionfixed-page-header-and-in-page-anchors";
+				// <h1><a class="anchor" name="barlink">Bar</a></h1>
+				// .anchor { padding-top: 90px; }
+			}
+			function white_space_between_inline_block() {
+				var source = "http://stackoverflow.com/questions/5078239/how-to-remove-the-space-between-inline-block-elements";
+				var problem_explanation = "http://jsfiddle.net/dGHFV/1/";
+				// solution 1:
+				// add font-size: 0 to the parent element, and then declare a sensible font-size on the children
+			}
 
 			function put_copyright_at_bottom() {
 				var source = "http://stackoverflow.com/questions/526035/html-css-positioning-float-bottom";
