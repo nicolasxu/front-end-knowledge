@@ -264,6 +264,24 @@ function frontEnd () {
 
 		function useful_code_snippets() {
 
+			function convert_unix_time_stamp_to_Date() {
+				var source = "http://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript";
+				// unix time stamp is seconds after 1970.01.01, while javascript Date takes milliseconds
+				
+				// Create a new JavaScript Date object based on the timestamp
+				// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+				var date = new Date(unix_timestamp*1000);
+				// Hours part from the timestamp
+				var hours = date.getHours();
+				// Minutes part from the timestamp
+				var minutes = "0" + date.getMinutes();
+				// Seconds part from the timestamp
+				var seconds = "0" + date.getSeconds();
+
+				// Will display time in 10:30:23 format
+				var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+			}
+
 			function generate_5_random_letters() {
 				var source = "http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript";
 
@@ -1205,6 +1223,33 @@ function frontEnd () {
 		}
 		function dom_api() {
 
+			function find_out_caller_name() {
+				// which function calls this function
+				var source = "http://stackoverflow.com/questions/280389/how-do-you-find-out-the-caller-function-in-javascript";
+				function WhoCallsMe() {
+				    alert("caller is " + arguments.callee.caller.name);
+				    // arguments.callee.caller.toString()
+				}
+
+				// or you can use this lib to print out stack trace:
+				// https://github.com/stacktracejs/stacktrace.js
+			}
+
+			function clear_canvas_for_redrawing() {
+				var source = "http://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing";
+				context.clearRect(0, 0, canvas.width, canvas.height);
+			}
+			function remove_element_by_id() {
+				// use native javascript dom api
+				var elem = document.getElementById('output');
+				elem.parentNode.removeChild(element)
+			}
+
+			function console_object_is_only_activated_when_the_Dev_Toolbar_is_opened() {
+				var source = "http://stackoverflow.com/questions/7742781/why-javascript-only-works-after-opening-developer-tools-in-ie-once";
+
+			}
+
 			function check_url_if_hash_tag_exist() {
 				var source = "http://stackoverflow.com/questions/298503/how-can-you-check-for-a-hash-in-a-url-using-javascript?ppp=fdsfds&fff=kkk";
 				// example.com/page.html#anotheranchor
@@ -1598,6 +1643,18 @@ function frontEnd () {
 
 	function Libraries () {
 		function jquery() {
+
+			function select_select_option_by_text() {
+				// not by value
+
+				// <select>
+				//     <option value="0">One</option>
+				//     <option value="1">Two</option>
+				// </select>
+
+				$("#myselect option:contains('YourTextHere')").attr("selected","selected");
+				// tested
+			}
 
 			function replace_inner_html() {
 				document.all.regTitle.innerHTML = 'Hello World';
@@ -2401,6 +2458,15 @@ function frontEnd () {
 			// 
 		}
 
+		function block_formating_context() {
+			var source = "http://yuiblog.com/blog/2010/05/19/css-101-block-formatting-contexts/";
+			var source2 = "http://www.sitepoint.com/understanding-block-formatting-contexts-in-css/";
+			// block formatting context can:
+			// 1. contain float
+			// 2. prevent margin collapsing
+
+		}
+
 		function selectors() {
 
 			function css_30_you_must_remember() {
@@ -2550,6 +2616,114 @@ function frontEnd () {
 			// 8. text-overflow: clip|ellipsis|string|initial|inherit
 		}
 		function snippets() {
+
+			function font_face(){
+
+				// @font-face {
+				//   font-family: 'icomoon';
+				//   src:url('fonts/icomoon.eot?-5fbd21');
+				//   src:url('fonts/icomoon.eot?#iefix-5fbd21') format('embedded-opentype'),
+				//     url('fonts/icomoon.woff?-5fbd21') format('woff'),
+				//     url('fonts/icomoon.ttf?-5fbd21') format('truetype'),
+				//     url('fonts/icomoon.svg?-5fbd21#icomoon') format('svg');
+				//   font-weight: normal;
+				//   font-style: normal;
+				// }
+
+
+			}
+
+			function customize_bootstrap_nav_bar() {
+				// set the color in css
+				// download the bootstrap css in component, configure and compile
+				// http://getbootstrap.com/customize/
+				
+			}
+
+			function make_bootstrap_column_same_height() {
+				var source = "http://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height";
+				// method 1
+				/* 
+				
+				.row{
+				  overflow: hidden; 
+				}
+
+				[class*="col-"]{
+				  margin-bottom: -99999px;
+				  padding-bottom: 99999px;
+				}
+
+				*/
+				// method 2
+				/*
+				.row {
+				  display: table;
+				}
+
+				[class*="col-"] {
+				  float: none;
+				  display: table-cell;
+				  vertical-align: top;
+				}
+
+				*/
+				// method 3, flex
+				/*
+				row {
+				  display: -webkit-box;
+				  display: -webkit-flex;
+				  display: -ms-flexbox;
+				  display:         flex;
+				}
+				 */
+			}
+
+			function pre_tag_css_wrap_code() {
+				var source = "https://longren.io/wrapping-text-inside-pre-tags/";
+				var stackoverflow = "http://stackoverflow.com/questions/248011/how-do-i-wrap-text-in-a-pre-tag";
+
+					// best solution:
+					// pre {
+					//  white-space: pre-wrap;       /* css-3 */
+					//  white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+					//  white-space: -pre-wrap;      /* Opera 4-6 */
+					//  white-space: -o-pre-wrap;    /* Opera 7 */
+					//  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+					//  width: 99%;
+					// }
+			}
+
+			function background_image_size() {
+				var source = "http://stackoverflow.com/questions/1341358/set-size-on-background-image-with-css";
+				// .stretch{
+				// /* Will stretch to specified width/height */
+				//   background-size: 200px 150px;
+				// }
+				// .stretch-content{
+				// /* Will stretch to width/height of element */
+				//   background-size: 100% 100%;
+				// }
+
+				// .resize-width{
+				// /* width: 150px, height: auto to retain aspect ratio */
+				//   background-size: 150px Auto;
+				// }
+				// .resize-height{
+				// /* height: 150px, width: auto to retain aspect ratio */
+				//   background-size: Auto 150px;
+				// }
+				// .resize-fill-and-clip{ 
+				//   /* Resize to fill and retain aspect ratio.
+				//      Will cause clipping if aspect ratio of box is different from image. */ 
+				//   background-size: cover;
+				// }
+				// .resize-best-fit{
+				// /* Resize to best fit and retain aspect ratio.
+				//    Will cause gap if aspect ratio of box is different from image. */ 
+				//   background-size: contain;
+				// }
+			}
 
 			function style_checkbox_radio_button_css3() {
 				// before, you can not do it in css alone,
@@ -2810,6 +2984,8 @@ function frontEnd () {
 			}
 			function vertical_center() {
 				var source = "http://stackoverflow.com/questions/396145/how-to-vertically-center-a-div-for-all-browsers";
+				// note: with css3 you can center anything without knowing the width and height 
+				var source2 = "http://stackoverflow.com/questions/6794000/fixed-position-but-relative-to-container"
 				/*
 				<div class="outer">
 				<div class="middle">
@@ -2843,46 +3019,6 @@ function frontEnd () {
 				}
 				*/
 			}
-			function absolute_center_vertical_horizontal() {
-				var source = "http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div#_=_";
-				// Method 1: transform-translate, unknow height or width
-				/*
-				.centered-axis-xy {
-				    position: absolute;
-				    left: 50%;
-				    top: 50%;
-				    transform: translate(-50%,-50%);
-					}
-				 */
-					// good for responsive design or unknown dimensions in 
-					// general if you don't need to support IE8 and lower.
-					// Explanation: 
-					// The clue is, that left: 50% is relative to the parent while the 
-					// translate transform is relative to the elements width/height.
-					
-					// Method 2: traditional one, known height and width
-					// also known parents height and width
-					// http://output.jsbin.com/rexuk/2/
-			}
-			function remove_border_input_box_button() {
-				var source = "http://stackoverflow.com/questions/3397113/how-to-remove-border-outline-around-text-input-boxes-chrome";
-				// remove  dotted outline on BUTTONS
-				/*
-				textarea:focus, input:focus{
-				  outline: 0;
-				}
-				// remove all border on focused element
-				*:focus {
-				  outline: 0;
-				}
-				*/
-				/*
-				button::-moz-focus-inner {
-				  border: 0;
-				}
-				 */
-			}
-
 			function vertical_center_text_in_div() {
 
 				// css verticl-align = middle, only works for inline elements, not on block elem
@@ -2953,7 +3089,48 @@ function frontEnd () {
 					display: table-cell;
 					vertical-align: middle;
 				 */
+			}			
+			function absolute_center_vertical_horizontal() {
+				var source = "http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div#_=_";
+				// Method 1: transform-translate, unknow height or width
+				/*
+				.centered-axis-xy {
+				    position: absolute;
+				    left: 50%;
+				    top: 50%;
+				    transform: translate(-50%,-50%);
+					}
+				 */
+					// good for responsive design or unknown dimensions in 
+					// general if you don't need to support IE8 and lower.
+					// Explanation: 
+					// The clue is, that left: 50% is relative to the parent while the 
+					// translate transform is relative to the elements width/height.
+					
+					// Method 2: traditional one, known height and width
+					// also known parents height and width
+					// http://output.jsbin.com/rexuk/2/
 			}
+			function remove_border_input_box_button() {
+				var source = "http://stackoverflow.com/questions/3397113/how-to-remove-border-outline-around-text-input-boxes-chrome";
+				// remove  dotted outline on BUTTONS
+				/*
+				textarea:focus, input:focus{
+				  outline: 0;
+				}
+				// remove all border on focused element
+				*:focus {
+				  outline: 0;
+				}
+				*/
+				/*
+				button::-moz-focus-inner {
+				  border: 0;
+				}
+				 */
+			}
+
+
 			function force_reload_cached_css_file() {
 				var source = "http://stackoverflow.com/questions/118884/what-is-an-elegant-way-to-force-browsers-to-reload-cached-css-js-files?page=1&tab=votes#tab-top";
 				// use file version
@@ -2990,7 +3167,7 @@ function frontEnd () {
 				// the child real opacity is the multiplication of 0.5 and 1. 
 			}
 
-			function css_style_select() {
+			function use_css_to_style_select_tag() {
 				var source = "http://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-css-only-without-javascript";
 				var code = "http://jsfiddle.net/danield770/YvCHW/4232/";
 			}
