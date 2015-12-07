@@ -44,7 +44,9 @@ function frontEnd () {
 		}
 
 		function this_keyword() {
-			var source = "http://stackoverflow.com/questions/3127429/how-does-the-this-keyword-work";
+			var source  = "http://stackoverflow.com/questions/3127429/how-does-the-this-keyword-work";
+			var source2 = "http://www.quirksmode.org/js/this.html";
+			var source3 = "http://web.archive.org/web/20110725013125/http://www.digital-web.com/articles/scope_in_javascript/"
 			// need to be reviewed constantly
 		}
 
@@ -1183,7 +1185,7 @@ function frontEnd () {
 				if(window.location.search) {
 
 				} else {
-					
+
 				}
 			}
 
@@ -2370,6 +2372,24 @@ function frontEnd () {
 
 			function css_30_you_must_remember() {
 				var source = "http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048";
+				// 11. X[href="foo"]
+				// 12. X[href*="nettuts"]
+				// 13. X[href^="http"]
+				// 14. X[href$=".jpg"]
+				// 16. X[foo~="bar"]
+				//    The tilda (~) symbol allows us to target an attribute which has a 
+				//    spaced-separated list of values.
+				//    .e.g: <a href="path/to/image.jpg" data-info="external image"> Click Me, Fool </a>
+				// 18. X:after, X:before
+				//     append element after X
+				// 20. X:not(selector), e.g.: div:not(#container), *:not(p) 
+				// 21. X::first-line, p::first-letter. pseudoElement
+				// 22. li:nth-child(3), li:nth-last-child(2)
+				// 24. ul:nth-of-type, ul:nth-last-of-type(3)
+				// 26. li:first-child, li:last-child, 
+				//     div p:only-child (It allows you to target elements which are the only child of its parent)
+				// 29. li:only-of-type, ul > li:only-of-type
+				// 
 
 			}
 			function same_level_after_selector() {
