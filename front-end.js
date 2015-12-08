@@ -1317,7 +1317,7 @@ function frontEnd () {
 				document.activeElement
 
 				// jquery way
-				$(":focus").get(0); // can oly get input, textarea focus
+				$(":focus").get(0); // can only get input, textarea focus
 				
 			}
 
@@ -1643,6 +1643,16 @@ function frontEnd () {
 
 	function Libraries () {
 		function jquery() {
+
+			function assign_many_css_properties() {
+				$("#message").css({
+				  'font-size' : '10px',
+				  'width' : '30px',
+				  'height' : '10px'
+				});
+				// or you can put css atributes in an class, and use .addClass(). 
+				// addClass() could be better solution.
+			}
 
 			function select_select_option_by_text() {
 				// not by value
@@ -2210,6 +2220,11 @@ function frontEnd () {
 		function d3js() {
 		}
 
+		function Raphael() {
+			var website = "http://raphaeljs.com/";
+
+		}
+
 		function html2canvas() {
 			var github = "https://github.com/niklasvh/html2canvas";
 			// take a screenshot with javascript
@@ -2233,9 +2248,20 @@ function frontEnd () {
 	}
 
 	function components() {
+
+		function radial_menu() {
+			var source = "http://creative-punch.net/2014/02/making-animated-radial-menu-css3-javascript/";
+
+		}
 		function scroll() {
 			// one page scroll: https://github.com/peachananr/onepage-scroll
 			// 
+		}
+
+		function scroll_dependent_menu_bar() {
+			var source = "http://creative-punch.net/2014/03/making-scroll-dependent-menu-bar-css3-javascript/";
+			// it uses scrollMonitor to detect element is out of viewport
+			// https://github.com/sakabako/scrollMonitor
 		}
 
 		function type_ahead() {
@@ -2444,6 +2470,27 @@ function frontEnd () {
 
 	function css() {
 
+		function full_css_code_for_a_feature() {
+			function animation() {
+				// 1. CSS loader animation using Sass and Compass
+				var address1 = "http://creative-punch.net/2014/01/pure-css-loader-animation-using-sass-compass/";
+
+				// 2. flip effect with CSS3 transform property
+				var address2 = "http://creative-punch.net/2013/12/create-a-modern-flat-metro-style-menu-with-flip-effect-using-the-css3-transform-property/";
+			}
+
+			function transparent() {
+				// 1. transparent glass menu bar with CSS3
+				var address = "http://creative-punch.net/2014/02/make-transparent-glass-menu-bar-css3/";
+			}
+
+			function shapes() {
+				// 1. hexagons
+				var address1 = "http://creative-punch.net/2014/01/perfect-css-hexagons-size-using-transform-calc/";
+				// Perfect CSS hexagons in any size using transform and calc()
+			}
+		}
+
 		function css_file_path_relative() {
 			var source = "http://stackoverflow.com/questions/940451/using-relative-url-in-css-file-what-location-is-it-relative-to";
 			/*
@@ -2464,7 +2511,6 @@ function frontEnd () {
 			// block formatting context can:
 			// 1. contain float
 			// 2. prevent margin collapsing
-
 		}
 
 		function selectors() {
@@ -2614,8 +2660,66 @@ function frontEnd () {
 			// 7. word-break: normal|break-all|keep-all|initial|inherit;
 			//    The word-break property specifies line breaking rules for non-CJK scripts.
 			// 8. text-overflow: clip|ellipsis|string|initial|inherit
+			// 9. calc(), attr(data-content), 
 		}
 		function snippets() {
+
+			function two_background_images() {
+				var source = "http://stackoverflow.com/questions/423172/can-i-have-multiple-background-images-using-css";
+				// body {
+				//   background-image: url(images/bgtop.png), url(images/bg.png);
+				//   background-repeat: repeat-x, repeat;
+				// }
+				// example here: http://www.css3.info/preview/multiple-backgrounds/
+			}
+
+			function customize_image_in_list() {
+
+				// li{
+				//   list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAE0lEQVQIW2NkYGD4D8RwwEi6AACaVAQBULo4sgAAAABJRU5ErkJggg==");
+				// }
+				// or you can use li:before following:
+				// ul {
+				//     list-style: none;
+				//     padding:0;
+				//     margin:0;
+				// }
+
+				// li { 
+				//     padding-left: 1em; 
+				//     text-indent: -.7em;
+				// }
+
+				// li:before {
+				//     content: "• ";
+				//     color: red; /* or whatever color you prefer */
+				// }
+			}
+
+			function sass_$for_loop() {
+				var explanation = "http://sass-lang.com/documentation/file.SASS_REFERENCE.html#_10";
+
+				// @for $i from 1 through 3 {
+				//   .item-#{$i} { width: 2em * $i; }
+				// }
+				// is compiled to:
+
+				// .item-1 {
+				//   width: 2em; }
+				// .item-2 {
+				//   width: 4em; }
+				// .item-3 {
+				//   width: 6em; }
+				
+				//used here: http://creative-punch.net/2014/01/pure-css-loader-animation-using-sass-compass/
+				/*
+				@for $i from 1 to ($elements + 1)
+			  div.loader div:nth-child(#{$i})
+			    animation-delay: #{sin(360deg * ($i / ($elements * $multiplier)))}s
+			    background-color: hsl((360deg * ($i / $elements)), 50%, 60%)
+				*/
+			
+			}
 
 			function font_face(){
 
@@ -3126,6 +3230,10 @@ function frontEnd () {
 				/*
 				button::-moz-focus-inner {
 				  border: 0;
+				}
+
+				*:focus {
+				  outline: none;
 				}
 				 */
 			}
