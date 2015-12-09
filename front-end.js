@@ -1,5 +1,22 @@
 function frontEnd () {
 
+	function regex() {
+		function trim_string() {
+
+			if(typeof String.prototype.trim !== 'function') {
+			  String.prototype.trim = function() {
+			    return this.replace(/^\s+|\s+$/g, ''); 
+			  }
+			}
+		}
+
+		function add_comma_in_number() {
+			function numberWithCommas(x) {
+    			return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+		}
+	}
+
 	function Javascript_language() {
 
 		function closure() {
@@ -1223,6 +1240,16 @@ function frontEnd () {
 		}
 		function dom_api() {
 
+			function save_canvas_to_img() {
+				var source = "http://stackoverflow.com/questions/923885/capture-html-canvas-as-gif-jpg-png-pdf";
+				
+				var canvas = document.getElementById("mycanvas");
+				var img    = canvas.toDataURL("image/png");
+				//with the value in IMG you can write it out as a new Image like so:
+
+				document.write('<img src="'+img+'"/>');
+			}
+
 			function find_out_caller_name() {
 				// which function calls this function
 				var source = "http://stackoverflow.com/questions/280389/how-do-you-find-out-the-caller-function-in-javascript";
@@ -1643,6 +1670,11 @@ function frontEnd () {
 
 	function Libraries () {
 		function jquery() {
+
+			function remove_all_classes() {
+				$("#item").removeClass(); 
+				// if no param, all classes will be removed
+			}
 
 			function assign_many_css_properties() {
 				$("#message").css({
@@ -2663,6 +2695,63 @@ function frontEnd () {
 			// 9. calc(), attr(data-content), 
 		}
 		function snippets() {
+
+			function no_way_to_set_background_image_from_right() {
+				var source = "http://stackoverflow.com/questions/5142405/offset-a-background-image-from-the-right-using-css";
+				// work around:
+				// - setting a margin-right on the element instead
+				// - adding transparent pixels to the image itself and positioning it top right
+				// - or calculating the position using jQuery after the element's width is known.
+			}
+
+			function how_to_style_hr_element() {
+				var source = "http://www.syntaxxx.com/how-to-style-hr-with-css/";
+
+				// hr {
+				// 	width: 80%;
+				// 	height: 8px;
+				// 	margin-left: auto;
+				// 	margin-right: auto;
+				// 	background-color:#FF0066;
+				// 	color:#FF0066;
+				// 	border: 0 none;
+				// 	margin-top: 100px;
+				// 	margin-bottom:100px;
+				// 	}
+			}
+
+			function wild_characters_for_class() {
+				var source = "http://stackoverflow.com/questions/5110249/wildcard-in-css-for-classes";
+				// below selector is not working
+				// .tocolor-*{
+				//   background: red;
+				// }
+				// but you can do this:
+				
+				// div[class^="tocolor-"], div[class*=" tocolor-"] {
+				//   color:red 
+				// }
+
+			}
+
+			function box_shadow_only_one_side() {
+				
+				// .myDiv {
+				//     border: 1px solid #333;
+				//     width: 100px;
+				//     height: 100px;
+				//     -webkit-box-shadow: 10px 0 5px -2px #888;
+				//             box-shadow: 10px 0 5px -2px #888;
+				// }
+				// params:
+				//   1. x position
+				//   2. y position
+				//   3. bur radius
+				//   4. shadow size, in px. 0 is same as box size, 
+				//     5px is 5px larger than orginal box
+				//     -5px is 5px small than original box
+				//   5. color
+			}
 
 			function two_background_images() {
 				var source = "http://stackoverflow.com/questions/423172/can-i-have-multiple-background-images-using-css";
