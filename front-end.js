@@ -281,6 +281,26 @@ function frontEnd () {
 
 		function useful_code_snippets() {
 
+			function static_var_in_javascript() {
+				var source = "http://stackoverflow.com/questions/1535631/static-variables-in-javascript";
+				// example:
+				function Person(){
+				  if(Person.count == undefined){
+				    Person.count = 1;
+				  }
+				  else{
+				    Person.count ++;
+				  }
+				  console.log(Person.count);
+				}
+
+				var p1 = new Person();
+				var p2 = new Person();
+				var p3 = new Person();
+				console.log(Person.count); // Person.count is kind of static var for Person class
+
+			}
+
 			function convert_unix_time_stamp_to_Date() {
 				var source = "http://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript";
 				// unix time stamp is seconds after 1970.01.01, while javascript Date takes milliseconds
@@ -2316,7 +2336,16 @@ function frontEnd () {
 		}
 
 		function bootstrap() {
+			function Bootsnipp() {
+				var website = "http://bootsnipp.com/";
+				// Design elements, playground and code snippets for Bootstrap
+				
+			}
 
+			function Bootstrap_theme() {
+				var website = "http://bootswatch.com/";
+
+			}
 		}
 
 		function image_maginify() {
@@ -2329,6 +2358,73 @@ function frontEnd () {
 
 			}
 			function angular() {
+
+				function filter_usage() {
+					var app = angular.module("demoApp", ['ngResource']);
+
+					app.filter("sanitize", ['$sce', function($sce) {
+					  return function(htmlCode){
+					    return $sce.trustAsHtml(htmlCode);
+					  }
+					}]);
+					// <div ng-bind-html="whatever_needs_to_be_sanitized | sanitize"></div>
+				}
+
+				function output_as_html_not_string() {
+					// For Angular 1.3, use ng-bind-html in the HTML (2 steps):
+					// <div ng-bind-html="thisCanBeusedInsideNgBindHtml"></div>
+					var SomeController = function () {
+					  this.thisCanBeusedInsideNgBindHtml = '<ul><li>render me please</li></ul>';
+					}
+					// and use $sce.trustAsHtml() in the controller to convert the html string.
+					$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
+
+					// for Angular 1.2, use:
+					// <div ng-bind-html-unsafe="expression"></div>
+				}
+
+				function transclude_usage(){
+
+				}
+
+				function timeout_usage() {
+
+				}
+				function watch_usage() {
+
+				}
+
+				function special_symbol_in_directive() {
+					// &, = #
+				}
+
+				function service_provider_factory() {
+
+				}
+
+				function defer_usage() {
+
+				}
+
+				function ui_router() {
+
+				}
+
+				function user_input_validation() {
+
+				}
+
+				function ng_select_usage() {
+
+				}
+
+				function avoid_flashing() {
+
+				}
+
+				function http_request() {
+
+				}
 
 			}
 		}
@@ -2566,7 +2662,7 @@ function frontEnd () {
 				// 26. li:first-child, li:last-child, 
 				//     div p:only-child (It allows you to target elements which are the only child of its parent)
 				// 29. li:only-of-type, ul > li:only-of-type
-				// 
+				// 30. [data-role="page"], this is an attribute selector
 
 			}
 			function same_level_after_selector() {
@@ -2695,6 +2791,68 @@ function frontEnd () {
 			// 9. calc(), attr(data-content), 
 		}
 		function snippets() {
+
+			function not_selector() {
+				//input:not([type="radio"]):not([type="checkbox"])
+				//:not([attr][attr2])
+				// but this is not working
+				// form input:not([type="radio"], [type="checkbox"]) {
+				  /* css here */
+				//}
+			}
+
+			function alternate_row_color() {
+
+				// table tr:nth-child(odd) td{
+				// 	background-color: #000000;
+				// }
+				// table tr:nth-child(even) td{
+				// }
+			}
+
+			function use_css_to_set_img_src() {
+				var source = "http://stackoverflow.com/questions/2182716/is-it-possible-to-set-the-equivalent-of-a-src-attribute-of-an-img-tag-in-css";
+				/*
+				<style>
+				.MyClass123{
+					content:url("http://imgur.com/SZ8Cm.jpg");
+				}
+				</style>
+
+				<img class="MyClass123"/>
+				*/
+			}
+
+			function find_out_unused_css_rule() {
+				var source = "http://stackoverflow.com/questions/135657/tool-to-identify-unused-css-definitions";
+				var firefox_plugin = "https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/";
+
+			}
+
+			function multiple_font_file_for_same_font() {
+				var source = "http://stackoverflow.com/questions/2436749/how-to-add-multiple-font-files-for-the-same-font";
+				// each for different sub style for the same font
+				// @font-face {
+				//   font-family: "DejaVu Sans";
+				//   src: url("fonts/DejaVuSans.ttf");
+				// }
+				// @font-face {
+			 //    font-family: "DejaVu Sans";
+			 //    src: url("fonts/DejaVuSans-Bold.ttf");
+			 //    font-weight: bold;
+				// }
+				// @font-face {
+			 //    font-family: "DejaVu Sans";
+			 //    src: url("fonts/DejaVuSans-Oblique.ttf");
+			 //    font-style: italic, oblique;
+				// }
+				// @font-face {
+			 //    font-family: "DejaVu Sans";
+			 //    src: url("fonts/DejaVuSans-BoldOblique.ttf");
+			 //    font-weight: bold;
+			 //    font-style: italic, oblique;
+				// }
+			}
 
 			function no_way_to_set_background_image_from_right() {
 				var source = "http://stackoverflow.com/questions/5142405/offset-a-background-image-from-the-right-using-css";
