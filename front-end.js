@@ -1260,6 +1260,10 @@ function frontEnd () {
 		}
 		function dom_api() {
 
+			function XMLHttpRequest_object() {
+				var w3c_spec = "https://xhr.spec.whatwg.org/";
+			}
+
 			function save_canvas_to_img() {
 				var source = "http://stackoverflow.com/questions/923885/capture-html-canvas-as-gif-jpg-png-pdf";
 				
@@ -2674,7 +2678,6 @@ function frontEnd () {
 				//     div p:only-child (It allows you to target elements which are the only child of its parent)
 				// 29. li:only-of-type, ul > li:only-of-type
 				// 30. [data-role="page"], this is an attribute selector
-
 			}
 			function same_level_after_selector() {
 				// ~ selector
@@ -2803,7 +2806,7 @@ function frontEnd () {
 		}
 		function snippets() {
 
-			function not_selector() {
+			function not_selector_adding() {
 				//input:not([type="radio"]):not([type="checkbox"])
 				//:not([attr][attr2])
 				// but this is not working
@@ -2976,7 +2979,6 @@ function frontEnd () {
 			    animation-delay: #{sin(360deg * ($i / ($elements * $multiplier)))}s
 			    background-color: hsl((360deg * ($i / $elements)), 50%, 60%)
 				*/
-			
 			}
 
 			function font_face(){
@@ -2991,8 +2993,6 @@ function frontEnd () {
 				//   font-weight: normal;
 				//   font-style: normal;
 				// }
-
-
 			}
 
 			function customize_bootstrap_nav_bar() {
@@ -4017,5 +4017,18 @@ function frontEnd () {
 		function grunt() {
 
 		}
+	}
+
+	function git_command() {
+		// 1. update git user name
+		// git config --global user.name "Your Actual Name"
+		// 
+		// 2. update git user email
+		// git config --global user.email "Your Actual Email"
+		// Your email address should be the same one associated with your GitHub account.
+		// 
+		// 3. verify git global configuration
+		// git config -l
+
 	}
 }
