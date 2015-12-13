@@ -2878,7 +2878,16 @@ function frontEnd () {
 				onload = init;
 			}
 
+			function geolocation_api() {
+
+				navigator.geolocation.getCurrentPosition(successFunc, errorFunc);
+			}
+
 			function local_storage() {
+				var my_name = "Nicolas Xu";
+				localStorage.setItem("name", my_name);
+				localStorage.getItem("name");
+				localStorage.removeItem("name");
 
 			}
 
