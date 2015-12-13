@@ -281,6 +281,10 @@ function frontEnd () {
 
 		function useful_code_snippets() {
 
+			function generate_random_hex_color() {
+				var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+			}
+
 			function static_var_in_javascript() {
 				var source = "http://stackoverflow.com/questions/1535631/static-variables-in-javascript";
 				// example:
@@ -2749,7 +2753,129 @@ function frontEnd () {
 			}
 
 			function canvas_api() {
+				// in html
+				// <canvas id = "my_canvas" width="800" height="400">
+				// </canvas>
+				function init() {
+					var canvas = document.getElementById('my_canvas');
+					if(canvas.getContext) {
+						var ctx = canvas.getContext("2d");
 
+						// 1. draw rect
+						ctx.fillStyle = "#FAEBD7"; // color used to fill a shape
+						ctx.fillRect(0, 0, canvas.width, canvas.height);
+						// draw a rect from top left 0, 0 to width and height
+						
+						ctx.fillStyle = "#AF002A";
+						// every time you draw new shape, you have to change this value
+						// or new shape will use previous color and you will not see if
+						// it is overlaps with existing shape. 
+						ctx.fillRect(100, 100, 50, 50);
+						// fillRect are border less
+						
+						// 2. stroke rect
+						// border is called stroke in canvas, here is how you add border
+						ctx.lineWidth = 5; // border width
+						ctx.strokeStyle = "#A4C639"; // border color
+						ctx.strokeRect(100, 100, 50, 50); // draw border around the rect
+
+						// 3. draw circle (path)
+						ctx.beginPath(); // call this func to begin drawing a path
+							ctx.arc(200 /* center X */, 200 /* center Y */, 
+								50 /* radius */, 0 /* starting angle */, 
+								Math.PI*2 /* ending angle */, 
+								true /* anticlockwise */);
+							// this line draws a circle
+							ctx.fill(); // execute
+						ctx.closePath();
+
+						// 4. draw polygon
+						ctx.beginPath();
+							ctx.fillStyle = "#3B444";
+							ctx.moveTo(350, 200);
+							ctx.lineTo(400, 50); // draw a line to this point from prevous point
+							// new point stops at end of this line
+							ctx.lineTo(450, 200);
+						ctx.closePath();
+
+						// 4. draw stroke to polygon
+						ctx.strokeStyle = "#A4C639";
+						ctx.beginPath();
+							ctx.lineWidth = 5;
+							ctx.moveTo(350, 200);
+							ctx.lineTo(400, 50); 
+							ctx.lineTo(450, 200);
+						ctx.closePath();
+						ctx.stroke();
+
+						// 6. linear gradient fill
+						var linGrad = ctx.createLinearGradient(400, 100, 500, 500);
+						// top left, bottom right
+						linGrad.addColorStop(0, "#8DB600");
+						linGrad.addColorStop(0.5, "#9966CC");
+						linGrad.addColorStop(1, "#7C0A02");
+						ctx.fillStyle = linGrad;
+						//ctx.fillStyle = "rgba(10, 150, 255, 0.5)";
+						// this also works
+						ctx.fillRect(400, 100, 100, 100);
+
+						// 7. radial gradient fill
+						var radGrad = ctx.createRadialGradient(275, 250, 5, 290, 260, 100)
+						radGrad.addColorStop(0, "red");
+						radGrad.addColorStop(1, "white");
+						ctx.fillStyle = radGrad;
+						ctx.arc(250, 250, 50, 0, Math.PI*2, true);
+						ctx.fill();
+
+						// 8. draw text
+						ctx.font = "bold 40px Arial";
+						ctx.fillStyle = "#8db600";
+						ctx.fillText("Hello", 100, 100);
+
+						// 9. stroke text (add border to text)
+						ctx.strokeStyle = "black";
+						ctx.lineWidth = 2;
+						ctx.strokeText("Hello", 100, 100);
+
+						// 10. add shadow to text
+						ctx.shadowOffsetX = 2;
+						ctx.shadowOffsetY = 2;
+						ctx.shadowBlur    = 3;
+						ctx.shadowColor   = "black";
+						ctx.fillText("Hello", 100, 100);
+
+						// 11. lineCap
+						ctx.lineWidth = 20;
+						ctx.strokeStyle = "purple";
+						ctx.beginPath();
+							ctx.moveTo(200, 150);
+							ctx.lineCap = "round"; // "square"
+							ctx.lineTo(200, 250);
+							ctx.stroke();
+						ctx.closePath();
+
+						// 12. draw curve
+						ctx.arc(270, 270, 50, 0, Math.PI, true);
+						ctx.stroke();
+
+						// 13. draw bezier curve
+						ctx.strokeStyle = "blue";
+						ctx.beginPath();
+						ctx.moveTo(450, 250);
+						ctx.bezierCurveTo(550, 250, 450, 100, 550, 100);
+						ctx.stroke();
+						ctx.closePath();
+
+						// 14. scale & rotate
+						ctx.fillStyle = "purple";
+						ctx.fillRect(200, 200, 100, 100);
+						ctx.rotate(Math.PI / 4);
+						ctx.scale(0.5, 1);
+						ctx.fillRect(400, 500, 100, 100);
+						
+					}
+				}
+				onload = init;
 			}
 
 			function local_storage() {
