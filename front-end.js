@@ -2378,6 +2378,176 @@ function frontEnd () {
 			}
 			function angular() {
 
+				function bootstrap_app() {
+					// Normally below is what bootstraps the app using your module
+					// <div ng-app="myApp"> </div>
+					/*
+						While the example above is simple, it will not scale to large applications. Instead we recommend that you break your application to multiple modules like this:
+
+						A module for each feature
+						A module for each reusable component (especially directives and filters)
+						And an application level module which depends on the above modules and contains any initialization code.
+
+						Here is the best way to organize angular app:
+						http://angularjs.blogspot.com/2014/02/an-angularjs-style-guide-and-best.html
+					*/ 
+					
+					 
+					// you can use ngApp to bootstrap(start) angularjs application
+					// but you can also manually bootstrap your app. 
+					var source = "https://docs.angularjs.org/api/ng/function/angular.bootstrap";
+					/*
+					<!doctype html>
+					<html>
+						<body>
+							<div ng-controller="WelcomeController">
+							  {{greeting}}
+							</div>
+
+							<script src="angular.js"></script>
+							<script>
+							  var app = angular.module('demo', [])
+							  .controller('WelcomeController', function($scope) {
+							      $scope.greeting = 'Welcome!';
+							  });
+							  angular.bootstrap(document, ['demo']);
+							  // or you can do this:
+							  //angular.element(document).ready(function() {
+						    //  angular.bootstrap(document, ['myApp']);
+						    //});
+							</script>
+						</body>
+					</html>
+					*/
+				}
+
+				function what_is_angular_module() {
+					var source = "https://docs.angularjs.org/guide/module";
+					var angular_app_recommended_structure = "https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub";
+
+					/* 
+						module is container for different part of the app:
+							- controllers
+							- services
+							- filters
+							- directives
+							- etc..
+					*/
+				
+					// example: angular app organization 
+					angular.module('xmpl.directive', []);
+
+					angular.module('xmpl.filter', []);
+
+					angular.module('xmpl', ['xmpl.service', 'xmpl.directive', 'xmpl.filter'])
+
+					  .run(function(greeter, user) {
+					    // This is effectively part of the main method initialization code
+					    greeter.localize({
+					      salutation: 'Bonjour'
+					    });
+					    user.load('World');
+					  })
+
+					  .controller('XmplController', function($scope, greeter, user){
+					    $scope.greeting = greeter.greet(user.name);
+					  });
+					  /*
+						  Beware that using angular.module('myModule', []) will create 
+						  the module myModule and overwrite any existing module named myModule. 
+						  Use angular.module('myModule') to retrieve an existing module.
+					  */
+					
+				}
+
+				function protect_against_minification() {
+
+					app.controller('MyController', ['$scope', function($scope) {
+					  $scope.greeting = 'hello';
+					}]);
+
+				}
+
+				function default_filter_behavior() {
+					var source = "https://docs.angularjs.org/api/ng/filter/filter";
+					// in template:
+					// {{ filter_expression | filter : expression : comparator}}
+					// in javascript:
+					$filter('filter')(array, expression, comparator);
+
+					// expression can be string, hash object, or function(value, index, array)
+					// comparator is function to check if two input are equal. 
+				}
+
+				function use_default_uppercase_filter() {
+					var source = "https://docs.angularjs.org/api/ng/service/$filter";
+					// this is also angularjs provided.
+					angular.module('filterExample', [])
+						.controller('MainCtrl', function($scope, $filter) {
+						  $scope.originalText = 'hello';
+						  $scope.filteredText = $filter('uppercase')($scope.originalText);
+						});
+				}
+
+				function filter_components_provided_in_ng() {
+					var source = "https://docs.angularjs.org/api/ng/filter";
+					/*
+					*** Usage in javascript:
+					$filter('filterName')(...)
+					usage in template
+					
+					*** Usage in template
+					inputs | filterName: [params]
+					
+						filter
+						currency
+						number
+						date
+						json
+						lowercase
+						uppercase
+						limitTo
+						orderBy
+					*/
+				}
+
+				function customize_filter() {
+					// filter should take input and return a output, filtered value. 
+					// In Angular, filter definition should return a function which does the filtering. 
+					var source = "https://docs.angularjs.org/guide/filter";
+					angular.module('myReverseFilterApp', [])
+					.filter('reverse', function() {
+					  return function(input, uppercase) {
+					  	// in template, input is value before '|', e.g.:
+					  	// {{greeting | reverse:true}}
+					  	// so input is greeting, uppercase is true
+					    input = input || '';
+					    var out = "";
+					    for (var i = 0; i < input.length; i++) {
+					      out = input.charAt(i) + out;
+					    }
+					    // conditional based on optional argument
+					    if (uppercase) {
+					      out = out.toUpperCase();
+					    }
+					    return out;
+					  };
+					})
+					.controller('MyController', ['$scope', function($scope) {
+					  $scope.greeting = 'hello';
+					}]);	
+
+					// usage:
+					/*
+					<div ng-controller="MyController">
+					  <input ng-model="greeting" type="text"><br>
+					  No filter: {{greeting}}<br>
+					  Reverse: {{greeting|reverse}}<br>
+					  Reverse + uppercase: {{greeting|reverse:true}}<br>
+					</div>
+					*/				
+				}
+
 				function filter_usage() {
 					var app = angular.module("demoApp", ['ngResource']);
 
@@ -2396,13 +2566,17 @@ function frontEnd () {
 					  this.thisCanBeusedInsideNgBindHtml = '<ul><li>render me please</li></ul>';
 					}
 					// and use $sce.trustAsHtml() in the controller to convert the html string.
-					$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
+					$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(this.thisCanBeusedInsideNgBindHtml);
 
 					// for Angular 1.2, use:
 					// <div ng-bind-html-unsafe="expression"></div>
 				}
 
 				function transclude_usage(){
+				}
+
+				function ngValue_usage() {
+					var source = "https://docs.angularjs.org/api/ng/directive/ngValue";
 
 				}
 
@@ -2417,11 +2591,40 @@ function frontEnd () {
 					// &, = #
 				}
 
-				function service_provider_factory() {
+				function service_provider_factory_difference() {
+				}
+
+				function difference_ngIf_ngShow() {
 
 				}
 
-				function defer_usage() {
+				function what_is_myApp_value() {
+						//value(obj) - registers a value/object that can only be accessed by services, not providers.
+						// value(name, value);
+						// It is mentioned here: https://docs.angularjs.org/api/ng/type/angular.Module
+						// and here: https://docs.angularjs.org/api/auto/service/$provide#value
+						$provide.value('a', 123);	
+						myApp.value('decoration', {symbol: '*'});
+
+
+						angular.module('myModule', []).
+						  value('a', 123).
+						  factory('a', function() { return 123; }).
+						  directive('directiveName', '...').
+						  filter('filterName', '...');
+
+						// is same as
+
+						angular.module('myModule', []).
+						  config(function($provide, $compileProvider, $filterProvider) {
+						    $provide.value('a', 123);
+						    $provide.factory('a', function() { return 123; });
+						    $compileProvider.directive('directiveName', '...');
+						    $filterProvider.register('filterName', '...');
+						  });
+				}
+
+				function q_defer_usage() {
 
 				}
 
