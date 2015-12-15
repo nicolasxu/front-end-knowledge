@@ -2395,9 +2395,35 @@ function frontEnd () {
 	function Frameworks() {
 		function angularJS() {
 
-			// 1. what is control as? 
-			// 2. what is link func in directive? 
+			function angular_recipe() {
+				var source = "https://leanpub.com/recipes-with-angular-js/read";
 
+			}
+
+
+			function what_is_controller_as() {
+				var source = "https://docs.angularjs.org/api/ng/directive/ngController";
+				// <div id="ctrl-as-exmpl" ng-controller="SettingsController1 as settings">
+				// then you can use:
+				// 	 <div>{{settings.name}}</div>
+				// to access view model variables
+				// then attach method this way:
+				SettingsController1.prototype.greet = function() {
+				  alert(this.name);
+				  // doen't miss the prototype, since settings is created using 'new' operator
+				};
+
+				// in $routeProvider you also can use controllerAs
+				function config($routeProvider) {
+			    $routeProvider
+		        .when('/avengers', {
+	            templateUrl: 'avengers.html',
+	            controller: 'Avengers',
+	            controllerAs: 'vm'
+	            // vm is short for View Model
+		        });
+				}
+			}
 			function angular_style_guide() {
 				var github = "https://github.com/johnpapa/angular-styleguide";
 				// comprehensive guide for angular best practice, endosed by Angular team. 
@@ -2732,7 +2758,139 @@ function frontEnd () {
 
 			}
 
+			function $routeProvider_service() {
+				// make sure to load ['ngRoute'] to module before using $route, $routeProvider
+				// e.g.:
+				angular.module('ngRouteExampleApp', ['ngRoute'])
+					.controller(/* ... */);
+
+				// example configure the route using $routeProvider
+				angular.module('ngRouteExampleApp')
+					.config(function($routeProvider, $locationProvider) {
+					  $routeProvider
+					    .when('/Book/:bookId', {
+					    templateUrl: 'book.html',
+					    controller: 'BookController',
+					    controllerAs: 'vm',
+					    resolve: {
+					      // I will cause a 1 second delay
+					      delay: function($q, $timeout) {
+					        var delay = $q.defer();
+					        $timeout(delay.resolve, 1000);
+					        return delay.promise;
+					      }
+					    }
+					  })
+					  .when('/Book/:bookId/ch/:chapterId', {
+					    templateUrl: 'chapter.html',
+					    controller: 'ChapterController'
+					  });
+
+					  // configure html5 to get links working on jsfiddle
+					  $locationProvider.html5Mode(true);
+					});
+			}
+
+			function $routeParams_service() {
+				var source = "https://docs.angularjs.org/api/ngRoute/service/$route#";
+				// e.g.:
+				//    /Book/Gatsby/ch/4
+				//    $routeParams will be {"key":"value","bookId":"Gatsby","chapterId":"4"}
+				//    since route is defined as follow:
+				//    .when('/Book/:bookId/ch/:chapterId', {
+				//			    templateUrl: 'chapter.html',
+				//			    controller: 'ChapterController'
+				//			  });
+				//    
+			}
+
+			function $route_service() {
+
+				var source = "https://docs.angularjs.org/api/ngRoute/service/$route#";
+
+				$route.current; // holds the current route
+				$route.routes; // holds the route definition object
+				$route.reload(); // reload current route
+				// events fired
+				$routeChangeStart
+				$routeChangeSuccess
+				$routeChangeError
+				$routeUpdate
+				// example for catching events
+				angular('myApp')
+					.run(function($rootScope, $location) {
+				    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+				      if ($rootScope.loggedInUser == null) {
+				        // no logged user, redirect to /login
+				        if ( next.templateUrl === "partials/login.html") {
+				        } else {
+				          $location.path("/login");
+				        }
+				      }
+				    });
+				  });
+			}
+
 			function ui_router() {
+				var source = "https://angular-ui.github.io/ui-router/site/#/api/ui.router";
+				var guide = "https://github.com/angular-ui/ui-router/wiki";
+
+				// 1. simple state
+				$stateProvider.state('contacts', {
+				  template: '<h1>{{contact.title}}</h1>',
+				  controller: function($scope, simpleObj){
+				    this.title = 'My Contacts';
+				  },
+				  controllerAs: 'contact',
+				  resolve: {
+				  	simpleObj: function() {return {value: 'simple'}}
+				  }
+				});
+
+				/* 2. 
+				When the application is in a particular state—when a state is 
+				"active"—all of its ancestor states are implicitly active as well. 
+				Below, when the "contacts.list" state is active, the "contacts" state 
+				is implicitly active as well, because it's the parent state to "contacts.list".
+				 */
+				
+				/* 3. 
+				Child states DO inherit the following from parent states:
+
+					- Resolved dependencies via resolve
+					- Custom data properties
+				*/
+			
+				// 4. with named view, you can target parent view in ui_router
+				var example_nexted_view = "https://github.com/angular-ui/ui-router/wiki/Multiple-Named-Views";
+
+				// 5. get URL paramaters
+				$stateProvider.state('contacts.detail', {
+			    url: '/contacts/:contactId',   
+			    controller: function($stateParams){
+			      $stateParams.contactId  //*** Exists! ***//
+			    }
+				}).state('contacts.detail.subitem', {
+				  url: '/item/:itemId', 
+				  controller: function($stateParams){
+				    $stateParams.contactId //*** Watch Out! DOESN'T EXIST!! ***//
+				    // you can use resolve in parent state to resolve this
+				    // https://github.com/angular-ui/ui-router/wiki/URL-Routing
+				    $stateParams.itemId //*** Exists! ***//  
+				   }
+				});
+
+				// 6. use otherwise()
+				app.config(function($urlRouterProvider){
+				    // if the path doesn't match any of the urls you configured
+				    // otherwise will take care of routing the user to the specified url
+				    $urlRouterProvider.otherwise('/index');
+
+				    // Example of using function rule as param
+				    $urlRouterProvider.otherwise(function($injector, $location){
+				        // some advanced code...
+				    });
+				})
 
 			}
 
