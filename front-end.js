@@ -2378,6 +2378,22 @@ function frontEnd () {
 			}
 			function angular() {
 
+				// 1. what is control as? 
+				// 2. what is link func in directive? 
+
+				function angular_style_guide() {
+					var github = "https://github.com/johnpapa/angular-styleguide";
+					// comprehensive guide for angular best practice, endosed by Angular team. 
+					
+				}
+
+				function service() {
+					var source = "https://docs.angularjs.org/guide/services";
+					// service are 
+					// - Lazily instantiated
+					// - Singletons
+				}
+
 				function bootstrap_app() {
 					// Normally below is what bootstraps the app using your module
 					// <div ng-app="myApp"> </div>
@@ -2461,10 +2477,85 @@ function frontEnd () {
 				}
 
 				function protect_against_minification() {
-
+					// classic way
 					app.controller('MyController', ['$scope', function($scope) {
 					  $scope.greeting = 'hello';
 					}]);
+
+					// new way
+					angular
+						.controller('AvengersController', AvengersController);
+
+						AvengerController.$inject = ['movieService', '$delegate'];
+
+						function AvengerController(movieService, $delegate) {
+							// do the work
+						}
+				}
+
+				function what_is_$delegate_service() {
+					//$delegate
+				}
+
+				function what_is_$get_service() {
+					// $get
+				}
+
+				function how_to_use_$provide_decorator() {
+					var doc = "https://docs.angularjs.org/api/auto/service/$provide#decorator";
+					// $provide.decorator
+					// what is it for?
+					// real world example? 
+				}
+
+				function angular_animations()  {
+					var source = "https://docs.angularjs.org/guide/animations";
+					var ngAnimate_doc = "https://docs.angularjs.org/api/ngAnimate";
+					var Remastered_Animation = "http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html";
+
+
+					// use animate.css for conventional animations
+					var animate.css = "http://daneden.github.io/animate.css/";
+
+				}
+
+				function handle_route_change_error() {
+					var source = "https://github.com/johnpapa/angular-styleguide#style-y112";
+
+					/* recommended */
+					var handlingRouteChangeError = false;
+
+					function handleRoutingErrors() {
+				    /**
+				     * Route cancellation:
+				     * On routing error, go to the dashboard.
+				     * Provide an exit clause if it tries to do it twice.
+				     */
+				    $rootScope.$on('$routeChangeError',
+				        function(event, current, previous, rejection) {
+			            if (handlingRouteChangeError) { return; }
+			            handlingRouteChangeError = true;
+			            var destination = (current && (current.title ||
+			                current.name || current.loadedTemplateUrl)) ||
+			                'unknown target';
+			            var msg = 'Error routing to ' + destination + '. ' +
+			                (rejection.msg || '');
+
+			            /**
+			             * Optionally log using a custom service or $log.
+			             * (Don't forget to inject custom service)
+			             */
+			            logger.warning(msg, [current]);
+
+			            /**
+			             * On routing error, go to another route/state.
+			             */
+				          $location.path('/');
+				          handlingRouteChangeError = false;
+
+					        }
+					    );
+					}
 
 				}
 
