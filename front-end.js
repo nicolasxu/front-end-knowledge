@@ -4805,6 +4805,34 @@ function frontEnd () {
 		function grunt() {
 
 		}
+
+		function webpack() {
+			var source = "http://www.shmck.com/webpack-angular-part-1/";
+			// simple webpack config
+			'use strict';
+
+			var webpack = require('webpack'),
+			path = require('path');
+
+
+			var baseDirectory = __dirname + '/app';
+
+			console.log(baseDirectory);
+
+			module.exports = {
+				// config goes here
+				context: baseDirectory, 
+				// The base directory (absolute path!) for resolving the entry option. 
+				// Default: process.cwd()
+				entry: {
+					app: './app.js'
+				},
+				output: {
+					path: baseDirectory,
+					filename: 'bundle.js'
+				}
+			};
+		} // end of webpack
 	}
 
 	function git_command() {
