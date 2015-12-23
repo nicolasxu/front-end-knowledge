@@ -2944,6 +2944,87 @@ function frontEnd () {
 
 		function backboneJS() {
 
+			function router() {
+				var source = "http://backbonejs.org/#Router";
+
+				var Workspace = Backbone.Router.extend({
+				  routes: {
+				    "help":                 "help",    // #help
+				    "search/:query":        "search",  // #search/kiwis
+				    "search/:query/p:page": "search"   // #search/kiwis/p7
+				  },
+				  help: function() {
+				  },
+				  search: function(query, page) {
+				  }
+				});
+			}
+			function route_param_example() {
+				// 1. :param, which match a single URL component between slashes
+				// 2. *splat, which can match any number of URL components
+				// 3. Part of a route can be made optional by surrounding it 
+				//    in parentheses (/:optional)
+				
+				var route_example1= "search/:query/p:page";
+				// => #search/obama/p2, passing "obama" and "2"
+				
+				var route_example2 = "file/*path";
+				// => match #file/nested/folder/file.txt
+				// , passing "nested/folder/file.txt" to the action
+				
+				var route_example3 = "docs/:section(/:subsection)";
+				// will match #docs/faq, and #docs/faq/installing
+				// passing "faq" to the action in the first case, and 
+				// passing "faq" and "installing" to the action in the second
+				
+				var route_example4 = "docs";
+				var route_example5 = "docs/";
+				// example 4 and 5 are different path
+				var route_example6 = "docs(/)"; 
+				// example 6 will capture both cases of 4 and 5
+			}
+			function route_change_event() {
+				// listen to route match event
+				var routes = {
+				  "help/:page":         "help",
+				  "download/*path":     "download",
+				  "folder/:name":       "openFolder",
+				  "folder/:name-:mode": "openFolder"
+				}
+
+				router.on("route:help", function(page) {
+				  ///...
+					});
+			}
+			function trigger_route_func() {
+				router.navigate("help/troubleshooting", {trigger: true});
+				// trigger route function
+				router.navigate("help/troubleshooting", {trigger: true, replace: true});
+				// replace current histry entry (not creating new entry)
+			}
+			function route_execute_func() {
+				// when 1. route is matched, and 
+				// 2. callback is about to be executed (not executing)
+				// execute function is triggered. 
+				// Return false stops the route transition and route func will not triggered.
+				
+				// you can use execute fun to 
+				//   1. parse query string
+				//   2. check login
+				
+				var Router = Backbone.Router.extend({
+				  execute: function(callback, args, name) {
+				    if (!loggedIn) {
+				      goToLogin();
+				      return false;
+				    }
+				    args.push(parseQueryString(args.pop()));
+				    if (callback) callback.apply(this, args);
+				  }
+				});
+			}
+
+
 		}
 	}
 
