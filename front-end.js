@@ -3024,6 +3024,82 @@ function frontEnd () {
 				});
 			}
 
+			function view_component() {
+
+				var DocumentRow = Backbone.View.extend({
+
+				  tagName: "li",
+
+				  className: "document-row",
+
+				  events: {
+				    "click .icon":          "open",
+				    "click .button.edit":   "openEditDialog",
+				    "click .button.delete": "destroy"
+				  },
+
+				  initialize: function() {
+				    this.listenTo(this.model, "change", this.render);
+				  },
+
+				  render: function() {
+				    //...
+				  }
+
+				});
+			}
+
+			function view_render_func() {
+
+				var Bookmark = Backbone.View.extend({
+				  template: _.template('...'),
+				  render: function() {
+				    this.$el.html(this.template(this.model.attributes));
+				    return this;
+				  }
+				});
+			}
+			function view_event_func() {
+				var ENTER_KEY = 13;
+				var InputView = Backbone.View.extend({
+
+				  tagName: 'input',
+
+				  events: {
+				    "keydown" : "keyAction",
+				  },
+
+				  render: function() { '...' },
+
+				  keyAction: function(e) {
+				    if (e.which === ENTER_KEY) {
+				      this.collection.add({text: this.$el.val()});
+				    }
+				  }
+				});
+			}
+
+			function extend_object_mixin() {
+				var source = "http://addyosmani.com/backbone-fundamentals/#routers";
+				// Mixin
+				_.extend(ourObject, Backbone.Events);
+
+				function dancing (msg) { console.log("We started " + msg); }
+
+				// Add namespaced custom events
+				ourObject.on("dance:tap", dancing);
+				ourObject.on("dance:break", dancing);
+
+				// Trigger the custom events
+				ourObject.trigger("dance:tap", "tap dancing. Yeah!");
+				ourObject.trigger("dance:break", "break dancing. Yeah!");
+
+				// This one triggers nothing as no listener listens for it
+				ourObject.trigger("dance", "break dancing. Yeah!");
+
+
+			}
+
 
 		}
 	}
@@ -3674,6 +3750,34 @@ function frontEnd () {
 			// 9. calc(), attr(data-content), 
 		}
 		function snippets() {
+
+			function transparent_button() {
+				var source = "http://jsfiddle.net/cfypt7yh/3/";
+				/*
+				button {
+				    background-color: Transparent;
+				    background-repeat:no-repeat;
+				    cursor:pointer;
+				    overflow: hidden;
+				    outline:none;
+				    height:  38px;
+				    line-height:  40px;
+				    border:  2px solid white;
+				    display:  inline-block;
+				    float:  none;
+				    text-align:  center;
+				    width:  120px;
+				    padding:  0px!important;
+				    font-size:  14px;
+				    color:  #fff;
+				 }
+
+				button:hover  {
+				     color:  #fff;
+				     background:  rgba(255, 255, 255, 0.2);
+				 }
+				*/
+			}
 
 			function not_selector_adding() {
 				//input:not([type="radio"]):not([type="checkbox"])
