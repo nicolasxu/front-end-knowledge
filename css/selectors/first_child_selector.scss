@@ -1,0 +1,13 @@
+// first_child_selector
+// http://stackoverflow.com/questions/2717480/css-selector-for-first-element-with-class
+// it can only to select first child relative to a parent element,
+// not working to select "first element with red class", since red class may not be 
+// the first child
+
+.list:first-child {
+	background-color: yellow;
+}
+
+
+				
+			

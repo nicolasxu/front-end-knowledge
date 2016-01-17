@@ -1,0 +1,10 @@
+// children_selector ">"
+
+
+div > p {
+	background: yellow;
+}
+
+// select children p of div
+// note the difference: ancestor, parent, children, descendent
+			

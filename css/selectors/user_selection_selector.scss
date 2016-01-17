@@ -1,0 +1,13 @@
+//user_selection_selector
+// ::selection
+// it targets user selected text, example: http://www.w3schools.com/cssref/sel_selection.asp
+
+::selection {
+	color: red;
+	background: yellow;
+}
+::-moz-selection {
+	color: red;
+	background: yellow;
+}
+	

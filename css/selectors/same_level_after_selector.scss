@@ -1,0 +1,11 @@
+// same_level_after_selector
+	// ~ selector
+	
+p ~ ul {
+	background: green;
+}
+	
+	// select all the uls 
+	// 1. at same level, and 
+	// 2. after p
+	// notes: p and ul doesn't have to next to each other	

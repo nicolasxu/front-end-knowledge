@@ -1,0 +1,10 @@
+
+// same_level_mmediate_after_selector
+
+	
+div + p {
+	background: yellow;
+}
+
+// select one p immediately after div, 
+// div and p must be at same level

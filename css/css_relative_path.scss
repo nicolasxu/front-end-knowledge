@@ -1,0 +1,12 @@
+// http://stackoverflow.com/questions/940451/using-relative-url-in-css-file-what-location-is-it-relative-to
+			
+div#header { 
+  background-image: url('images/header-background.jpg');
+}
+ /*
+answer:
+Partial URLs are interpreted relative to the source of the style sheet file
+where this line of code exists
+(the one linked in html file), 
+not relative to the html document
+*/

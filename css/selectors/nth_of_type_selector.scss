@@ -1,0 +1,11 @@
+// nth_of_type_selector
+	
+	// if you want to select 2nd element with "red" class on it
+	
+.red:nth-of-type(2) {
+  border:5px solid red;
+} 
+.red:first-of-type {
+  border:5px solid red;
+} 
+	

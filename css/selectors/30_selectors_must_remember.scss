@@ -1,0 +1,38 @@
+// http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048
+
+
+// 11
+X[href="foo"] {}
+// 12. 
+X[href*="nettuts"] {}
+// 13. 
+X[href^="http"] {}
+// 14. 
+X[href$=".jpg"] {}
+// 16. 
+X[foo~="bar"] {}
+//    The tilda (~) symbol allows us to target an attribute which has a 
+//    spaced-separated list of values.
+//    .e.g: <a href="path/to/image.jpg" data-info="external image"> Click Me, Fool </a>
+
+// 18. 
+X:after, X:before {}
+//     append element after X
+// 20. 
+X:not(selector), e.g.: div:not(#container), *:not(p) {}
+
+// 21. pseudoElement
+X::first-line, p::first-letter {} 
+// 22. 
+li:nth-child(3), li:nth-last-child(2) {}
+// 24. 
+ul:nth-of-type, ul:nth-last-of-type(3) {}
+// 26. 
+li:first-child, li:last-child {}
+// 27. It allows you to target elements which are the only child of its parent)
+div p:only-child {}
+// 29. Specify a background color for every 
+// <ul> element that is the only child of its type, of its parent:
+li:only-of-type, ul > li:only-of-type {}
+// 30. 
+[data-role="page"] {} // this is an attribute selector
