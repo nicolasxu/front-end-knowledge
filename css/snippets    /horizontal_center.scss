@@ -1,0 +1,45 @@
+var source = "http://stackoverflow.com/questions/114543/horizontally-center-a-div-in-a-div?";
+// method 1:
+// works on all browser, con: width must set
+
+	#inner {
+	width: 50%; /* width value is must exist */
+	margin: 0 auto;
+} 
+
+// method 2: unknown width
+// works IE8+, doesn't matter the inner width
+
+#inner {
+  display: table;
+  margin: 0 auto;
+}
+
+// method 3: unknown width
+  /*
+	example:
+	<div id="wrapper" style="text-align: center">    
+	  <div id="yourdiv" style="display: inline-block;">You text</div>
+	</div>
+	*/
+#outer {
+  width: 100%;
+  text-align: center;
+}
+
+#inner {
+  display: inline-block;
+}
+
+ 
+// method 4: both horizontal & vertical center
+//<div class="content">This works with any content</div>
+
+.content {
+  position: absolute;
+  left: 50%;
+  top: 50%; // make top left to the center
+  -webkit-transform: translate(-50%, -50%);  // 50% of the content element itself
+  transform: translate(-50%, -50%);
+}
+

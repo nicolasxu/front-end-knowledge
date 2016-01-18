@@ -1,0 +1,10 @@
+// wild_characters_for_class
+below selector is not working
+.tocolor-*{
+  background: red;
+}
+
+// but you can do this:
+div[class^="tocolor-"], div[class*=" tocolor-"] {
+  color:red;
+}

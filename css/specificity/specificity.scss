@@ -1,0 +1,30 @@
+// specificity
+
+/*
+explanation:
+http://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
+
+Specificity hierarchy Link
+	Every selector has its place in the specificity hierarchy. 
+	There are four distinct categories which define the specificity level of a given selector:
+	1. Inline styles (Presence of style in document).
+	An inline style lives within your XHTML document. It is attached directly to the element to be styled. E.g. <h1 style="color: #fff;">
+	2. IDs (# of ID selectors)
+	ID is an identifier for your page elements, such as #div.
+	3. Classes, attributes and pseudo-classes (# of class selectors).
+	This group includes .classes, [attributes] and pseudo-classes such as :hover, :focus etc.
+	4. Elements and pseudo-elements (# of Element (type) selectors).
+	Including for instance :before and :after.
+
+How to measure specificity? Link
+	Memorize how to measure specificity. 
+	“Start at 0, 
+	add 1000 for style attribute, 
+	add 100 for each ID, 
+	add 10 for each attribute, class or pseudo-class, 
+	add 1 for each element name or pseudo-element. So in
+	body #content .data img:hover
+	the specificity value would be 122 (0,1,2,2 or 0122): 
+	100 for #content, 10 for .data, 10 for :hover, 1 for body and 1 for img.” [CSS Specificity]
+
+ */

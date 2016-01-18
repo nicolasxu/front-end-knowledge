@@ -1,0 +1,6 @@
+// alternating row color
+table tr:nth-child(odd) td{
+	background-color: #000000;
+}
+table tr:nth-child(even) td{
+}

@@ -3564,454 +3564,108 @@ function frontEnd () {
 		}
 
 		function specificity() {
-			/*
-			explanation:
-			http://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
-			
-			Specificity hierarchy Link
-				Every selector has its place in the specificity hierarchy. There are four distinct categories which define the specificity level of a given selector:
-				1. Inline styles (Presence of style in document).
-				An inline style lives within your XHTML document. It is attached directly to the element to be styled. E.g. <h1 style="color: #fff;">
-				2. IDs (# of ID selectors)
-				ID is an identifier for your page elements, such as #div.
-				3. Classes, attributes and pseudo-classes (# of class selectors).
-				This group includes .classes, [attributes] and pseudo-classes such as :hover, :focus etc.
-				4. Elements and pseudo-elements (# of Element (type) selectors).
-				Including for instance :before and :after.
 
-			How to measure specificity? Link
-				Memorize how to measure specificity. 
-				“Start at 0, 
-				add 1000 for style attribute, 
-				add 100 for each ID, 
-				add 10 for each attribute, class or pseudo-class, 
-				add 1 for each element name or pseudo-element. So in
-				body #content .data img:hover
-				the specificity value would be 122 (0,1,2,2 or 0122): 100 for #content, 10 for .data, 10 for :hover, 1 for body and 1 for img.” [CSS Specificity]
-
-			 */
 		}
 
 		function css_properties_explanation() {
-			// 1. white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit;
-			var explanation = "http://www.w3schools.com/cssref/pr_text_white-space.asp";
-
-			// 2. clip: auto|shape|initial|inherit;
-			//    object.style.clip="rect(0px,50px,50px,0px)"
-			var explanation_clip = "http://www.w3schools.com/cssref/pr_pos_clip.asp";
-
-			// 3. content: attr(data-content); /* dynamic content for the pseudo element */
-			//    data-content is attribute in the tag
-			// 4. user-select: none
-			//    disable user selecting a text
-			var user_select_explanation = "http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting";
-			// 5. pointer-events: none;
-			var pointer_events_explanation = "https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events";
-			// 6. word-wrap:  normal|break-word|initial|inherit;
-			// 7. word-break: normal|break-all|keep-all|initial|inherit;
-			//    The word-break property specifies line breaking rules for non-CJK scripts.
-			// 8. text-overflow: clip|ellipsis|string|initial|inherit
-			// 9. calc(), attr(data-content), 
+	
 		}
 		function snippets() {
 
 			function transparent_button() {
-				var source = "http://jsfiddle.net/cfypt7yh/3/";
-				/*
-				button {
-				    background-color: Transparent;
-				    background-repeat:no-repeat;
-				    cursor:pointer;
-				    overflow: hidden;
-				    outline:none;
-				    height:  38px;
-				    line-height:  40px;
-				    border:  2px solid white;
-				    display:  inline-block;
-				    float:  none;
-				    text-align:  center;
-				    width:  120px;
-				    padding:  0px!important;
-				    font-size:  14px;
-				    color:  #fff;
-				 }
+				
 
-				button:hover  {
-				     color:  #fff;
-				     background:  rgba(255, 255, 255, 0.2);
-				 }
-				*/
 			}
 
 			function not_selector_adding() {
-				//input:not([type="radio"]):not([type="checkbox"])
-				//:not([attr][attr2])
-				// but this is not working
-				// form input:not([type="radio"], [type="checkbox"]) {
-				  /* css here */
-				//}
+
 			}
 
 			function alternate_row_color() {
 
-				// table tr:nth-child(odd) td{
-				// 	background-color: #000000;
-				// }
-				// table tr:nth-child(even) td{
-				// }
+		
 			}
 
 			function use_css_to_set_img_src() {
-				var source = "http://stackoverflow.com/questions/2182716/is-it-possible-to-set-the-equivalent-of-a-src-attribute-of-an-img-tag-in-css";
-				/*
-				<style>
-				.MyClass123{
-					content:url("http://imgur.com/SZ8Cm.jpg");
-				}
-				</style>
-
-				<img class="MyClass123"/>
-				*/
+		
 			}
 
 			function find_out_unused_css_rule() {
-				var source = "http://stackoverflow.com/questions/135657/tool-to-identify-unused-css-definitions";
-				var firefox_plugin = "https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/";
+
 
 			}
 
 			function multiple_font_file_for_same_font() {
-				var source = "http://stackoverflow.com/questions/2436749/how-to-add-multiple-font-files-for-the-same-font";
-				// each for different sub style for the same font
-				// @font-face {
-				//   font-family: "DejaVu Sans";
-				//   src: url("fonts/DejaVuSans.ttf");
-				// }
-				// @font-face {
-			 //    font-family: "DejaVu Sans";
-			 //    src: url("fonts/DejaVuSans-Bold.ttf");
-			 //    font-weight: bold;
-				// }
-				// @font-face {
-			 //    font-family: "DejaVu Sans";
-			 //    src: url("fonts/DejaVuSans-Oblique.ttf");
-			 //    font-style: italic, oblique;
-				// }
-				// @font-face {
-			 //    font-family: "DejaVu Sans";
-			 //    src: url("fonts/DejaVuSans-BoldOblique.ttf");
-			 //    font-weight: bold;
-			 //    font-style: italic, oblique;
-				// }
+
 			}
 
 			function no_way_to_set_background_image_from_right() {
-				var source = "http://stackoverflow.com/questions/5142405/offset-a-background-image-from-the-right-using-css";
-				// work around:
-				// - setting a margin-right on the element instead
-				// - adding transparent pixels to the image itself and positioning it top right
-				// - or calculating the position using jQuery after the element's width is known.
+			
 			}
 
 			function how_to_style_hr_element() {
-				var source = "http://www.syntaxxx.com/how-to-style-hr-with-css/";
 
-				// hr {
-				// 	width: 80%;
-				// 	height: 8px;
-				// 	margin-left: auto;
-				// 	margin-right: auto;
-				// 	background-color:#FF0066;
-				// 	color:#FF0066;
-				// 	border: 0 none;
-				// 	margin-top: 100px;
-				// 	margin-bottom:100px;
-				// 	}
 			}
 
 			function wild_characters_for_class() {
-				var source = "http://stackoverflow.com/questions/5110249/wildcard-in-css-for-classes";
-				// below selector is not working
-				// .tocolor-*{
-				//   background: red;
-				// }
-				// but you can do this:
-				
-				// div[class^="tocolor-"], div[class*=" tocolor-"] {
-				//   color:red 
-				// }
+
 
 			}
 
 			function box_shadow_only_one_side() {
 				
-				// .myDiv {
-				//     border: 1px solid #333;
-				//     width: 100px;
-				//     height: 100px;
-				//     -webkit-box-shadow: 10px 0 5px -2px #888;
-				//             box-shadow: 10px 0 5px -2px #888;
-				// }
-				// params:
-				//   1. x position
-				//   2. y position
-				//   3. bur radius
-				//   4. shadow size, in px. 0 is same as box size, 
-				//     5px is 5px larger than orginal box
-				//     -5px is 5px small than original box
-				//   5. color
+
 			}
 
 			function two_background_images() {
-				var source = "http://stackoverflow.com/questions/423172/can-i-have-multiple-background-images-using-css";
-				// body {
-				//   background-image: url(images/bgtop.png), url(images/bg.png);
-				//   background-repeat: repeat-x, repeat;
-				// }
-				// example here: http://www.css3.info/preview/multiple-backgrounds/
+
 			}
 
 			function customize_image_in_list() {
 
-				// li{
-				//   list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAE0lEQVQIW2NkYGD4D8RwwEi6AACaVAQBULo4sgAAAABJRU5ErkJggg==");
-				// }
-				// or you can use li:before following:
-				// ul {
-				//     list-style: none;
-				//     padding:0;
-				//     margin:0;
-				// }
-
-				// li { 
-				//     padding-left: 1em; 
-				//     text-indent: -.7em;
-				// }
-
-				// li:before {
-				//     content: "• ";
-				//     color: red; /* or whatever color you prefer */
-				// }
 			}
 
 			function sass_$for_loop() {
-				var explanation = "http://sass-lang.com/documentation/file.SASS_REFERENCE.html#_10";
 
-				// @for $i from 1 through 3 {
-				//   .item-#{$i} { width: 2em * $i; }
-				// }
-				// is compiled to:
-
-				// .item-1 {
-				//   width: 2em; }
-				// .item-2 {
-				//   width: 4em; }
-				// .item-3 {
-				//   width: 6em; }
-				
-				//used here: http://creative-punch.net/2014/01/pure-css-loader-animation-using-sass-compass/
-				/*
-				@for $i from 1 to ($elements + 1)
-			  div.loader div:nth-child(#{$i})
-			    animation-delay: #{sin(360deg * ($i / ($elements * $multiplier)))}s
-			    background-color: hsl((360deg * ($i / $elements)), 50%, 60%)
-				*/
 			}
 
 			function font_face(){
 
-				// @font-face {
-				//   font-family: 'icomoon';
-				//   src:url('fonts/icomoon.eot?-5fbd21');
-				//   src:url('fonts/icomoon.eot?#iefix-5fbd21') format('embedded-opentype'),
-				//     url('fonts/icomoon.woff?-5fbd21') format('woff'),
-				//     url('fonts/icomoon.ttf?-5fbd21') format('truetype'),
-				//     url('fonts/icomoon.svg?-5fbd21#icomoon') format('svg');
-				//   font-weight: normal;
-				//   font-style: normal;
-				// }
+
 			}
 
 			function customize_bootstrap_nav_bar() {
-				// set the color in css
-				// download the bootstrap css in component, configure and compile
-				// http://getbootstrap.com/customize/
+
 				
 			}
 
 			function make_bootstrap_column_same_height() {
-				var source = "http://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height";
-				// method 1
-				/* 
-				
-				.row{
-				  overflow: hidden; 
-				}
-
-				[class*="col-"]{
-				  margin-bottom: -99999px;
-				  padding-bottom: 99999px;
-				}
-
-				*/
-				// method 2
-				/*
-				.row {
-				  display: table;
-				}
-
-				[class*="col-"] {
-				  float: none;
-				  display: table-cell;
-				  vertical-align: top;
-				}
-
-				*/
-				// method 3, flex
-				/*
-				row {
-				  display: -webkit-box;
-				  display: -webkit-flex;
-				  display: -ms-flexbox;
-				  display:         flex;
-				}
-				 */
+		
 			}
 
 			function pre_tag_css_wrap_code() {
-				var source = "https://longren.io/wrapping-text-inside-pre-tags/";
-				var stackoverflow = "http://stackoverflow.com/questions/248011/how-do-i-wrap-text-in-a-pre-tag";
 
-					// best solution:
-					// pre {
-					//  white-space: pre-wrap;       /* css-3 */
-					//  white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
-					//  white-space: -pre-wrap;      /* Opera 4-6 */
-					//  white-space: -o-pre-wrap;    /* Opera 7 */
-					//  word-wrap: break-word;       /* Internet Explorer 5.5+ */
-					//  width: 99%;
-					// }
 			}
 
 			function background_image_size() {
-				var source = "http://stackoverflow.com/questions/1341358/set-size-on-background-image-with-css";
-				// .stretch{
-				// /* Will stretch to specified width/height */
-				//   background-size: 200px 150px;
-				// }
-				// .stretch-content{
-				// /* Will stretch to width/height of element */
-				//   background-size: 100% 100%;
-				// }
 
-				// .resize-width{
-				// /* width: 150px, height: auto to retain aspect ratio */
-				//   background-size: 150px Auto;
-				// }
-				// .resize-height{
-				// /* height: 150px, width: auto to retain aspect ratio */
-				//   background-size: Auto 150px;
-				// }
-				// .resize-fill-and-clip{ 
-				//   /* Resize to fill and retain aspect ratio.
-				//      Will cause clipping if aspect ratio of box is different from image. */ 
-				//   background-size: cover;
-				// }
-				// .resize-best-fit{
-				// /* Resize to best fit and retain aspect ratio.
-				//    Will cause gap if aspect ratio of box is different from image. */ 
-				//   background-size: contain;
-				// }
 			}
 
 			function style_checkbox_radio_button_css3() {
-				// before, you can not do it in css alone,
-				// but now you can do it in css3
-				var source = "http://webdesign.tutsplus.com/tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons--webdesign-8953";
-				var source2 = "http://stackoverflow.com/questions/4148499/how-to-style-checkbox-using-css";
-				// there are generators to help you, e.g.: http://www.csscheckbox.com/
-				
-				// html
-				/*
-					<input type="checkbox" id="c1" name="cc" />
-					<label for="c1"><span></span>Check Box 1</label>
-				*/
-				/*
-				
-				input[type="checkbox"] {
-				    display:none;
-				}
-				input[type="checkbox"] + label span {
-				    display:inline-block;
-				    width:19px;
-				    height:19px;
-				    margin:-1px 4px 0 0;
-				    vertical-align:middle;
-				    background:url(check_radio_sheet.png) left top no-repeat;
-				    cursor:pointer;
-				}
-				input[type="checkbox"]:checked + label span {
-				    background:url(check_radio_sheet.png) -19px top no-repeat;
-				}
 
-
-			  */
 			}
 
 			function hide_spinner_on_input_number() {
-				var source = "http://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box";
-				/*
-				input[type="number"]::-webkit-outer-spin-button,
-				input[type="number"]::-webkit-inner-spin-button {
-				    -webkit-appearance: none;
-				    margin: 0;
-				}
-				input[type="number"] {
-				    -moz-appearance: textfield;
-				}
-				<input type="number" />
 
-				 */
 			}
 
 			function resize_img_proportionally_css() {
-				// img.resize{
-				//   width:540px;  // you can use % 
-				//   height: auto;
-				// }
-				
-				// or use the max-width or max-height
-				/*
-				#your-img {
-				    height: auto; 
-				    width: auto; 
-				    max-width: 300px; 
-				    max-height: 300px;
-				} 
-				*/
+
+
 			}
 
 			function inheret_class() {
-				var source = "http://stackoverflow.com/questions/1065435/can-a-css-class-inherit-one-or-more-other-classes";
-				/* LESS */
-				/*
-				.rounded_corners {
-				  -moz-border-radius: 8px;
-				  -webkit-border-radius: 8px;
-				  border-radius: 8px;
-				}
 
-				#header {
-				  .rounded_corners;
-				}
-
-				#footer {
-				  .rounded_corners;
-				}
-				*/
-				
-				// you can also do it this way in html tag
-				// <div class="firstClass secondClass thirdclass fourthclass"></div>
 			}
 
 			function css_target_vendor_browser() {
@@ -4503,12 +4157,7 @@ function frontEnd () {
 			}
 
 			function disable_bullet_in_ol () {
-				var source = "http://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets";
-				/*
-				ul {
-					  list-style-type: none;
-					}
-				*/
+
 			}
 
 			function align_label_checkbox() {
@@ -4520,96 +4169,21 @@ function frontEnd () {
 				// }
 			}
 			function horizontal_center() {
-				var source = "http://stackoverflow.com/questions/114543/horizontally-center-a-div-in-a-div?";
-				// method 1:
-				// works on all browser
-				/*
-					#inner {
-	    		width: 50%;
-	    		margin: 0 auto;
-				} 
-				*/
-				// method 2: unknown width
-				// works IE8+, doesn't matter the inner width
-				/*
-				#inner {
-				  display: table;
-				  margin: 0 auto;
-				}
-				 */
-				// method 3: unknown width
-				/*
-					#outer {
-					  width: 100%;
-					  text-align: center;
-					}
 
-					#inner {
-					  display: inline-block;
-					}
-					example:
-					<div id="wrapper" style="text-align: center">    
-					  <div id="yourdiv" style="display: inline-block;">You text</div>
-					</div>
-				 */
-				// method 4: both horizontal & vertical center
-				//<div class="content">This works with any content</div>
-				/*
-				.content {
-				  position: absolute;
-				  left: 50%;
-				  top: 50%;
-				  -webkit-transform: translate(-50%, -50%);
-				  transform: translate(-50%, -50%);
-				}
-
-				*/
 			}
 			function set_placeholder_color_style() {
-				var source = "http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css";
-				// <input type="text" placeholder="Value">
 
-				// ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-				//     color:    #909;
-				// }
-				// :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-				//    color:    #909;
-				//    opacity:  1;
-				// }
-				// ::-moz-placeholder { /* Mozilla Firefox 19+ */
-				//    color:    #909;
-				//    opacity:  1;
-				// }
-				// :-ms-input-placeholder { /* Internet Explorer 10-11 */
-				//    color:    #909;
-				// }
 			}
 
 			function table_cell_padding_and_border() {
-				var source = "http://stackoverflow.com/questions/339923/set-cellpadding-and-cellspacing-in-css";
-
-				/*
-					table {border-collapse: collapse;}
-					td    {padding: 6px;}
-				*/
+	
 			}
 
 			function css_triangle() {
-				var source = "http://stackoverflow.com/questions/7073484/how-do-css-triangles-work";
-				/*
-				#triangle-up {
-				    width: 0;
-				    height: 0;
-				    border-left: 50px solid transparent;
-				    border-right: 50px solid transparent;
-				    border-bottom: 100px solid red;
-				}
-				*/
-				// for more interesting answers, go to the source link
+		
 			}
 
 			function style_half_character() {
-				var source = "http://stackoverflow.com/questions/23569441/is-it-possible-to-apply-css-to-half-of-a-character";
 			}
 		}
 

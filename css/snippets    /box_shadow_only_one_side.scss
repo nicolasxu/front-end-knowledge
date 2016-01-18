@@ -1,0 +1,23 @@
+// box_shadow_only_one_side
+// https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+.myDiv {
+    border: 1px solid #333;
+    width: 100px;
+    height: 100px;
+    -webkit-box-shadow: 10px 0 5px -2px #888;
+            box-shadow: 10px 0 5px -2px #888;
+}
+
+box-shadow: 3px 3px red, -1em 0 0.4em olive; // double shadow
+
+
+/*
+params:
+  1. x position
+  2. y position
+  3. bur radius
+  4. shadow size, in px. 0 is same as box size, 
+    5px is 5px larger than orginal box
+    -5px is 5px small than original box
+  5. color
+*/

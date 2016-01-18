@@ -1,0 +1,7 @@
+// no_way_to_set_background_image_from_right
+
+// http://stackoverflow.com/questions/5142405/offset-a-background-image-from-the-right-using-css
+// work around:
+// - setting a margin-right on the element instead
+// - adding transparent pixels to the image itself and positioning it top right
+// - or calculating the position using jQuery after the element's width is known.

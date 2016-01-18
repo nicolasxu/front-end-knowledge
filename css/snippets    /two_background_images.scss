@@ -1,0 +1,6 @@
+// http://stackoverflow.com/questions/423172/can-i-have-multiple-background-images-using-css
+body {
+  background-image: url(images/bgtop.png), url(images/bg.png);
+  background-repeat: repeat-x, repeat;
+}
+// example here: http://www.css3.info/preview/multiple-backgrounds/

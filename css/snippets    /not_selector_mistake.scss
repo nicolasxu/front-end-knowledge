@@ -1,0 +1,7 @@
+input:not([type="radio"]):not([type="checkbox"]) {}
+:not([attr][attr2]) {}
+
+// but this is not working
+form input:not([type="radio"], [type="checkbox"]) {
+  /* css here */
+}

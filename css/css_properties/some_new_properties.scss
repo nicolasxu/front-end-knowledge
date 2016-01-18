@@ -1,0 +1,36 @@
+// 1. 
+white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit;
+	// http://www.w3schools.com/cssref/pr_text_white-space.asp
+
+	// 2. 
+	clip: auto|shape|initial|inherit;
+	//    object.style.clip="rect(0px,50px,50px,0px)"
+	// explanation: http://www.w3schools.com/cssref/pr_pos_clip.asp
+
+	// 3. 
+	content: attr(data-content); /* dynamic content for the pseudo element */
+	//    data-content is attribute in the tag
+	
+	// 4. disable user selecting a text
+	user-select: none
+	// Detail explanation: 
+	// http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting";
+	
+	// 5. 
+	pointer-events: none;
+	// explanation: https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events";
+	// 6. 
+	word-wrap: normal|break-word|initial|inherit;
+	//
+	//	The word-wrap property is used to specify whether or not the browser may 
+	//    break lines within words in order to prevent overflow when an otherwise 
+	//    unbreakable string is too long to fit in its containing box.
+	// 7. 
+	word-break: normal|break-all|keep-all|initial|inherit;
+	// word break for CJK (Chinese/Japanese/Korean) text. English is athe same. 
+
+	// 8. 
+	text-overflow: clip|ellipsis|string|initial|inherit
+	// text-overflow is about how to display overflow text, not breaks
+	// 9. 
+	calc(), attr(data-content)

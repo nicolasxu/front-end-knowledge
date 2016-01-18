@@ -1,0 +1,35 @@
+// http://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height
+
+// method 1
+
+.row{
+  overflow: hidden; 
+}
+
+[class*="col-"]{
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+
+
+// method 2
+
+.row {
+  display: table;
+}
+
+[class*="col-"] {
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+}
+
+
+// method 3, flex
+
+row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}

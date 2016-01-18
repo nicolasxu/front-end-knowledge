@@ -1,0 +1,20 @@
+// "http://stackoverflow.com/questions/1065435/can-a-css-class-inherit-one-or-more-other-classes";
+/* LESS */
+
+.rounded_corners {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+#header {
+  .rounded_corners;
+}
+
+#footer {
+  .rounded_corners;
+}
+
+
+// you can also do it this way in html tag
+// <div class="firstClass secondClass thirdclass fourthclass"></div>

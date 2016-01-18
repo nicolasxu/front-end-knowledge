@@ -1,0 +1,20 @@
+// "http://sass-lang.com/documentation/file.SASS_REFERENCE.html#_10";
+
+@for $i from 1 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}
+is compiled to:
+
+.item-1 {
+  width: 2em; }
+.item-2 {
+  width: 4em; }
+.item-3 {
+  width: 6em; }
+				
+//used here: http://creative-punch.net/2014/01/pure-css-loader-animation-using-sass-compass/
+
+@for $i from 1 to ($elements + 1)
+div.loader div:nth-child(#{$i})
+  animation-delay: #{sin(360deg * ($i / ($elements * $multiplier)))}
+  background-color: hsl((360deg * ($i / $elements)), 50%, 60%)
