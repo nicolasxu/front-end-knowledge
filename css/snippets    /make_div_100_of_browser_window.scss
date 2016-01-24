@@ -1,0 +1,25 @@
+// make_div_100_of_browser_window
+
+// "http://stackoverflow.com/questions/1575141/make-div-100-height-of-browser-window";
+// 1. view port height method
+//    1vh to 100vh
+div {
+  height:100vh;
+}
+
+// 2. height 100% method
+html, body {
+  height: 100%;
+}
+#right {
+  height: 100%;
+}
+// 
+// 3. absolute position method
+#right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+// 4. flex method
+// to be added

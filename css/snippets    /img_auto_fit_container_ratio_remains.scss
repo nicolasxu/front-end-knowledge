@@ -1,0 +1,13 @@
+// img_auto_fit_container_ratio_remains
+
+
+img {
+	max-width:100%;
+	max-height:100%;
+
+}
+
+// example: http://jsfiddle.net/xwrvxser/1/
+// To resize an image proportionally, you have to set 
+// either the height or width to "100%", but not both. 
+// If you set both to "100%", your image will be stretched.

@@ -1,0 +1,5 @@
+// make_cursor_hand
+// "http://stackoverflow.com/questions/3087975/how-can-i-make-the-cursor-a-hand-when-a-user-hovers-over-a-list-item";
+
+li { cursor: pointer; cursor: hand; }
+//Actually to expand on the previous answers, different browsers use different names.

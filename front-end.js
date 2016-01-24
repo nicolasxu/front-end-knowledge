@@ -3711,10 +3711,7 @@ function frontEnd () {
 				// .anchor { padding-top: 90px; }
 			}
 			function white_space_between_inline_block() {
-				var source = "http://stackoverflow.com/questions/5078239/how-to-remove-the-space-between-inline-block-elements";
-				var problem_explanation = "http://jsfiddle.net/dGHFV/1/";
-				// solution 1:
-				// add font-size: 0 to the parent element, and then declare a sensible font-size on the children
+
 			}
 
 			function put_copyright_at_bottom() {
@@ -3745,13 +3742,7 @@ function frontEnd () {
 				// <iframe src="myURL" width="300" height="300" frameBorder="0">Browser not compatible.</iframe>
 			}
 			function placeholder_for_select() {
-				var source = "http://stackoverflow.com/questions/5805059/how-do-i-make-a-placeholder-for-a-select-box";
-				/*
-				<select>
-			    <option value="" disabled selected>Select your option</option>
-			    <option value="hurr">Durr</option>
-				</select>
-				 */
+		
 			}
 			function make_img_gray_scale() {
 				var source = "http://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css";
@@ -3771,17 +3762,7 @@ function frontEnd () {
 				*/
 			}
 			function img_auto_fit_container_ratio_remains() {
-				/*
-				img {
-					max-width:100%;
-					max-height:100%;
 
-				}
-				*/
-			  // example: http://jsfiddle.net/xwrvxser/1/
-				// To resize an image proportionally, you have to set 
-				// either the height or width to "100%", but not both. 
-				// If you set both to "100%", your image will be stretched.
 			}
 
 			function inline_hover_style() {
@@ -4116,44 +4097,15 @@ function frontEnd () {
 			}
 
 			function make_div_100_of_browser_window() {
-				var source = "http://stackoverflow.com/questions/1575141/make-div-100-height-of-browser-window";
-				// 1. view port height method
-				//    1vh to 100vh
-				// div {
-				//   height:100vh;
-				// }
-				
-				// 2. height 100% method
-				// html, body {
-				//   height: 100%;
-				// }
-				// #right {
-				//   height: 100%;
-				// }
-				// 
-				// 3. absolute position method
-				// #right {
-				//   position: absolute;
-				//   top: 0;
-				//   bottom: 0;
-				// }
-				// 4. flex method
-				// to be added
+
 			}
 
 			function make_cursor_hand() {
-				var source = "http://stackoverflow.com/questions/3087975/how-can-i-make-the-cursor-a-hand-when-a-user-hovers-over-a-list-item";
-				// li { cursor: pointer; cursor: hand; }
-				//Actually to expand on the previous answers, different browsers use different names.
+			
 			}
 
 			function disable_resize_textarea() {
-				var source = "http://stackoverflow.com/questions/5235142/how-to-disable-resizable-property-of-textarea";
-				/*
-				textarea {
-				    resize: none;
-				}
-				*/
+
 			}
 
 			function disable_bullet_in_ol () {
