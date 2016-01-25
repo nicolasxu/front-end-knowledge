@@ -1,0 +1,16 @@
+// make_img_gray_scale()
+				//var source = "http://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css";
+				
+img {
+  filter: gray; //IE6-9 
+  filter: grayscale(1); // Firefox 35+ 
+  -webkit-filter: grayscale(1); // Google Chrome, Safari 6+ & Opera 15+
+}
+
+// Disable grayscale on hover 
+img:hover {
+  filter: none;
+  -webkit-filter: grayscale(0);
+}
+
+				

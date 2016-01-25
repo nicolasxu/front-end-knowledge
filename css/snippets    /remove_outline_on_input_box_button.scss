@@ -1,0 +1,22 @@
+// remove_outline_on_input_box_button
+// var source = "http://stackoverflow.com/questions/3397113/how-to-remove-border-outline-around-text-input-boxes-chrome";
+
+// remove  dotted outline on BUTTONS
+
+textarea:focus, input:focus{
+  outline: 0;
+}
+// remove all border on focused element
+*:focus {
+  outline: 0;
+}
+
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+*:focus {
+  outline: none;
+}
+ 

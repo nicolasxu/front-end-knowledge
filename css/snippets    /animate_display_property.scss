@@ -1,0 +1,10 @@
+// animate_display_property
+	var source = "http://stackoverflow.com/questions/3331353/transitions-on-the-display-property";
+	// display is not a animatable property, because display none to block
+	// will cause re-flow.
+	// visibility is animatable, since it only cause re-paint.
+	// but you can work around it by animating on other properties, such as 
+	// visibility, or height
+	// example: 
+	// http://codepen.io/mindfullsilence/pen/DtzjE
+			

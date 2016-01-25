@@ -1,0 +1,15 @@
+// micro_clearfix
+
+// var source = "http://stackoverflow.com/questions/211383/which-method-of-clearfix-is-best";
+
+.container:before,
+.container:after {
+  content:"";
+  display:table;
+}
+.container:after {
+  clear:both;
+}
+.container {
+  zoom:1;  //For IE 6/7 (trigger hasLayout) 
+}

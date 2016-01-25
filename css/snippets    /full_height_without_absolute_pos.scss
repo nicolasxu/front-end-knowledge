@@ -1,0 +1,37 @@
+// full_height_without_absolute_pos
+
+
+var source = "http://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space";
+var code = "http://jsfiddle.net/danield770/FC7eY/";
+
+*
+{
+    margin:0;padding:0;    
+}
+html,body
+{
+    height:100%;
+    width:100%;
+}
+body
+{
+    display:table;
+}
+div
+{
+    width: 100%;
+    background: yellow;
+    display:table-row;
+
+}
+div+ div
+{
+    background: pink;
+    height:100%;  
+}
+
+/* dom
+<div>hello</div>
+<div>there</div>
+
+*/

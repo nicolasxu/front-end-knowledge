@@ -1,0 +1,20 @@
+absolute_vertical_horizontal_center
+var source = "http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div#_=_";
+// Method 1: transform-translate, unknow height or width
+
+.centered-axis-xy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+	}
+
+	// good for responsive design or unknown dimensions in 
+	// general if you don't need to support IE8 and lower.
+	// Explanation: 
+	// The clue is, that left: 50% is relative to the parent while the 
+	// translate transform is relative to the elements width/height.
+	
+	// Method 2: traditional one, known height and width
+	// also known parents height and width
+	// http://output.jsbin.com/rexuk/2/

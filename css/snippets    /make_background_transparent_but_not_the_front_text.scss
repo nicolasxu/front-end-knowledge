@@ -1,0 +1,12 @@
+// make_background_transparent_but_not_the_front_text() 
+// var source = "http://stackoverflow.com/questions/806000/how-to-give-text-or-an-image-a-transparent-background-using-css";
+
+// you can use 
+// 1. Either use a semi-transparent PNG image or 
+// 2. use CSS3:
+// e.g. set this to parent element
+// background-color:rgba(255,0,0,0.5);
+// 
+// If you just use opacity: 0.5 on parent, and opacity: 1 on child, then
+// the child real opacity is the multiplication of 0.5 and 1. 
+			

@@ -1,0 +1,18 @@
+// put_copyright_at_bottom
+// var source = "http://stackoverflow.com/questions/526035/html-css-positioning-float-bottom";
+/*
+<div id="container">
+  <!-- Other elements here -->
+  <div id="copyright">
+    Copyright Foo web designs
+  </div>
+</div>
+*/
+
+#container {
+    position: relative;
+}
+#copyright {
+    position: absolute;
+    bottom: 0;
+}

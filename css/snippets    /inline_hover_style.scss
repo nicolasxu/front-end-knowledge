@@ -1,0 +1,9 @@
+// inline_hover_style
+		// you can NOT use inline :hover style because the spec won't allow it. 
+				/*
+				:hover is a pseudo-selector and, for CSS, only has meaning within the 
+				style sheet. There isn't any inline-style equivalent (as it isn't defining 
+				the selection criteria).
+				*/
+				
+				// a walk around is to just add remove css class that use :hover

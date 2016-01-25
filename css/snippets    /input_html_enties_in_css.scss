@@ -1,0 +1,9 @@
+// input_html_enties_in_css() 
+	var source = "http://stackoverflow.com/questions/190396/adding-html-entities-using-css-content";
+	var all_html_enties = "http://www.evotech.net/blog/2007/04/named-html-entities-in-numeric-order/";
+	// use escaped unicode in css content
+	
+
+.breadcrumbs a:before {
+  content: '>\0000a0';
+}

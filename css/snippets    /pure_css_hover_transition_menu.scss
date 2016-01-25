@@ -1,0 +1,29 @@
+// pure_css_hover_transition_menu
+
+// markup
+/*
+<p>Here (scaleY(1))</p>
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+ */
+// css
+				
+ul {
+  background-color: #eee;
+  transform: scaleY(0);    
+  transform-origin: top;
+  transition: transform 0.26s ease;
+  position: absolute;
+	top: 20px;
+}
+
+p:hover ~ ul {
+  transform: scaleY(1);
+}
+ul:hover {
+  transform: scaleY(1);
+}
+				

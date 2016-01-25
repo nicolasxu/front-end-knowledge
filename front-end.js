@@ -3558,264 +3558,13 @@ function frontEnd () {
 
 	function css() {
 
-
-		function selectors() {
-
-		}
-
-		function specificity() {
-
-		}
-
-		function css_properties_explanation() {
-	
-		}
 		function snippets() {
-
-			function transparent_button() {
-				
-
-			}
-
-			function not_selector_adding() {
-
-			}
-
-			function alternate_row_color() {
-
-		
-			}
-
-			function use_css_to_set_img_src() {
-		
-			}
-
-			function find_out_unused_css_rule() {
-
-
-			}
-
-			function multiple_font_file_for_same_font() {
-
-			}
-
-			function no_way_to_set_background_image_from_right() {
+	
 			
-			}
-
-			function how_to_style_hr_element() {
-
-			}
-
-			function wild_characters_for_class() {
+	
 
 
-			}
 
-			function box_shadow_only_one_side() {
-				
-
-			}
-
-			function two_background_images() {
-
-			}
-
-			function customize_image_in_list() {
-
-			}
-
-			function sass_$for_loop() {
-
-			}
-
-			function font_face(){
-
-
-			}
-
-			function customize_bootstrap_nav_bar() {
-
-				
-			}
-
-			function make_bootstrap_column_same_height() {
-		
-			}
-
-			function pre_tag_css_wrap_code() {
-
-			}
-
-			function background_image_size() {
-
-			}
-
-			function style_checkbox_radio_button_css3() {
-
-			}
-
-			function hide_spinner_on_input_number() {
-
-			}
-
-			function resize_img_proportionally_css() {
-
-
-			}
-
-			function inheret_class() {
-
-			}
-
-			function css_target_vendor_browser() {
-				var source = "http://stackoverflow.com/questions/952861/targeting-only-firefox-with-css";
-
-				// <style type='text/css'>
-				// /*This will work for chrome */
-				// #categoryBackNextButtons
-				// {
-				//     width:490px;
-				// }
-				// /*This will work for firefox*/
-				// @-moz-document url-prefix() {
-				//     #categoryBackNextButtons{
-				//         width:486px;
-				//     }
-				// }
-				// </style>
-				// <!--[if IE]>
-				// <style type='text/css'>
-				// /*This will work for IE*/
-				// #categoryBackNextButtons
-				// {
-				//     width:486px;
-				// }
-				// </style>
-				// <![endif]-->
-			}
-			function base64_background() {
-				//.even { background: #fff url(data:image/gif;base64,R0lGODlhBgASALMAAOfn5+rq6uvr6+zs7O7u7vHx8fPz8/b29vj4+P39/f///wAAAAAAAAAAAAAAAAAAACwAAAAABgASAAAIMAAVCBxIsKDBgwgTDkzAsKGAhxARSJx4oKJFAxgzFtjIkYDHjwNCigxAsiSAkygDAgA7) repeat-x bottom}
-				// small img, e.g. pattern background, you can encode in css
-				// large image, it is best to put to seperate file
-			}
-			function disable_link_tag() {
-				// .not-active {
-				//   pointer-events: none;
-				//   cursor: default;
-				// }
-			}
-			function page_ankor_jump_keep_header() {
-				var source = "http://stackoverflow.com/questions/4086107/html-positionfixed-page-header-and-in-page-anchors";
-				// <h1><a class="anchor" name="barlink">Bar</a></h1>
-				// .anchor { padding-top: 90px; }
-			}
-			function white_space_between_inline_block() {
-
-			}
-
-			function put_copyright_at_bottom() {
-				var source = "http://stackoverflow.com/questions/526035/html-css-positioning-float-bottom";
-				/*
-				<div id="container">
-				  <!-- Other elements here -->
-				  <div id="copyright">
-				    Copyright Foo web designs
-				  </div>
-				</div>
-				*/
-				/*
-				#container {
-				    position: relative;
-				}
-				#copyright {
-				    position: absolute;
-				    bottom: 0;
-				}
-				*/
-			}
-
-			function remove_iframe_border() {
-				var source = "http://stackoverflow.com/questions/65034/remove-border-from-iframe";
-				// use frameBorder attribute in iframe attribute
-				// example: 
-				// <iframe src="myURL" width="300" height="300" frameBorder="0">Browser not compatible.</iframe>
-			}
-			function placeholder_for_select() {
-		
-			}
-			function make_img_gray_scale() {
-				var source = "http://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css";
-				/*
-				img {
-				  filter: gray; //IE6-9 
-				  filter: grayscale(1); // Firefox 35+ 
-				  -webkit-filter: grayscale(1); // Google Chrome, Safari 6+ & Opera 15+
-				}
-
-				// Disable grayscale on hover 
-				img:hover {
-				  filter: none;
-				  -webkit-filter: grayscale(0);
-				}
-
-				*/
-			}
-			function img_auto_fit_container_ratio_remains() {
-
-			}
-
-			function inline_hover_style() {
-				var source = "";
-				// you can NOT use inline :hover style because the spec won't allow it. 
-				/*
-				:hover is a pseudo-selector and, for CSS, only has meaning within the 
-				style sheet. There isn't any inline-style equivalent (as it isn't defining 
-				the selection criteria).
-				*/
-				
-				// a walk around is to just add remove css class that use :hover
-			}
-
-			function import_css_file_in_css() {
-				// @import url("base.css");
-				// The @import rule must precede all other rules (except the @charset rule); and
-				// Additional @import statements require additional server requests.
-			}
-			function animate_display_property() {
-				var source = "http://stackoverflow.com/questions/3331353/transitions-on-the-display-property";
-				// display is not a animatable property, because display none to block
-				// will cause re-flow.
-				// visibility is animatable, since it only cause re-paint.
-				// but you can work around it by animating on other properties, such as 
-				// visibility, or height
-				// example: 
-				// http://codepen.io/mindfullsilence/pen/DtzjE
-			}
-
-			function no_previous_sibling_selector() {
-				var source = "http://stackoverflow.com/questions/1817792/is-there-a-previous-sibling-selector";
-
-			}
-			function css3_background_stretch() {
-				var source = "http://stackoverflow.com/questions/376253/stretch-and-scale-css-background";
-				/*
-				#my_container {
-				    background-size: 100% auto; // width and height, can be %, px or whatever. 
-				}
-				*/
-				/*
-				body {
-			    background-image: url(bg.jpg);
-			    -webkit-background-size: cover;
-			    -moz-background-size: cover;
-			    -o-background-size: cover;
-			    background-size: cover;
-				}
-				// cover means stretching the image either vertically or horizontally 
-				so it never tiles/repeats.
-				*/
-			}
 			function vertical_center() {
 				var source = "http://stackoverflow.com/questions/396145/how-to-vertically-center-a-div-for-all-browsers";
 				// note: with css3 you can center anything without knowing the width and height 
@@ -3924,50 +3673,6 @@ function frontEnd () {
 					vertical-align: middle;
 				 */
 			}			
-			function absolute_center_vertical_horizontal() {
-				var source = "http://stackoverflow.com/questions/1776915/how-to-center-absolute-element-in-div#_=_";
-				// Method 1: transform-translate, unknow height or width
-				/*
-				.centered-axis-xy {
-				    position: absolute;
-				    left: 50%;
-				    top: 50%;
-				    transform: translate(-50%,-50%);
-					}
-				 */
-					// good for responsive design or unknown dimensions in 
-					// general if you don't need to support IE8 and lower.
-					// Explanation: 
-					// The clue is, that left: 50% is relative to the parent while the 
-					// translate transform is relative to the elements width/height.
-					
-					// Method 2: traditional one, known height and width
-					// also known parents height and width
-					// http://output.jsbin.com/rexuk/2/
-			}
-			function remove_border_input_box_button() {
-				var source = "http://stackoverflow.com/questions/3397113/how-to-remove-border-outline-around-text-input-boxes-chrome";
-				// remove  dotted outline on BUTTONS
-				/*
-				textarea:focus, input:focus{
-				  outline: 0;
-				}
-				// remove all border on focused element
-				*:focus {
-				  outline: 0;
-				}
-				*/
-				/*
-				button::-moz-focus-inner {
-				  border: 0;
-				}
-
-				*:focus {
-				  outline: none;
-				}
-				 */
-			}
-
 
 			function force_reload_cached_css_file() {
 				var source = "http://stackoverflow.com/questions/118884/what-is-an-elegant-way-to-force-browsers-to-reload-cached-css-js-files?page=1&tab=votes#tab-top";
@@ -3986,64 +3691,13 @@ function frontEnd () {
 
 				*/
 			}
-			function parent_selector() {
-				// there is no css parent selector
-				// but you can use the following jquery 
-				// $("a.active").parents('li').css("property", "value");
-			}
-
-			function make_background_transparent_but_not_the_front_text() {
-				var source = "http://stackoverflow.com/questions/806000/how-to-give-text-or-an-image-a-transparent-background-using-css";
-
-				// you can use 
-				// 1. Either use a semi-transparent PNG image or 
-				// 2. use CSS3:
-				// e.g. set this to parent element
-				// background-color:rgba(255,0,0,0.5);
-				// 
-				// If you just use opacity: 0.5 on parent, and opacity: 1 on child, then
-				// the child real opacity is the multiplication of 0.5 and 1. 
-			}
 
 			function use_css_to_style_select_tag() {
 				var source = "http://stackoverflow.com/questions/1895476/how-to-style-a-select-dropdown-with-css-only-without-javascript";
 				var code = "http://jsfiddle.net/danield770/YvCHW/4232/";
 			}
 
-			function html_enties_in_css() {
-				var source = "http://stackoverflow.com/questions/190396/adding-html-entities-using-css-content";
-				var all_html_enties = "http://www.evotech.net/blog/2007/04/named-html-entities-in-numeric-order/";
-				// use escaped unicode in css content
-				/*
-				.breadcrumbs a:before {
-				  content: '>\0000a0';
-				}
 
-
-				*/
-			}
-
-			function micro_clearfix() {
-				var source = "http://stackoverflow.com/questions/211383/which-method-of-clearfix-is-best";
-				/*
-				.container:before,
-				.container:after {
-				  content:"";
-				  display:table;
-				}
-				.container:after {
-				  clear:both;
-				}
-				.container {
-				  zoom:1;  //For IE 6/7 (trigger hasLayout) 
-				}
-				*/
-			}
-
-			function full_height_without_absolute_pos() {
-				var source = "http://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space";
-				var code = "http://jsfiddle.net/danield770/FC7eY/";
-			}
 
 			function show_bootstrap_dropdown_on_hover() {
 				var source = "http://stackoverflow.com/questions/8878033/how-to-make-twitter-bootstrap-menu-dropdown-on-hover-rather-than-click";
@@ -4060,58 +3714,6 @@ function frontEnd () {
 				 */
 			}
 
-			function transition_condition () {
-				var source = "http://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css";
-				// You can't animate a property if one of the property status is auto
-			}
-
-			function pure_css_hover_transition_menu() {
-				var source = "";
-				// markup
-				/*
-				<p>Here (scaleY(1))</p>
-				<ul>
-				  <li>Coffee</li>
-				  <li>Tea</li>
-				  <li>Milk</li>
-				</ul>
-				 */
-				// css
-				/*
-				ul {
-				  background-color: #eee;
-				  transform: scaleY(0);    
-				  transform-origin: top;
-				  transition: transform 0.26s ease;
-				  position: absolute;
-    			top: 20px;
-				}
-
-				p:hover ~ ul {
-				  transform: scaleY(1);
-				}
-				ul:hover {
-				  transform: scaleY(1);
-				}
-				*/
-			}
-
-			function make_div_100_of_browser_window() {
-
-			}
-
-			function make_cursor_hand() {
-			
-			}
-
-			function disable_resize_textarea() {
-
-			}
-
-			function disable_bullet_in_ol () {
-
-			}
-
 			function align_label_checkbox() {
 				// <div>
     		// 			<input type="checkbox" id="cb" /> <label for="cb">Label text</label>
@@ -4120,23 +3722,7 @@ function frontEnd () {
 				// 	vertical-align: middle;
 				// }
 			}
-			function horizontal_center() {
 
-			}
-			function set_placeholder_color_style() {
-
-			}
-
-			function table_cell_padding_and_border() {
-	
-			}
-
-			function css_triangle() {
-		
-			}
-
-			function style_half_character() {
-			}
 		}
 
 		function quiz() {
