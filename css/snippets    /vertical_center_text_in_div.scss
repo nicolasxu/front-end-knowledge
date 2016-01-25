@@ -1,0 +1,75 @@
+// function vertical_center_text_in_div
+
+// css verticl-align = middle, only works on 2 situations:
+// 1. on tabel cell (td) in table (tr)
+// 2. on inline elements in a block elem, to align with the rest inline elem
+// It doesn't work on block elem
+// source = "http://phrogz.net/CSS/vertical-align/index.html"
+var source = "http://stackoverflow.com/questions/8865458/how-to-align-text-vertically-center-in-div-with-css";
+// html
+/*
+<div Id="box">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</div>
+*/
+// 1. line height method, 
+//    only one line text, height is known and fixed
+
+#box {
+  height: 90px;
+  line-height: 90px;
+}
+
+// 2. line height allow multiple lines
+// <div>
+//   <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+// </div>
+
+div {
+  width: 250px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;      
+}
+
+// 3. table display method
+
+div {
+  display: table;
+  width: 250px;
+  height: 100px;
+  text-align: center;
+}
+
+span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// 4. flexbox
+// <div class="box">
+//     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
+// </div>
+
+display: flex;
+justify-content: center; 
+align-items: center; 
+
+// 5. table cell only, works on multi lines (recommended)
+// http://jsfiddle.net/TB43r/
+// <div id="box">
+//   <h1>h1 title Some text Some textSome textSome textSome</h1>
+// </div>
+#box{
+	display: table-cell;
+	vertical-align: middle;
+}
+	
+ 
+			

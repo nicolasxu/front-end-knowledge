@@ -1,0 +1,33 @@
+// vertical_center_table_tablecell_method
+				var source = "http://stackoverflow.com/questions/396145/how-to-vertically-center-a-div-for-all-browsers";
+				// note: with css3 you can center anything without knowing the width and height 
+				var source2 = "http://stackoverflow.com/questions/6794000/fixed-position-but-relative-to-container"
+/*
+<div class="outer">
+	<div class="middle">
+		<div class="inner content">
+			<h1>The Content</h1>
+			<p>Once upon a midnight dreary...</p>
+		</div>
+	</div>
+</div>
+*/
+				
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100px; //whatever width you want
+}
+				
