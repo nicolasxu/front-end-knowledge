@@ -1,0 +1,46 @@
+
+.column1 {
+	float: left;
+}
+.column1 {
+	background-color: green;
+	width: 200px;
+}
+.column2 {
+	background-color: red;
+	margin-left: 200px;
+	margin-right: 250px;
+
+}
+.column3 {
+	float: right;
+	background-color: yellow;
+	width: 250px;
+}
+
+footer {
+	background-color: grey;
+	clear: both;
+}
+
+/*
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="column1">column1</div>
+<div class="column3">column3</div>
+<div class="column2">mid column</div>
+
+<footer>
+	this is a footer
+</footer>
+	
+</body>
+</html>
+ */
