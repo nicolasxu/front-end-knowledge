@@ -19,9 +19,9 @@ Specificity hierarchy Link
 How to measure specificity? Link
 	Memorize how to measure specificity. 
 	“Start at 0, 
-	add 1000 for style attribute, 
+	add 1000 for style attribute(inline style), 
 	add 100 for each ID, 
-	add 10 for each attribute, class or pseudo-class, 
+	add 10 for each non style attribute, class or pseudo-class, 
 	add 1 for each element name or pseudo-element. So in
 	body #content .data img:hover
 	the specificity value would be 122 (0,1,2,2 or 0122): 

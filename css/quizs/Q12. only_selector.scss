@@ -1,0 +1,20 @@
+
+
+var question = "What is the use of the only selector?";
+
+	@media only screen and (max-width: 1024px) {
+	  margin: 0;
+	}
+
+
+
+
+
+/*
+	Stops older browsers from parsing the remainder of the selector
+	Apply the style for screen only and ignore the device max-width
+	It does nothing
+	Skip
+*/
+
+// answer: Stops older browsers from parsing the remainder of the selector

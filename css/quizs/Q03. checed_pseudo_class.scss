@@ -1,0 +1,5 @@
+var question = "The pseudo class :checked will select inputs with type radio or checkbox, 
+but not <option> elements.";
+// answer false
+// explanation:
+// $("select option:checked").text() will get the text between option tag

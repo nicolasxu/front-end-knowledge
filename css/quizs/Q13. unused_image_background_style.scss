@@ -1,0 +1,37 @@
+
+
+var question = "On page load, will mypic.jpg get downloaded by the browser?";
+
+
+HTML:
+
+<div id="test1">
+    <span id="test2"></span>
+</div>
+
+CSS:
+
+#test1 {
+    display: none;
+}
+#test2 {
+    background-image: url('mypic.jpg');
+    visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// answer: no
+// explanation: image in 2nd level element within display:none element will not be downloaded

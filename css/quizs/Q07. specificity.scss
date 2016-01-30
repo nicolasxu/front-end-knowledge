@@ -1,0 +1,34 @@
+
+	var question = "what is the color of sausage?";
+	
+	
+	<ul class="shopping-list" id="awesome">
+	    <li><span>Milk</span></li>
+	    <li class="favorite" id="must-buy">
+	    	<span class="highlight">Sausage</span>
+	    </li>
+	</ul>
+
+	// css
+	
+	ul#awesome #must-buy {
+	    color: red;
+	}
+	.favorite span {
+	    color: blue!important;
+	}
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	// answer: blue

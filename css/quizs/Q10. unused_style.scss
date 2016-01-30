@@ -1,0 +1,14 @@
+
+	var question = "Are unused style resources still downloaded by the browser?";
+	
+	<div id="test1">
+	  <span id="test2"></span>
+	</div>
+
+	#i-am-useless {
+	  background-image: url('mypic.jpg');
+	}
+
+	
+	// answer: no
+	// explanation: css will all be downloaded, but unused img will not be downloaded

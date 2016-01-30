@@ -1,0 +1,24 @@
+
+
+var question = "Does overflow: hidden create a new block formatting context?";
+
+
+HTML:
+
+	<div>
+	    <p>I am floated</p>
+	    <p>So am I</p>
+	</div>
+	CSS:
+
+	div {
+	    overflow: hidden;
+	}
+	p {
+	    float: left;
+	}
+
+
+
+
+// answer: yes

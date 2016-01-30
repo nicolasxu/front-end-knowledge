@@ -1,0 +1,15 @@
+
+	// succeeding: 接连的；随后的
+	var question = "What will happen to the position of #example?";
+	
+	<p id="example">Hello</p>
+
+	#example {
+	    margin-bottom: -5px;
+	}
+	
+	// answer: All elements succeeding #example with move 5px upwards
+	// 
+	// explanation: margin top and left will affect the position of 
+	// this element, and element after this element.
+	// but margin bottom and right will only affect the elements after this element. 

@@ -1,0 +1,27 @@
+
+var question = "what is the color of sausage? ";
+
+<ul class="shopping-list" id="awesome">
+	<li><span>Milk</span></li>
+	<li class="favorite" id="must-buy">
+		<span class="highlight">Sausage</span>
+	</li>
+</ul>
+
+// css:
+ul#awesome {
+	color: red;
+}
+ul.shopping-list li.favorite span {
+	color: blue;
+}
+
+
+
+// answer: blue
+// explanation: how to measure specificity? 
+// http://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/
+
+// compare specificity on selectors target the same element, but 
+// here it is not target the same element. Cascading rule applys, not specificity rule. 
+// In this situation, you can assume 1st select weight is 0

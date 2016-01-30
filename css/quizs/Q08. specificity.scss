@@ -1,0 +1,44 @@
+
+	var question = "what is the color of sausage?";
+	
+	
+	<ul class="shopping-list" id="awesome">
+	  <li><span>Milk</span></li>
+	  <li class="favorite" id="must-buy">
+	  	<span class="highlight">Sausage</span>
+	  </li>
+	</ul>
+
+	// css:
+
+	#awesome .favorite:not(#awesome) .highlight {
+	    color: red;
+	}
+	#awesome .highlight:nth-of-type(1):nth-last-of-type(1) {
+	    color: blue;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	// answer: red
+	// explanation:
+	// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
+	// The :not exception
+	// The negation pseudo-class :not is not considered a pseudo-class 
+	//   in the specificity calculation. But selectors placed into the 
+	//   negation pseudo-class count as normal selectors when determining 
+	//   the count of selector types
