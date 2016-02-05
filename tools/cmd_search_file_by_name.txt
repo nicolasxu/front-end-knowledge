@@ -1,0 +1,11 @@
+ls | grep abc
+// find all the file and folders whose name contains abc
+// in current folder
+
+
+
+
+
+ll | grep web
+// find all the files and folders whose name contains contain web
+// in durrent folder

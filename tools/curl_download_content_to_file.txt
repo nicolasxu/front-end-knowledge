@@ -1,0 +1,27 @@
+
+
+// 1. curl GET request
+curl http://www.netscape.com/
+
+
+
+// 2. curl POST request
+curl -d "name=Rafael%20Sagula&phone=3320780" \ 
+                http://www.where.com/guest.cgi
+
+curl http://canvas-api.herokuapp.com/api/v1/tokens -XPOST
+
+// 3. curl DELETE request
+curl -X "DELETE" http://www.url.com/page 
+
+
+
+// 4. cURL can write the output it retrieves to a file with the -o flag
+curl -o example.html http://www.netscape.com/
+
+// 5. curl with customized header data
+curl -H "X-you-and-me: yes" www.love.com
+
+
+// 6. combination
+curl http://canvas-api.herokuapp.com/api/v1/courses/1/enrollments -H 'Authorization: Token 12345' -d '{"type": "student", "user": {"name": "Test User"}}'
