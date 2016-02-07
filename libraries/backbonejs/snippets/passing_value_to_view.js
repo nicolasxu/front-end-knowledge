@@ -23,8 +23,9 @@ new DocumentRow({
  // attributes and 
  // events.
  
- // The rest of the keys:values will be available at this.options
- (not true!!!)
+ // The rest of the keys:values will be available 
+ // in initialize function (options), you can pick the key:value
+ // you want in that function. 
 
 
  // All options will also be passed to your initialize function, if defined.
