@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/1505948/how-do-i-remove-a-single-file-from-the-staging-area-of-git-but-not-remove-it-fro
+
+
+
+when the file is shown in the "git status" result, 
+use:
+
+git reset HEAD <fileName> 
+
+to remove it from staging.
+
