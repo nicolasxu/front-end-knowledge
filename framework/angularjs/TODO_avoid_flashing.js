@@ -1,0 +1,3 @@
+function avoid_flashing() {
+
+}
