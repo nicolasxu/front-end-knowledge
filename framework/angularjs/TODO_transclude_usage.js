@@ -1,4 +1,0 @@
-function transclude_usage(){
-
-
-}
