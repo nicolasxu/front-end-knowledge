@@ -13,4 +13,6 @@ anyString.substring(0, anyString.length);
 
 
 
-// f indexStart is greater than indexEnd, then the effect of substring() is as if the two arguments were swapped; for example, str.substring(1, 0) == str.substring(0, 1).
+// if indexStart is greater than indexEnd, then the effect of substring() 
+// is as if the two arguments were swapped; for example,
+//  str.substring(1, 0) == str.substring(0, 1).
