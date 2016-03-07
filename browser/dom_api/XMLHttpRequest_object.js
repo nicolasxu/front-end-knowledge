@@ -36,13 +36,11 @@ function XMLHttpRequest_object() {
 	function nameOfTheFunction() {
 		if (httpRequest.readyState === XMLHttpRequest.DONE) {
       if (httpRequest.status === 200) {
+      	console.log("request success!");
         alert(httpRequest.responseText);
       } else {
         alert('There was a problem with the request.');
       }
     }
 	}
-
-
-
 }

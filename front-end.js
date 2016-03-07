@@ -110,16 +110,7 @@ function frontEnd () {
 	function Libraries () {
 		function jquery() {
 
-			function throttle_and_debounce() {
-				var source = "http://benalman.com/projects/jquery-throttle-debounce-plugin/";
-				var github = "https://github.com/cowboy/jquery-throttle-debounce/";
 
-				// They all take in a function and a param, then returns a function.
-				// Debounce absorb limited the number of calls.
-				// Throttle absort time intervals. 
-				$(window).resize( $.throttle( 250, resize_2 ) ); // This is the line you want!
-				$('input:text').keyup( $.debounce( 250, ajax_lookup ) );
-			}
 
 			function remove_all_classes() {
 				$("#item").removeClass(); 
@@ -538,7 +529,7 @@ function frontEnd () {
 					"Value 2" : "Text 2",
 					"Value 3" : "Text 3"
 				}
-				$.each(selectValues, function(key, value) {   
+				$.each(selectValues, function(key, value) {  
 		      $('#mySelect')
 		        .append($("<option></option>")
 		        	.attr("value",key)
@@ -613,10 +604,7 @@ function frontEnd () {
 				});
 			}
 
-			function add_color_console_log() {
-				console.log('%c Oh my heavens! ', 'background: #222; color: #bada55');
 
-			}
 
 			function disable_browser_plugin() {
 				var source = "http://stackoverflow.com/questions/21692646/how-does-facebook-disable-the-browsers-integrated-developer-tools/21692733#21692733";

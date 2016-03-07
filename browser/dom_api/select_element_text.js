@@ -15,7 +15,7 @@ function select_text() {
         range.moveToElementText(textElem);
         range.select();
     } else if (window.getSelection) {
-        selection = window.getSelection();        
+        selection = window.getSelection(); // create selection object        
         range = document.createRange();
         range.selectNodeContents(textElem);
         selection.removeAllRanges();

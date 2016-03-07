@@ -1,18 +1,18 @@
 // css3_background_img_stretch
-				var source = "http://stackoverflow.com/questions/376253/stretch-and-scale-css-background";
-				
-				#my_container {
-				    background-size: 100% auto; // width and height, can be %, px or whatever. 
-				}
-				
-				
-				body {
-			    background-image: url(bg.jpg);
-			    -webkit-background-size: cover;
-			    -moz-background-size: cover;
-			    -o-background-size: cover;
-			    background-size: cover;
-				}
-				// cover means stretching the image either vertically or horizontally 
-				so it never tiles/repeats.
+var source = "http://stackoverflow.com/questions/376253/stretch-and-scale-css-background";
+
+#my_container {
+    background-size: 100% auto; // width and height, can be %, px or whatever. 
+}
+
+
+body {
+  background-image: url(bg.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+// cover means stretching the image either vertically or horizontally 
+// so it never tiles/repeats.
 				
