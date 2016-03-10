@@ -7,15 +7,14 @@ function filter_components_provided_in_ng() {
 	
 	*** Usage in template
 	inputs | filterName: [params]
-	
-		filter
-		currency
-		number
-		date
-		json
-		lowercase
-		uppercase
-		limitTo
-		orderBy
+					 filter
+					 currency
+					 number
+					 date
+					 json
+					 lowercase
+					 uppercase
+					 limitTo
+					 orderBy
 	*/
 }

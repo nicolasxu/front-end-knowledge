@@ -1,0 +1,19 @@
+// 1. 
+<a ng-class="{true: 'active'}[current_tab == 0]" 
+href="javascript:;" 
+ng-click="js_change_tab(0)">
+    using expression for ngClass
+</a>
+
+<i ng-class="{1:'icon-private',2:'icon-protected',3:'icon-public'}[project.info.visibility]"></i>
+
+// 2. If bold or error is evaluated to be true, then apply class in the key name
+<p ng-class="{strike: deleted, bold: important, red: error}">Map Syntax Example</p>
+
+<p ng-class="style">Using String Syntax</p>
+
+// 3. apply all the style strings in the array
+<p ng-class="[style1, style2, style3]">Using Array Syntax</p>
+
+// 4. ngClass Using the Ternary Operator
+<p ng-class="$even ? 'even-row' : 'odd-row'">This is a paragraph. </p>
