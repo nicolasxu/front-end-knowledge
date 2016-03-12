@@ -12,8 +12,12 @@
 
 */
 
+// content puts its children nodes(not descendent nodes, including text children into a jquery selection object)
+// of course if one of the children nodes has child, it will still kinked to children. 
+
+
 $( ".container" )
-  .contents()
+  .contents() // children() will apply the same logic, except does not return text node, only html tag children
     .filter(function() {
       return this.nodeType === 3;
     })

@@ -1,0 +1,18 @@
+<h4>http://stackoverflow.com/questions/8397852/why-p-tag-cant-contain-div-tag-inside-it</h4>
+
+<h4>brief reason:</h4>
+
+<div> in short, it is impossible to place a '<div>' element inside a <p> in the DOM because the opening <div> tag will automatically close the <p> element.
+</div>
+
+
+<!-- wrong -->
+<p>
+	<div>
+		this is wrong
+	</div>
+</p>
+
+<div>
+	<p>this is correct</p>
+</div>

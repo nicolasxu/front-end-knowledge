@@ -4,7 +4,7 @@ function throttle_and_debounce() {
 
 	// They all take in a function and a param, then returns a function.
 	// Debounce absorb limited the number of calls.
-	// Throttle absort time intervals. 
+	// Throttle absorb time intervals. 
 	$(window).resize( $.throttle( 250, resize_2 ) ); // This is the line you want!
 	$('input:text').keyup( $.debounce( 250, ajax_lookup ) );
 }

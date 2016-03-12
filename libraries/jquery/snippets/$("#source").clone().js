@@ -1,7 +1,7 @@
 var source = "https://api.jquery.com/clone/"
 
 // regardless of parameter, it will deep clone selected elements. 
-// In older version, it only clones the first level. This behavior is deprecrated. 
+// no div element in p element. 
 
 $( "#source" ).clone().prependTo( "p" );
 $( "#source" ).clone().insertAfter( this );
