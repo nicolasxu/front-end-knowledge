@@ -3,7 +3,7 @@ var docu = "https://api.jquery.com/add/";
 var $result = $('li').add('p'); // create new jquery object, 
 // it does not alter li or p element
 // Note 1: 
-// the $('li').add('p') function will create new element. 
+// the $('li').add('p') function will create new jquery object. 
 // and it does not alter the collection at all. 
 
 // Note 2: 
