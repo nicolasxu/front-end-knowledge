@@ -1,0 +1,23 @@
+End the most recent filtering operation in the current chain and return the set of matched elements to its previous state.
+
+
+<ul class="first">
+  <li class="foo">list item 1</li>
+  <li>list item 2</li>
+  <li class="bar">list item 3</li>
+</ul>
+<ul class="second">
+  <li class="foo">list item 1</li>
+  <li>list item 2</li>
+  <li class="bar">list item 3</li>
+</ul>
+<script>
+	$( "ul.first" )
+  .find( ".foo" )
+    .css( "background-color", "red" )
+  .end()
+  .find( ".bar" )
+    .css( "background-color", "green" );
+</script>
+
+This chain searches for items with the class foo within the first list only and turns their backgrounds red. Then end() returns the object to its state before the call to find(), so the second find() looks for '.bar' inside <ul class="first">, not just inside that list's <li class="foo">, and turns the matching elements' backgrounds green. The net result is that items 1 and 3 of the first list have a colored background, and none of the items from the second list do.

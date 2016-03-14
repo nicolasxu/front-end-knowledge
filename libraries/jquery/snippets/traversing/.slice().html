@@ -1,0 +1,22 @@
+Reduce the set of matched elements to a subset specified by a range of indices.
+<ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li>list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+</ul>
+
+<script>
+	$( "li" ).slice( 2 ).css( "background-color", "red" );
+
+</script>
+The result of this call is a red background for items 3, 4, and 5. Note that the supplied index is zero-based, and refers to the position of elements within the jQuery object, not within the DOM tree.
+
+
+
+<script>
+	$( "li" ).slice( 2, 4 ).css( "background-color", "red" );
+</script>
+
+Now only items 3 and 4 are selected. The index is once again zero-based; the range extends up to but not including the specified index.
