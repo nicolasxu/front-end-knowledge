@@ -1,0 +1,22 @@
+This method is similar to .parents(), except .parent() only travels a single level up the DOM tree. 
+
+Given a jQuery object that represents a set of DOM elements, the parent() method traverses to the immediate parent of each of these elements in the DOM tree and constructs a new jQuery object from the matching elements.
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>parent demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div><p>Hello</p></div>
+<div class="selected"><p>Hello Again</p></div>
+ 
+<script>
+$( "p" ).parent( ".selected" ).css( "background", "yellow" );
+</script>
+ 
+</body>
+</html>

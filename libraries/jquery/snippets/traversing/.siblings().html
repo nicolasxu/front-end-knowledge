@@ -1,0 +1,15 @@
+Get the siblings of each element in the set of matched elements, optionally filtered by a selector.
+
+siblings definition: elements at the same level. 
+
+<ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li class="third-item">list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+</ul>
+
+<script>
+	$( "li.third-item" ).siblings().css( "background-color", "red" );
+</script>

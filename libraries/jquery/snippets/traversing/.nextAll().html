@@ -1,0 +1,60 @@
+.nextAll();
+
+// Get all following siblings of each element 
+// in the set of matched elements, optionally 
+// filtered by a selector.
+
+
+
+
+<ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li class="third-item">list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+</ul>
+
+<script>
+	$( "li.third-item" ).nextAll().css( "background-color", "red" );
+
+</script>
+
+<!-- example 2: -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>nextAll demo</title>
+  <style>
+  div, p {
+    width: 60px;
+    height: 60px;
+    background: #abc;
+    border: 2px solid black;
+    margin: 10px;
+    float: left;
+  }
+  .after {
+    border-color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<p>p</p>
+<div>div</div>
+<p>p</p>
+<p>p</p>
+<div>div</div>
+<p>p</p>
+<div>div</div>
+ 
+<script>
+	$( ":nth-child(1)" ).nextAll( "p" ).addClass( "after" );
+</script>
+ 
+</body>
+</html>

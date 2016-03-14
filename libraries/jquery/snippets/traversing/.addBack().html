@@ -1,0 +1,16 @@
+<ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li class="third-item">list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+</ul>
+
+<script>
+	$( "li.third-item" ).nextAll().addBack()
+  .css( "background-color", "red" );
+</script>
+
+First, the initial selector locates item 3, initializing the stack with the set containing just this item. The call to .nextAll() then pushes the set of items 4 and 5 onto the stack. Finally, the .addBack() invocation merges these two sets together, creating a jQuery object that points to all three items in document order: 
+{[<li.third-item>,<li>,<li> ]}.
+
