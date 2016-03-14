@@ -1,0 +1,39 @@
+the difference between .filter() and .find()
+
+.filter() - filter currently selected set
+	detail: Reduce the set of matched elements to those that match the selector or pass 				the function's test.
+.find() - match the descendants of selected set
+					Get the descendants( only descendants, not itself) of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
+					Notes: .find() requires to pass in an expression as selector
+					      pass in "*" to select all. 
+
+<ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li>list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+  <li>list item 6</li>
+</ul>
+<script>
+	$( "li" ).filter( ":even" ).css( "background-color", "red" );
+</script>
+
+<!-- Example 2 -->
+<ul>
+  <li><strong>list</strong> item 1 - one strong tag</li>
+  <li><strong>list</strong> item <strong>2</strong> -
+    two <span>strong tags</span></li>
+  <li>list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+  <li>list item 6</li>
+</ul>
+<script>
+	$( "li" )
+  .filter(function( index ) {
+    return $( "strong", this ).length === 1;
+  })
+    .css( "background-color", "red" );
+
+</script>

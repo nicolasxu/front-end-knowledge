@@ -1,0 +1,48 @@
+Description: Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
+
+<ul>
+  <li>list item 1</li>
+  <li>list item 2
+    <ul>
+      <li>list item 2-a</li>
+      <li>list item 2-b</li>
+    </ul>
+  </li>
+  <li>list item 3</li>
+  <li>list item 4</li>
+</ul>
+
+
+<script>
+	$( "li" ).has( "ul" ).css( "background-color", "red" );
+
+</script>
+
+The result of this call is a red background for item 2, as it is the only <li> that has a <ul> among its descendants.
+
+<!-- Example 2 -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>has demo</title>
+  <style>
+  .full {
+    border: 1px solid red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<ul><li>Does the UL contain an LI?</li></ul>
+ 
+<script>
+	$( "ul" ).append( "<li>" +
+	  ( $( "ul" ).has( "li" ).length ? "Yes" : "No" ) +
+	  "</li>" );
+	$( "ul" ).has( "li" ).addClass( "full" );
+</script>
+ 
+</body>
+</html>
