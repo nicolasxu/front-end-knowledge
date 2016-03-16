@@ -1,0 +1,35 @@
+in reverse of :empty selector.
+
+Description: Select all elements that have at least one child node (either an element or text).
+
+One important thing to note regarding the use of :parent (and :empty) is that child nodes include text nodes.
+
+To achieve the best performance when using :parent to select elements, first select the elements using a pure CSS selector, then use .filter(":parent").
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>parent demo</title>
+  <style>
+  td {
+    width: 40px;
+    background: green;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<table border="1">
+  <tr><td>Value 1</td><td></td></tr>
+  <tr><td>Value 2</td><td></td></tr>
+</table>
+ 
+<script>
+$( "td:parent" ).fadeTo( 1500, 0.3 );
+</script>
+ 
+</body>
+</html>
