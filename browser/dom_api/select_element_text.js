@@ -6,9 +6,9 @@ function select_text() {
 		// It can only select the text of whole element.
 		// element example: "#select_me"
     var doc = document, 
-    		textElem = doc.getElementById(elementIdString),
-    		range, 
-    		selection;
+		textElem = doc.getElementById(elementIdString),
+		range, 
+		selection;
 
     if (doc.body.createTextRange) {
         range = document.body.createTextRange();

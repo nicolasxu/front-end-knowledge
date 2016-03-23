@@ -1,22 +1,24 @@
 
+
 .column1 {
 	float: left;
-}
-.column1 {
 	background-color: green;
 	width: 200px;
 }
+
+.column3 {
+	float: right;
+	background-color: yellow;
+	width: 250px;
+}
+
 .column2 {
 	background-color: red;
 	margin-left: 200px;
 	margin-right: 250px;
 
 }
-.column3 {
-	float: right;
-	background-color: yellow;
-	width: 250px;
-}
+
 
 footer {
 	background-color: grey;

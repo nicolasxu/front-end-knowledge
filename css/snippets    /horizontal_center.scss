@@ -36,6 +36,7 @@ var source = "http://stackoverflow.com/questions/114543/horizontally-center-a-di
 //<div class="content">This works with any content</div>
 
 .content {
+  // outer element should be positioned!
   position: absolute;
   left: 50%;
   top: 50%; // make top left to the center

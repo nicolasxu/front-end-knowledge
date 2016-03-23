@@ -3,6 +3,7 @@
 #triangle-up {
     width: 0;
     height: 0;
+    // border top is empty, so no top border width!!
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     border-bottom: 100px solid red;

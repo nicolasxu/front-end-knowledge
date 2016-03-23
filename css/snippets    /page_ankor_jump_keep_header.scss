@@ -1,7 +1,9 @@
 // page_ankor_jump_keep_header
 // If you use #ankor to jump around the page, you need to set the top element constant 
 // padding top, or the page will "jump" each time you click the ankor. 
-				var source = "http://stackoverflow.com/questions/4086107/html-positionfixed-page-header-and-in-page-anchors";
-				// <h1><a class="anchor" name="barlink">Bar</a></h1>
-				// .anchor { padding-top: 90px; }
-		
+
+
+
+var source = "http://stackoverflow.com/questions/4086107/html-positionfixed-page-header-and-in-page-anchors";
+// <h1><a class="anchor" name="barlink">Bar</a></h1>
+// .anchor { padding-top: 90px; }

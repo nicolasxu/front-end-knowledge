@@ -32,6 +32,6 @@ function handle_route_change_error() {
         $location.path('/');
         handlingRouteChangeError = false;
       }
-	  );
+    );
 	}
 }

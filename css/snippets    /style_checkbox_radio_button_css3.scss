@@ -8,25 +8,48 @@
 
 // html
 /*
-	<input type="checkbox" id="c1" name="cc" />
-	<label for="c1"><span></span>Check Box 1</label>
+  <td>
+    <input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" />
+    <label for="checkboxG4" class="css-label">Option 1</label>
+  </td>
 */
 
 
-input[type="checkbox"] {
-    display:none;
+input[type=checkbox].css-checkbox {
+  // basically hide it
+  position:absolute; 
+  z-index:-1000; 
+  left:-1000px; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height:1px; 
+  width:1px; margin:-1px; padding:0; border:0;
 }
-input[type="checkbox"] + label span {
-    display:inline-block;
-    width:19px;
-    height:19px;
-    margin:-1px 4px 0 0;
-    vertical-align:middle;
-    background:url(check_radio_sheet.png) left top no-repeat;
-    cursor:pointer;
+
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left:37px;
+  height:32px; 
+  display:inline-block;
+  line-height:32px;
+  background-repeat:no-repeat;
+  background-position: 0 0;
+  font-size:32px;
+  vertical-align:middle;
+  cursor:pointer;
+
 }
-input[type="checkbox"]:checked + label span {
-    background:url(check_radio_sheet.png) -19px top no-repeat;
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background-position: 0 -32px;
+}
+label.css-label {
+  background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_4ea63867c02e5cae931bd62523a0c675.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 

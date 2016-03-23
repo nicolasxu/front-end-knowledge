@@ -3,6 +3,7 @@ var source = "http://stackoverflow.com/questions/1776915/how-to-center-absolute-
 // Method 1: transform-translate, unknow height or width
 
 .centered-axis-xy {
+	// parent element must be positioned!
     position: absolute;
     left: 50%;
     top: 50%;

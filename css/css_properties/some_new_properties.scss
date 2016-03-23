@@ -16,16 +16,14 @@ white-space: normal|nowrap|pre|pre-line|pre-wrap|initial|inherit;
 	// Detail explanation: 
 	// http://stackoverflow.com/questions/826782/css-rule-to-disable-text-selection-highlighting";
 	
-	// 5. 
-	pointer-events: none;
-	// explanation: https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events";
-	// 6. 
-	word-wrap: normal|break-word|initial|inherit;
-	//
-	//	The word-wrap property is used to specify whether or not the browser may 
-	//    break lines within words in order to prevent overflow when an otherwise 
-	//    unbreakable string is too long to fit in its containing box.
-	// 7. 
+	// 5. allow or disable pointer event
+	pointer-events: none; // auto
+
+	// 6. whether or not the browser may break lines within words
+	word-wrap: normal|break-word|initial|inherit; // is now "overflow-wrap"
+	
+	// 7. The word-break CSS property is used to specify 
+	//    whether to break lines within words.
 	word-break: normal|break-all|keep-all|initial|inherit;
 	// word break for CJK (Chinese/Japanese/Korean) text. English is athe same. 
 
