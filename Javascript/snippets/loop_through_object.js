@@ -2,7 +2,7 @@ function loop_through_object() {
 	var source = "http://stackoverflow.com/questions/684672/loop-through-javascript-object";
 	for (var key in p) {
 	  if (p.hasOwnProperty(key)) {
-	    alert(key + " -> " + p[key]);
+	    console.log(key + " -> " + p[key]);
 	  }
 	}
 }

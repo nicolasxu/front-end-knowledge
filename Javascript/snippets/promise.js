@@ -17,6 +17,9 @@ var promise = new Promise(function(resolve, reject) {
 
 promise.then(function(result) {
   console.log(result); // "Stuff worked!"
+  return result;
+  // the returned value will be wrapped in a new promise object. 
+  // so that you can then() it.
 }, function(err) {
   console.log(err); // Error: "It broke"
 });

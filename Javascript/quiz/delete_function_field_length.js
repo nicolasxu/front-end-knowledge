@@ -16,6 +16,16 @@ function quiz13() {
 
 
 
+
+
+
+
+
+
+
+
+
+
 	 
 	// answer: "number"
 	// explanation: every function has a length value telling how much params it takes

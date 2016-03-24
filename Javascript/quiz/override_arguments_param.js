@@ -8,5 +8,6 @@ function quiz12 () {
 	foo(1);
 	 
 	// answer: 2
-	// explanation: overwrite arguments will over write param within the function scope
+	// explanation: overwrite arguments will over write param 
+	// within the function scope
 }

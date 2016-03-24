@@ -1,7 +1,8 @@
-
+// Method 1:
 li{
   list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAE0lEQVQIW2NkYGD4D8RwwEi6AACaVAQBULo4sgAAAABJRU5ErkJggg==");
 }
+// Method 2:
 // or you can use li:before following:
 ul {
     list-style: none;

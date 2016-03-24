@@ -1,6 +1,7 @@
 function loop_array() {
 	// plain javascript 
 	function logArrayElements(element, index, array) {
+		// value, index
 	  console.log('a[' + index + '] = ' + element);
 	  // this, point to root object
 	}
@@ -12,6 +13,7 @@ function loop_array() {
 	
 	// jquery version
 	$.each([3,4,5], function(index, value){
+		// index, value
 		console.log(this);
 		// note: this will point to each object in the array
 	});

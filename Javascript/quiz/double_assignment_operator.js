@@ -1,6 +1,8 @@
 var foo = {n: 1};
 var bar = foo;
 foo.x = foo = {n: 2};
+
+
 //////////////////
 // result is undefined
 
