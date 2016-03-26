@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Simple tab demo</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+<div class="tabs-titles">
+  <li >
+   <a href="javascript:void(0);"  class="tab-title shown" data-target="content1">tab1</a>
+  </li>
+  <li >
+    <a href="javascript:void(0);" class="tab-title" data-target="content2">tab2</a>
+  </li>
+  <li >
+   <a href="javascript:void(0);" class="tab-title" data-target="content3">tab3</a>
+  </li>
+
+</div>
+<div class="tab-contents-area">
+  <div class="content1" >content 1</div>
+  <div class="content2">content 2</div>
+  <div class="content3">content 3</div>
+</div>
+
+<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+
+	<script>
+		$(document).ready(function() {
+			SimpleTab();
+		});
+
+		function SimpleTab() {
+			var tabTitleClass = "tab-title";
+			var tabContentClass = "content";
+			var $contents = $("[class^=\'" + tabContentClass +"\'");
+			var $titles = $("." + tabTitleClass );
+			init();
+			function init() {
+				// 1. hide contents
+				hideContents();
+				// 2. show first tab content
+				showFirstContent();
+				// 3. bind event handler
+				attachEvent();
+			}
+			function hideContents() {
+				$contents.hide();
+			}
+			function showFirstContent() {
+				$contents.first().show();
+			}
+			function attachEvent() {
+				$titles.closest(".tabs-titles").on("click", "a", function (e) {
+					
+					hideContents();
+
+					var targetClass = $(e.target).data("target");
+					
+					$("."+targetClass).show();
+				})
+			}
+		}
+
+	</script>
+</body>
+</html>

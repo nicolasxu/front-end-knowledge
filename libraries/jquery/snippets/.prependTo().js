@@ -11,3 +11,5 @@
 </div>
 
 $( "<p>Test</p>" ).prependTo( ".inner" );
+// insert <p> to every matched elements. 2 <p> will be inserted before 2 .inner
+
