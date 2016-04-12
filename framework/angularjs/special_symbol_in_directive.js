@@ -12,7 +12,11 @@ directive('name', [function () {
 		replace: true,
 		transclude: true,
 		restrict: 'A',
-		scope: {}, // The scope property can be true, an object or a falsy value
+		scope: { localModel: '=myAttr' },
+		// or { localModel:'<myAttr' } // one way binding, parent to directive scope only
+		// { localFn:'&myAttr' }
+		// <MyComponent my-attr="parentScopeVariable"> </MyComponent
+		// The scope property can be true, an object or a falsy value
 
 		controller: function($scope, $element, $attrs, $transclude, otherInjectables) {
 

@@ -1,6 +1,7 @@
 function closure() {
 	var description = " Accessing outer variable status from  \
-                 			lexical inner scope creates a closure. The outer variable status is still \
+                 			lexical inner scope creates a closure. 
+                 			The outer variable status is still \
                  			alive even if outer function returns. ";
   var link = " http://stackoverflow.com/questions/111102/how-do-javascript-closures-work/111200#111200";
   var snippets = '';
