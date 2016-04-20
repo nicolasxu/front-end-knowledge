@@ -26,4 +26,5 @@
 	 
 	// answer: 2
 	// explanation: http://www.bennadel.com/blog/2522-providing-a-return-value-in-a-javascript-constructor.htm
-	// if not return complex object, e.g.: {} or [], new F() will return always newly created object
+	// if not return complex object, e.g.: {} or [], 
+	// new F() will return always newly created object

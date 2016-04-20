@@ -1,7 +1,7 @@
 var x = 6;
 var y = 4;
-var a = function(b) { 
-	return function(c) { 
+var a = function(b) {
+	return function(c) {
 		return y + b + c; 
 	} 
 };
@@ -14,5 +14,5 @@ y = 3;
 var unknown = ?;
 
 // what is the unknown line of code to make log result 10?
-console.log(fn(unknown));*
+console.log(fn(unknown));
 

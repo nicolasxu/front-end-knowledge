@@ -9,5 +9,5 @@ function check_if_string_start_with() {
 	// or
 	/^Hello/.test('Hello world')
 	// or
-	haystack.lastIndexOf(needle, 0) === 0
+	haystack.indexOf(needle, 0) === 0
 }

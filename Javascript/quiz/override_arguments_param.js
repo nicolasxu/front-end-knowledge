@@ -2,8 +2,8 @@ function quiz12 () {
 	var question = "what is alerted?";
 
 	function foo(a) {
-	    arguments[0] = 2;
-	    alert(a);
+    arguments[0] = 2;
+    alert(a);
 	}
 	foo(1);
 	 
