@@ -6,3 +6,6 @@ function find_primitive_value_in_array() {
 	else 
 		{return false;}
 }
+
+// note:
+// both Array and String has indexOf() function

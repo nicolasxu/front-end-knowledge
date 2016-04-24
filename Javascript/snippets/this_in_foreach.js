@@ -19,7 +19,8 @@ Counter.prototype.add = function(array) {
   array.forEach(function(entry) {
     this.sum += entry;
     ++this.count;
-  }, this);
+  }, this); // to determine this, you need to look at how add()
+  					// is called. 
   // ^---- Note
 };
 

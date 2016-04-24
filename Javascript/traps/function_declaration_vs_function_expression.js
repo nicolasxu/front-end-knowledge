@@ -8,7 +8,7 @@ function function_var_def() {
 			function functionTwo() {
   			// Function declarations
 			}
-			// The difference is that functionOne is defined when run to this line of code, whereas 
+			// The difference is that functionOne is assigned when run to this line of code, whereas 
 			// functionTwo is defined at parse-time for a script block. For example:
 
 			/*

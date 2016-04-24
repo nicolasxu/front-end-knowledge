@@ -20,6 +20,8 @@ promise.then(function(result) {
   return result;
   // the returned value will be wrapped in a new promise object. 
   // so that you can then() it.
+  // If you don't return anything, actually undefined is returned and wrapped
+  // by new promise object. 
 }, function(err) {
   console.log(err); // Error: "It broke"
 });
@@ -35,7 +37,7 @@ function get(url) {
     req.open('GET', url);
 
     req.onload = function() {
-      // This is called even on 404 etc
+      // This is called after request is completed (can be 404), 
       // so check the status
       if (req.status == 200) {
         // Resolve the promise with the response text

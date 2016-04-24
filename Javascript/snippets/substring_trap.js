@@ -2,7 +2,8 @@
 var anyString = 'abc';
 anyString.substring(0, anyString.length);
 
-// include first index, but not include the endIndex, that's way you can use str.length 
+// include first index, but not include the endIndex, 
+// that's way you can use str.length 
 // in the 2nd param. 
 
 // - If indexStart equals indexEnd, substring() returns an empty string.

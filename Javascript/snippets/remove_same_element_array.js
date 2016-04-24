@@ -7,3 +7,6 @@ function remove_same_element_array() {
     }
 	}
 }
+
+// example: 
+// [1,2,3,4,5,17, 33, 19, 22]

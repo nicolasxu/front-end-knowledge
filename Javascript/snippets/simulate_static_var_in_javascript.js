@@ -2,7 +2,9 @@ function static_var_in_javascript() {
 	var source = "http://stackoverflow.com/questions/1535631/static-variables-in-javascript";
 	// example:
 	function Person(){
-	  if(Person.count == undefined){
+		// function name is available within the function, 
+		// that's why recursive function call is possible. 
+	  if(typeof Person.count === 'undefined'){
 	    Person.count = 1;
 	  }
 	  else{

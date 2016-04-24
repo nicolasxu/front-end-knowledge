@@ -15,4 +15,6 @@ function sort_array_obj() {
 	}
 
 	objs.sort(compare);
+	// if no sort func provided, then arr is sorted based on
+	// string order, not number. 
 }

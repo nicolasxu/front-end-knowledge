@@ -1,0 +1,21 @@
+Elements are considered visible if they consume space in the document.
+Visible element width or height that is greater than zero.
+Elements with visibility: hidden or opacity: 0 are considered visible
+
+
+So, every element selected by :visible isn't selected by :hidden and vice versa.
+
+All option elements are considered hidden, regardless of their selected state.
+
+During animations that hide an element, the element is considered visible until the end of the animation. 
+During animations to show an element, the element is considered visible at the start at the animation.
+
+
+<script>
+	$( "div:visible" ).click(function() {
+	  $( this ).css( "background", "yellow" );
+	});
+	$( "button" ).click(function() {
+	  $( "div:hidden" ).show( "fast" );
+	});
+</script>

@@ -8,7 +8,7 @@ function merge_two_obj() {
 	$.extend( true, object1, object2 );
 
 	// javascript way:
-	function merge_options(obj1,obj2){
+	function merge_options(obj1, obj2){
 	  var obj3 = {};
 	  // works only for shallow objects
 	  for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }

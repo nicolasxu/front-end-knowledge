@@ -1,0 +1,30 @@
+Selects the element that is the root of the document.
+
+
+In HTML, the root of the document, and thus the element that $(":root") selects, is always the <html> element.
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>root demo</title>
+  <style>
+  span.fot {
+    color: red;
+    font-size: 120%;
+    font-style: italic;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="log">The root of this document is: </div>
+ 
+<script>
+$( "<b></b>" ).html( $( ":root" )[ 0 ].nodeName ).appendTo( "#log" );
+</script>
+ 
+</body>
+</html>

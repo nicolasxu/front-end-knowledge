@@ -9,8 +9,10 @@ function this_keyword() {
 	//     The intepreter updates ThisBinding in folowing 3 cases:
 	//     Case 1: Initial global execution context
 	//             <script></script>
+	//             'this' is updated to global/root object
 	//     Case 2: Entering eval code
 	//             direct eval() or indirect eval call
+	//             'this' is updated to this in the current scope. 
 	//     Case 3: Entering function code
 	//       obj.myMethod() or obj["myMethod"]()
 	//       Function.prototype.apply(thisArg, argArray), call(), bind()

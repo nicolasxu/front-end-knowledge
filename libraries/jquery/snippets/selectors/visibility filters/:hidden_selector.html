@@ -1,0 +1,38 @@
+Description: Selects all elements that are hidden.
+
+Elements can be considered hidden for several reasons:
+- They have a CSS display value of none.
+- They are form elements with type="hidden".
+- Their width and height are explicitly set to 0.
+- An ancestor element is hidden, so the element is not shown on the page.
+
+Because :hidden is a jQuery extension and not part of the CSS specification
+
+For :hidden, an element is assumed to be hidden if it or any of its parents 
+consumes no space in the document. 
+- display: none consumes no space
+- script tag consumes no space
+- During animations that hide an element, the element is considered to be visible until the end of the animation.
+but visbility: hidden will take space, and
+width: 0 also takes space. 
+
+So element with 
+visibility:hidden will not be selected by $(':hidden')
+
+note:
+<script>
+	$( elem ).css( "visibility", "hidden" ).is( ":hidden" ) == false);
+</script>
+
+normally it is used:
+<script>
+	$('div:hidden').show();
+</script>
+
+if you use 
+<script>
+	var sel = $(':hidden');
+</script>
+the sel will include <script>, <head>... tags.
+So make sure you put a selector before :hidden. 
+

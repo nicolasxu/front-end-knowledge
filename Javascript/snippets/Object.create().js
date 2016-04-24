@@ -1,3 +1,16 @@
+// How to use Object.create();
+
+
+var newObj = Object.create({/* prototype object */}, {/* property object */});
+// 1. prototype object will be the prototype of newly create object. 
+// 2. properties in property object will be added to the newly created object. 
+// example: 
+	var ss = o = Object.create({a: 1}, { p: { value: 42 } });
+
+
+
+
+	
 // Shape - superclass
 function Shape() {
   this.x = 0;
