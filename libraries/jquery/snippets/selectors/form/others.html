@@ -1,0 +1,51 @@
+:disabled Selector
+<script>
+$( "input:disabled" ).val( "this is it" );
+</script>
+
+:enabled selector
+The :enabled selector should only be used for selecting HTML elements that support the disabled attribute (<button>, <input>, <optgroup>, <option>, <select>, and <textarea>).
+<form>
+  <input name="email" disabled="disabled">
+  <input name="id">
+</form>
+<script>
+$( "input:enabled" ).val( "this is it" );
+</script>
+
+:file Selector
+For better performance in modern browsers, use [type="file"] instead.
+<script>
+var input = $( "input:file" ).css({
+  background: "yellow",
+  border: "3px red solid"
+});
+</script>
+
+
+:focus Selector
+<script>
+$( "#content" ).delegate( "*", "focus blur", function() {
+  var elem = $( this );
+  setTimeout(function() {
+    elem.toggleClass( "focused", elem.is( ":focus" ) );
+  }, 0 );
+});
+</script>
+
+
+:image Selector
+use [type="image"] instead.
+<script>
+var input = $( "input:image" ).css({
+  background:"yellow",
+  border:"3px red solid"
+});
+</script>
+
+
+:password Selector
+:radio Selector
+:text Selector
+:reset Selector	
+:password Selector

@@ -1,0 +1,42 @@
+Selects all elements that are the first among siblings of the same element name.
+
+
+The :first-of-type selector matches elements that have no other element with both the same parent and the same element name coming before it in the document tree.
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>first-of-type demo</title>
+  <style>
+  span.fot {
+    color: red;
+    font-size: 120%;
+    font-style: italic;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <span>Corey,</span>
+  <span>Yehuda,</span>
+  <span>Adam,</span>
+  <span>Todd</span>
+</div>
+<div>
+  <b>Nobody,</b>
+  <span>Jörn,</span>
+  <span>Scott,</span>
+  <span>Timo</span>
+</div>
+ 
+<script>
+$( "span:first-of-type" ).addClass( "fot" );
+</script>
+ 
+</body>
+</html>

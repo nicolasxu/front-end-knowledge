@@ -1,0 +1,51 @@
+Description: Selects all elements that are the only child of their parent.
+
+If the parent has other child elements, nothing is matched.
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>only-child demo</title>
+  <style>
+  div {
+    width: 100px;
+    height: 80px;
+    margin: 5px;
+    float: left;
+    background: #b9e;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div>
+  <button>Sibling!</button>
+  <button>Sibling!</button>
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+</div>
+ 
+<div>
+  None
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+  <button>Sibling!</button>
+  <button>Sibling!</button>
+</div>
+ 
+<div>
+  <button>Sibling!</button>
+</div>
+ 
+<script>
+$( "div button:only-child" ).text( "Alone" ).css( "border", "2px blue solid" );
+</script>
+ 
+</body>
+</html>
