@@ -1,0 +1,59 @@
+These methods allow us to insert new content inside an existing element.
+.append()
+.appendTo()
+.html()
+.prepend()
+
+<script>
+	// .append()
+	// Insert content, specified by the parameter, 
+	// to the end of each element in the set of matched elements.
+		$( ".inner" ).append( "<p>Test</p>" );
+		var $newdiv1 = $( "<div id='object1'/>" ),
+  	newdiv2 = document.createElement( "div" ),
+  	existingdiv1 = document.getElementById( "foo" );
+		$( "body" ).append( $newdiv1, [ newdiv2, existingdiv1 ] );
+
+	// .appendTo()
+		$( "<p>Test</p>" ).appendTo( ".inner" );
+		$( "span" ).appendTo( "#foo" );
+
+	// .html()
+	// Get the HTML contents of the first element in the set of 
+	// matched elements or set the HTML contents of every matched element.
+		var htmlString =	$( "div.demo-container" ).html();
+		$( "div" ).html( "<span class='red'>Hello <b>Again</b></span>" );
+		$( "div.demo-container" ).html(function() {
+		  var emphasis = "<em>" + $( "p" ).length + " paragraphs!</em>";
+		  return "<p>All new content for " + emphasis + "</p>";
+		});
+	
+	//.prepend()
+		$( ".inner" ).prepend( "<p>Test</p>" );
+		$( "p" ).prepend( $( "b" ) );
+
+	//.prependTo()
+	// Insert every element in the set of matched elements 
+	// to the beginning of the target.
+		$( "<p>Test</p>" ).prependTo( ".inner" );
+		$( "span" ).prependTo( "#foo" );
+
+	//.text()
+	// Get the combined text contents of each element in the 
+	// set of matched elements, including their descendants.
+
+	// Set the content of each element in the set of matched 
+	// elements to the specified text.
+</script>
+
+
+<div class="demo-container">
+  <div class="demo-box">Demonstration Box</div>
+  <ul>
+    <li>list item 1</li>
+    <li>list <strong>item</strong> 2</li>
+  </ul>
+</div>
+
+$( "div.demo-container" ).text() 
+result: Demonstration Box list item 1 list item 2

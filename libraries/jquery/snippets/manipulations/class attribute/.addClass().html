@@ -1,0 +1,13 @@
+
+<script>
+	
+	$( "p" ).addClass( "myClass yourClass" );
+  $( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
+	$( "p" ).last().addClass( "selected" );
+
+  // take function as parameter
+  $( "ul li" ).addClass(function( index ) {
+	  return "item-" + index;
+	});
+
+</script>

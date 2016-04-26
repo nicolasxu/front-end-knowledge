@@ -1,0 +1,34 @@
+<script>
+	// example 1:
+	$( "div.tumble" ).toggleClass( "bounce" );
+
+	// example 2:
+	$( "div.foo" ).toggleClass(function() {
+	  if ( $( this ).parent().is( ".bar" ) ) {
+	    return "happy";
+	  } else {
+	    return "sad";
+	  }
+	});
+	// example 3:
+	$( "p" ).click(function() {
+  	$( this ).toggleClass( "highlight" );
+	});
+
+</script>
+
+
+
+<script>
+	// example 4:
+	var count = 0;
+	$( "p" ).each(function() {
+	  var $thisParagraph = $( this );
+	  var count = 0;
+	  $thisParagraph.click(function() {
+	    count++;
+	    $thisParagraph.find( "span" ).text( "clicks: " + count );
+	    $thisParagraph.toggleClass( "highlight", count % 3 === 0 );
+	  });
+	});
+</script>

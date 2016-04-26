@@ -1,0 +1,14 @@
+Remove a single class, multiple classes, or all classes from each element in the set of matched elements.
+
+<script>
+	$( "p" ).removeClass( "myClass yourClass" )
+	$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
+	$( "p:even" ).removeClass( "blue" );
+	$( "p:odd" ).removeClass( "blue under" );
+	$( "p:eq(1)" ).removeClass(); // remove all the classes
+
+	$( "li:last" ).removeClass(function() {
+  	return $( this ).prev().attr( "class" );
+	});
+
+</script>

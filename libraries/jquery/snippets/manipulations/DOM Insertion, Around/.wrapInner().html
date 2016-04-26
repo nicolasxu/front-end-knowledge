@@ -1,0 +1,20 @@
+Wrap an HTML structure around the content of each element in the set of matched elements.
+
+
+<div class="container">
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+
+<script>
+	$( ".inner" ).wrapInner( "<div class='new'></div>");
+</script>
+
+<div class="container">
+  <div class="inner">
+    <div class="new">Hello</div>
+  </div>
+  <div class="inner">
+    <div class="new">Goodbye</div>
+  </div>
+</div>

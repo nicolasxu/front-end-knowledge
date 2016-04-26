@@ -1,0 +1,12 @@
+Wrap an HTML structure around each element in the set of matched elements.
+
+<script>
+	// example 1:
+	$( ".inner" ).wrap( "<div class='new'></div>" );
+
+
+	// example 2:
+	$( ".inner" ).wrap(function() {
+  	return "<div class='" + $( this ).text() + "'></div>";
+	});
+</script>
