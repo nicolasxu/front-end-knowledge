@@ -1,0 +1,39 @@
+.detach()
+	Remove the set of matched elements from the DOM.
+	The .detach() method is the same as .remove(), except that .detach() keeps all jQuery data associated with the removed elements. This method is useful when removed elements are to be reinserted into the DOM at a later time.
+
+.empty()
+	Remove all child nodes of the set of matched elements from the DOM.
+	<script>
+		$( ".hello" ).empty();
+	</script>
+
+.remove()
+
+	Similar to .empty(), the .remove() method takes elements out of the DOM. Use .remove() when you want to remove the element itself, as well as everything inside it. In addition to the elements themselves, all bound events and jQuery data associated with the elements are removed. To remove the elements without removing data and events, use .detach() instead.
+	<div class="container">
+	  <div class="hello">Hello</div>
+	  <div class="goodbye">Goodbye</div>
+	</div>
+	<script>
+		$( ".hello" ).remove();
+	</script>
+	<script>
+	$( "button" ).click(function() {
+	  $( "p" ).remove( ":contains('Hello')" );
+	});
+	</script>
+
+.unwrap()
+
+	The .unwrap() method removes the element's parent. This is effectively the inverse of the .wrap() method. The matched elements (and their siblings, if any) replace their parents within the DOM structure.
+	<script>
+		var pTags = $( "p" );
+		$( "button" ).click(function() {
+		  if ( pTags.parent().is( "div" ) ) {
+		    pTags.unwrap();
+		  } else {
+		    pTags.wrap( "<div></div>" );
+		  }
+		});
+	</script>

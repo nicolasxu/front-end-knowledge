@@ -1,0 +1,36 @@
+.replaceAll()
+	Replace each target element with the set of matched elements.
+	<div class="container">
+  	<div class="inner first">Hello</div>
+  	<div class="inner second">And</div>
+  	<div class="inner third">Goodbye</div>
+	</div>
+	<script>
+		$( "<h2>New heading</h2>" ).replaceAll( ".inner" );
+	</script>
+	<div class="container">
+  	<h2>New heading</h2>
+  	<h2>New heading</h2>
+  	<h2>New heading</h2>
+	</div>
+
+	or: 
+	<script>
+		$( ".first" ).replaceAll( ".third" );
+	</script>
+	result: 
+	<div class="container">
+  	<div class="inner second">And</div>
+  	<div class="inner first">Hello</div>
+	</div>
+.replaceWith()
+	<div class="container">
+  	<div class="inner first">Hello</div>
+  	<div class="inner second">And</div>
+  	<div class="inner third">Goodbye</div>
+	</div>
+	<script>
+		$( "div.second" ).replaceWith( "<h2>New heading</h2>" );
+		// or
+		$( "div.third" ).replaceWith( $( ".first" ) );
+	</script>

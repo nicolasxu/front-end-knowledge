@@ -5,6 +5,7 @@
 
 
 $( "#dataTable tbody tr" ).on( "click", function() {
+	// this is standard event binding, to every matched tr element
   console.log( $( this ).text() );
 });
 

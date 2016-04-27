@@ -1,0 +1,58 @@
+.css()
+	<script>
+		$( "div" ).click(function() {
+		  var color = $( this ).css( "background-color" );
+		  $( "#result" ).html( "That div is <span style='color:" +
+		    color + ";'>" + color + "</span>." );
+		});
+		// example 2:
+		$( "div.example" ).css( "width", function( index ) {
+		  return index * 50;
+		});
+	</script>
+
+.width()
+.height()
+	only include content, no padding, no border, no margin
+	Get the current computed height for the first element in the set of matched elements or set the height of every matched element.
+	<script>
+		// Returns height of browser viewport
+		$( window ).height();
+		 
+		// Returns height of HTML document
+		$( document ).height();
+	</script>
+
+.innerHeight()
+	This method returns the height of the element, including top and bottom padding, in pixels.
+
+.offset()
+	value is relative to the document
+	get first or set all 
+	value is {top: 3, left: 10}
+	<script>
+		var p = $( "p:last" );
+		var offset = p.offset();
+		p.html( "left: " + offset.left + ", top: " + offset.top );
+	</script>
+	<script>
+		$( "p:last" ).offset({ top: 10, left: 30 });
+	</script>
+
+.outerHeight()
+	including padding, border, and optionally margin. 
+
+.position()
+	relative to the offset parent
+	only get, no set
+	return value: {top: 10, left: 30}
+
+.scrollTop()
+.scrollLeft()
+	number of px hidden from view
+	e.g.: 14
+	<script>
+		$( "div.demo" ).scrollTop( 300 );
+	</script>
+
+

@@ -1,0 +1,29 @@
+These methods allow us to insert new content outside an existing element.
+
+.after()
+.before()
+.insertAfter()
+.insertBefore()
+
+
+<div class="container">
+  <h2>Greetings</h2>
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+<script>
+	$( ".inner" ).after( "<p>Test</p>" );
+</script>
+result:
+<div class="container">
+  <h2>Greetings</h2>
+  <div class="inner">Hello</div>
+  <p>Test</p>
+  <div class="inner">Goodbye</div>
+  <p>Test</p>
+</div>
+
+
+.insertAfter()
+<!-- Insert every element in the set of matched elements after the target. -->
+$( "h2" ).insertAfter( $( ".container" ) );

@@ -1,0 +1,28 @@
+- attributes are the things within html tag.
+- properties are the field values of dom object.
+	checked is property, it can also be attribute if you put it 
+	within html tag. 
+.attr()
+	Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.
+	<script>
+		$( "#greatphoto" ).attr( "alt", "Beijing Brush Seller" );
+		$( "#greatphoto" ).attr({
+		  alt: "Beijing Brush Seller",
+		  title: "photo by Kelly Clark"
+		});
+	</script>
+
+.prop()
+	As of jQuery 1.6, the .attr() method returns undefined for attributes that have not been set. To retrieve and change DOM properties such as the checked, selected, or disabled state of form elements, use the .prop() method.
+.removeAttr()
+.removeProp()
+.val()
+	Get the current value of the first element in the set of matched elements or set the value of every matched element.
+	The .val() method is primarily used to get the values of form elements such as input, select and textarea.
+
+	When the first element in the collection is a select-multiple (i.e., a select element with the multiple attribute set), it returns an array containing the value of each selected option, or null if no options are selected. 
+	<script>
+		$( "#single" ).val( "Single2" );
+		$( "#multiple" ).val([ "Multiple2", "Multiple3" ]); // text in <option> tag
+		$( "input").val([ "check1", "check2", "radio1" ]); // checkbox or radio value
+	</script>
