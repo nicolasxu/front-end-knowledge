@@ -36,6 +36,7 @@ module.exports = {
                                          // before all other chunk files. 
             children:  true, // Look for common dependencies in all children,
             minChunks: 2, // How many times a dependency must come up before being extracted
+            async: true // (create an async commons chunk)
         }),
     ],
     module:  {
