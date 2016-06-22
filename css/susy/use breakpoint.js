@@ -62,3 +62,38 @@
 		}
 	}
 }
+
+////////////////// other example //////////////
+var source = "http://zellwk.com/blog/mappy-breakpoints/";
+// Min Width Query 
+// ---------------
+@include breakpoint(600px) {
+  // stuff
+}
+
+// Translates into 
+@media (min-width: 600px) {
+  // stuff 
+}
+
+// Min Width And Max Width Query
+// -----------------------------
+@include breakpoint(600px 900px) {
+  // stuff
+}
+
+// Translates into
+@media (min-width: 600px) and (max-width: 900px) {
+  // stuff
+}
+
+// Max Width Query
+// ---------------
+@include breakpoint(max-width 900px) {
+  // stuff
+}
+
+// Translates into 
+@media (max-width: 900px) {
+  // stuff
+}
