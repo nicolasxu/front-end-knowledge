@@ -29,5 +29,4 @@ module.exports = {
 			{ test: /\.tpl$/,  loader: 'raw' }
 		]
 	}
-	
 }
