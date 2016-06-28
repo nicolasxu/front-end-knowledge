@@ -1,6 +1,7 @@
 function $routeProvider_service() {
 	// make sure to load ['ngRoute'] to module before using $route, $routeProvider
-	// ngRoute is in difference js file, other than angular.js
+	// ngRoute is in different file(angular-route.js), 
+	// load it before using ['ngRoute'] dependency
 	// e.g.:
 	angular.module('ngRouteExampleApp', ['ngRoute'])
 		.controller(/* ... */);
