@@ -91,3 +91,21 @@ var answer = "Loaders are transformations that are applied on a \
 	that the styles are active on the page
 	*/
 
+/* imports-loader */
+	{ test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' }
+	"above loader injects jquery to before those scripts files"
+	"Given you have this file example.js"
+
+	//$("img").doSomeAwesomeJqueryPluginStuff();
+	//then you can inject the $ variable into the module by configuring the imports-loader like this:
+
+	require("imports?$=jquery!./example.js");
+	This simply prepends var $ = require("jquery"); to example.js.
+
+
+
+
+
+
+
+
