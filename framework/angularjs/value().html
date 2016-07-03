@@ -1,0 +1,20 @@
+Value Recipe
+Let's say that we want to have a very simple service called "clientId" that provides a string representing an authentication id used for some remote API. You would define it like this:
+<script>
+	var myApp = angular.module('myApp', []);
+	myApp.value('clientId', 'a12345654321x');
+</script>
+Notice how we created an Angular module called myApp, and specified that this module definition contains a "recipe" for constructing the clientId service, which is a simple string in this case.
+
+And this is how you would display it via Angular's data-binding:
+<script>
+	myApp.controller('DemoController', ['clientId', function DemoController(clientId) {
+	  this.clientId = clientId;
+	}]);
+</script>
+<html ng-app="myApp">
+  <body ng-controller="DemoController as demo">
+    Client ID: {{demo.clientId}}
+  </body>
+</html>
+In this example, we've used the Value recipe to define the value to provide when DemoController asks for the service with id "clientId".

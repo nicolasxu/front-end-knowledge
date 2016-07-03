@@ -1,0 +1,36 @@
+Service Recipe - return result of newed constructor
+JavaScript developers often use custom types to write object-oriented code.
+Let's explore how we could launch a unicorn into space via our unicornLauncher service which is an instance of a custom type:
+<script>
+	function UnicornLauncher(apiToken) {
+
+	  this.launchedCount = 0;
+	  this.launch = function() {
+	    // Make a request to the remote API and include the apiToken
+	    ...
+	    this.launchedCount++;
+	  }
+	}
+</script>
+We are now ready to launch unicorns, but notice that UnicornLauncher depends on our apiToken. We can satisfy this dependency on apiToken using the Factory recipe:
+<script>
+	myApp.factory('unicornLauncher', ["apiToken", function(apiToken) {
+	  return new UnicornLauncher(apiToken);
+	}]);
+</script>
+
+This is, however, exactly the use-case that the Service recipe is the most suitable for.
+
+The Service recipe produces a service just like the Value or Factory recipes, but it does so by invoking a constructor with the new operator. 
+The constructor can take zero or more arguments, which represent dependencies needed by the instance of this type.
+
+Note: Service recipes follow a design pattern called constructor injection.
+
+Since we already have a constructor for our UnicornLauncher type, we can replace the Factory recipe above with a Service recipe like this:
+<script>
+	myApp.service('unicornLauncher', ["apiToken", UnicornLauncher]);
+</script>
+Much simpler!
+
+Note: Yes, we have called one of our service recipes 'Service'. We regret this and know that we'll be somehow punished for our misdeed. It's like we named one of our offspring 'Child'. Boy, that would mess with the teachers.
+

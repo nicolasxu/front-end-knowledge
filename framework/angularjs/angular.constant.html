@@ -1,0 +1,32 @@
+Constant Recipe
+We've just learned how Angular splits the life-cycle into configuration phase and run phase and how you can provide configuration to your application via the config function. 
+Since the config function runs in the configuration phase when no services are available, it doesn't have access even to simple value objects created via the Value recipe.
+
+Since simple values, like URL prefixes, don't have dependencies or configuration, it's often handy to make them available in both the configuration and run phases. This is what the Constant recipe is for.
+
+Let's say that our unicornLauncher service can stamp a unicorn with the planet name it's being launched from if this name was provided during the configuration phase. The planet name is application specific and is used also by various controllers during the runtime of the application. We can then define the planet name as a constant like this:
+<script>
+myApp.constant('planetName', 'Greasy Giant');
+We could then configure the unicornLauncherProvider like this:
+
+myApp.config(['unicornLauncherProvider', 'planetName', function(unicornLauncherProvider, planetName) {
+  unicornLauncherProvider.useTinfoilShielding(true);
+  unicornLauncherProvider.stampText(planetName);
+}]);
+</script>
+
+And since Constant recipe makes the value also available at runtime just like the Value recipe, we can also use it in our controller and template:
+<script>
+myApp.controller('DemoController', ["clientId", "planetName", function DemoController(clientId, planetName) {
+  this.clientId = clientId;
+  this.planetName = planetName;
+}]);
+</script>
+
+<html ng-app="myApp">
+  <body ng-controller="DemoController as demo">
+   Client ID: {{demo.clientId}}
+   <br>
+   Planet Name: {{demo.planetName}}
+  </body>
+</html>
