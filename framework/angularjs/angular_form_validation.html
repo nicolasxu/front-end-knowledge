@@ -1,0 +1,94 @@
+<script>
+	
+	var source = "https://scotch.io/tutorials/angularjs-form-validation";
+
+	var code_example = "http://codepen.io/sevilayha/pen/xFcdI"
+
+</script>
+<h1>Form validation Usage:</h1>
+
+<p>1. In order for angularjs form validation to work, a form name must be provided in the form tag
+			e.g. <form name="myform1"></form>
+</p>
+<p>2. In the form tag, you must disable html5 default validation, or your will get unwantted tooltip box,
+      e.g.: <form name="myform1" novalidate></form>
+</p>
+<p>3. Use ng-submit, to bind onsubmit form event to a method on $scope. e.g.
+		<form name="myform1" novalidate ng-submit="submitForm()">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		button type must be "submit", or <input[type=submit]>
+		To prevent double execution of the handler, use only one of the ngSubmit or ngClick directives.
+</p>
+<p>4. Use ng-disabled="userForm.$invalid" to only enable the submit button when all form fields are 
+      valid, for example: 
+      <form name="myform1" novalidate ng-submit="submitForm()">
+      	<button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+      </form>
+</p>
+<p>5. In each form field, you need to 
+      1. assign a model using ng-model
+      2. use one of the angular form validation directives to specify validation rule:
+					<input
+					   ng-model="{ string }"
+					   name="{ string }"
+					   required
+					   ng-required="{ boolean }"
+					   ng-minlength="{ number }"
+					   ng-maxlength="{ number }"
+					   ng-pattern="{ string }"
+					   ng-change="{ string }">
+			3. each form input field must have a name attribute specified 
+</p>
+<p>6. To display error message if error occurs: 
+	<p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+	
+	show error based on specific type of error:
+	<input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+	<p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+	<p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+</p>
+<p>7. Angular form properties. Angular will add controller to each form and several default properties on the controller scope. 
+	Property	   Class	           Description
+	$valid	     ng-valid	         Boolean Tells whether an item is currently valid based on the rules you placed.
+	$invalid	   ng-invalid	       Boolean Tells whether an item is currently invalid based on the rules you placed.
+	$pristine	   ng-pristine	     Boolean True if the form/input has not been used yet. opposite of ng-dirty, except init value is true. Only change to false once, and stay that way. 
+	$dirty	     ng-dirty	         Boolean True if the form/input has been used. After you enter one char, the value will be true, and will not change.
+	$touched	   ng-touched	       Boolean True if the input has been blurred. true if you click in and out once, after 1st time, the value will not change
+	                               always true. 
+
+	when each time the properties value changes, angualr add related class to that value. 
+</p>
+
+
+
+////////////// example ///////////////////
+
+<div class="col-sm-6">
+  <!-- FORM ============ -->
+  <form name="userForm" ng-submit="submitForm()" novalidate>
+    <!-- NAME -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+     <label>Name</label>
+     <input type="text" name="name" class="form-control" ng-model="user.name" required>
+     <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+    </div>
+
+    <!-- USERNAME -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+      <label>Username</label>
+      <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+      <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+      <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+      <label>Email</label>
+      <input type="email" name="email" class="form-control" ng-model="user.email">
+      <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+  </form>
+</div>
