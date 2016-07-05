@@ -1,0 +1,32 @@
+<p>https://github.com/angular-ui/ui-router/wiki/Multiple-Named-Views</p>
+
+
+<!-- index.html -->
+<body>
+  <div ui-view="filters"></div>
+  <div ui-view="tabledata"></div>
+  <div ui-view="graph"></div>
+</body>
+
+
+<script>
+	// ...
+	$stateProvider
+	  .state('report',{
+	    views: {
+	      'filters': {
+	        templateUrl: 'report-filters.html',
+	        controller: function($scope){ ... controller stuff just for filters view ... }
+	      },
+	      'tabledata': {
+	        templateUrl: 'report-table.html',
+	        controller: function($scope){ ... controller stuff just for tabledata view ... }
+	      },
+	      'graph': {
+	        templateUrl: 'report-graph.html',
+	        controller: function($scope){ ... controller stuff just for graph view ... }
+	      }
+	    }
+	  })
+
+</script>
