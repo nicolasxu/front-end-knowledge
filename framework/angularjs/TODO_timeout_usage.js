@@ -1,3 +1,0 @@
-function timeout_usage() {
-
-}
