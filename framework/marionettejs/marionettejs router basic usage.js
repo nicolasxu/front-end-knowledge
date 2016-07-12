@@ -32,7 +32,13 @@ module.exports = Router;
 // in controller in Router object. If can't find them, error
 // is thrown. 
 
+/* Attaching the router */
+var app = new Mn.Application();
+app.on('start', function(options) {
+	var router = new Router(); // new the constructor will attach the routes
+	Backbone.history.start();
 
+});
 
 
 
