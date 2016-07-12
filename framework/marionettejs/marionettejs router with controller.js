@@ -11,7 +11,6 @@ var Router = Mn.AppRouter.extend({
 		'': 'default',
 		'login': 'login'     // http://localhost:8080/#/login
 		// "someMethod" must exist at controller.someMethod
-	
 	}, 
 	controller: myController
 	initialize: function () {
