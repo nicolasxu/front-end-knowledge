@@ -25,3 +25,5 @@ If a layout view is not managed by region, then
 
 	// solution is use addRegion() function in onRender(), 
 	// which will be called to build region hash after render(). 
+
+	
