@@ -1,0 +1,21 @@
+it's keyboard
+
+<h1>method 1:</h1>
+
+By adding data-keyboard="false" fixes the problem.
+
+<div class="modal hide fade" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	...
+</div>
+
+
+<h1>method 2: javascript</h1>
+<script>
+	$(function () {
+    $('#myModal').modal({
+      show: true,
+      keyboard: false,
+      backdrop: 'static'
+    });
+  });
+</script>
