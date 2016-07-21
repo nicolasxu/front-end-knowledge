@@ -1,0 +1,24 @@
+<script>
+	
+
+	var MyItemView = Marionette.ItemView.extend({
+	  onRender: function(){
+	    // manipulate the `el` here. it's already
+	    // been rendered, and is full of the view's
+	    // HTML, ready to go.
+	  }
+	});
+</script>
+
+
+onRender is called when this view is rendered, BUT it is not attached to the DOM
+so if you use 
+<script>
+	$("#my-button")
+</script>
+you will get nothing
+
+If you want to manipulate rendered cotnent, the correct way is use jquery content:
+<script>
+	$("#my-button", this.$el).addClass('primary');
+</script>
