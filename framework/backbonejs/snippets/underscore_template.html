@@ -1,0 +1,29 @@
+<%- %>
+means output escaped content.
+
+<%= %> 
+means output unescaped content, e.g.: raw HTML.
+
+<% %>
+means execute javascript between, no output
+
+
+
+
+
+<h3>Example 1: </h3>
+<% if (typeof(date) !== "undefined") { %>
+    <span class="date"><%= date %></span>
+<% } %>
+// Remember that in underscore.js templates if and for are 
+// just standard javascript syntax wrapped in <% %> tags.
+
+
+<h3>Another example: </h3>
+<script id="some-template" type="text/html">
+  <ul>
+    <% _.each(items, function(item){ %>
+    <li> <%= item.someAttribute %> </li>
+    <% }); %>
+  </ul>
+</script>
