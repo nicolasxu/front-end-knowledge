@@ -27,3 +27,20 @@ means execute javascript between, no output
     <% }); %>
   </ul>
 </script>
+
+
+<h3>Example 3: avoid error if value is not exist</h3>
+
+<script>
+	
+	So, instead of:
+
+	var template = _.template('<%= foo %><%= bar %>');
+	var model = {foo:'foo'};
+	var result = template(model); //-> Error
+	//Try:
+
+	var template = _.template('<%= model.foo %><%= model.bar %>');
+	var model = {foo:'foo'};
+	var result = template({model:model}); //-> "foo"
+</script>
