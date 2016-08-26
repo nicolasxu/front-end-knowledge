@@ -1,0 +1,25 @@
+<span>Example: http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_affix_transition&stacked=h</span>
+
+<!-- data-spy="affix" data-offset-top="197" -->
+<span>data-offset-top="197" or data-offset-bottom="400"
+	are pixel number. if scrollTop or scrollBottom are larger than this number,
+	.affix class is added, and at the same time, affix-top or affix-bottom are removed. 
+</span>
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+  <ul class="nav navbar-nav">
+    <li class="active"><a href="#">Basic Topnav</a></li>
+    <li><a href="#">Page 1</a></li>
+    <li><a href="#">Page 2</a></li>
+    <li><a href="#">Page 3</a></li>
+  </ul>
+</nav>
+
+
+<!-- Javascript method: -->
+
+
+<script type="text/javascript">
+
+	$(".navbar").affix({offset: {top: $("header").outerHeight(true)} });
+
+</script>
