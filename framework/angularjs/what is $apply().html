@@ -1,0 +1,30 @@
+<h1>source: https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$apply</h1>
+
+$apply() is used to execute an expression in angular from outside of the angular framework. (For example from browser DOM events, setTimeout, XHR or third party libraries).
+
+
+<script>
+	
+	function Ctrl($scope) {
+	  $scope.message = "Waiting 2000ms for update";
+	    
+	    setTimeout(function () {
+	        $scope.message = "Timeout called!";
+	        // AngularJS is unaware that the value is changed, so UI won't be updated.
+	    }, 2000);
+	}
+</script>
+
+
+<script type="text/javascript">
+	
+	function Ctrl($scope) {
+	  $scope.message = "Waiting 2000ms for update";
+	    setTimeout(function () {
+        $scope.$apply(function () {
+            $scope.message = "Timeout called!";
+        });
+        // now the $scope.message will be updated on UI
+	    }, 2000);
+	}
+</script>
