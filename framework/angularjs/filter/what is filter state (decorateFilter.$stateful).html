@@ -1,0 +1,29 @@
+<script type="text/javascript">
+	angular.module('myStatefulFilterApp', [])
+	.filter('decorate', ['decoration', function(decoration) {
+
+	  function decorateFilter(input) {
+	    return decoration.symbol + input + decoration.symbol;
+	  }
+	  decorateFilter.$stateful = true;
+
+	  return decorateFilter;
+	}])
+	.controller('MyController', ['$scope', 'decoration', function($scope, decoration) {
+	  $scope.greeting = 'hello';
+	  $scope.decoration = decoration;
+	}])
+	.value('decoration', {symbol: '*'});
+</script>
+
+<div ng-controller="MyController">
+  Input: <input ng-model="greeting" type="text"><br>
+  Decoration: <input ng-model="decoration.symbol" type="text"><br>
+  No filter: {{greeting}}<br>
+  Decorated: {{greeting | decorate}}<br>
+</div>
+
+
+if you set decorateFilter.$stateful = false; in he above case,
+update to the decoration.symbole will update the filter result. 
+

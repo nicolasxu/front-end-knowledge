@@ -1,0 +1,33 @@
+For this, inject a dependency with the name <filterName>Filter into your controller/service/directive. 
+E.g. a filter called number is injected by using the dependency numberFilter. 
+The injected argument is a function that takes the value to format as first argument, 
+and filter parameters starting with the second argument.
+
+
+<!-- example:  -->
+
+<script type="text/javascript">
+	angular.module('FilterInControllerModule', []).
+	controller('FilterController', ['filterFilter', function FilterController(filterFilter) {
+	  this.array = [
+	    {name: 'Tobias'},
+	    {name: 'Jeff'},
+	    {name: 'Brian'},
+	    {name: 'Igor'},
+	    {name: 'James'},
+	    {name: 'Brad'}
+	  ];
+	  this.filteredArray = filterFilter(this.array, 'a');
+	}]);
+</script>
+
+<div ng-controller="FilterController as ctrl">
+  <div>
+    All entries:
+    <span ng-repeat="entry in ctrl.array">{{entry.name}} </span>
+  </div>
+  <div>
+    Entries that contain an "a":
+    <span ng-repeat="entry in ctrl.filteredArray">{{entry.name}} </span>
+  </div>
+</div>
