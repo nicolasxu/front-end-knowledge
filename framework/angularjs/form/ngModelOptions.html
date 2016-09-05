@@ -1,0 +1,19 @@
+By default, any change to the content will trigger a model update and form validation. You can override this behavior using the ngModelOptions directive to bind only to specified list of events. I.e. ng-model-options="{ updateOn: 'blur' }" will update and validate only after the control loses focus. 
+
+<div ng-controller="ExampleController">
+  <form>
+    Name:
+    <input type="text" ng-model="user.name" ng-model-options="{ updateOn: 'blur' }" /><br />
+    Other data:
+    <input type="text" ng-model="user.data" /><br />
+  </form>
+  <pre>username = "{{user.name}}"</pre>
+  <pre>userdata = "{{user.data}}"</pre>
+</div>
+
+<script type="text/javascript">
+	angular.module('customTriggerExample', [])
+	.controller('ExampleController', ['$scope', function($scope) {
+	  $scope.user = {};
+	}]);
+</script>

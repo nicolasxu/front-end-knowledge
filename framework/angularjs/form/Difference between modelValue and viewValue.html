@@ -1,0 +1,18 @@
+source:
+
+http://stackoverflow.com/questions/26733432/difference-between-modelvalue-and-viewvalue
+
+
+
+<div>
+	
+	official document explains it a bit here:
+
+	https://docs.angularjs.org/api/ng/type/ngModel.NgModelController#$viewValue
+
+</div>
+
+
+It is possible to define $formatters and $parsers in your ngModelController. The viewValue is the value that the rendering directive uses to draw itself, the modelValue is what is stored in the scope once ngModel's $parser list hase been applied. If you change the value in the scope, ngModel will run that value through its $formatters which is then read by the rendering directive as a viewValue.
+
+Often the viewValue is the string that is displayed in an input element whereas the modelValue is the value that has been parsed into the target format (a Date object in a datepicker directive, for example)
