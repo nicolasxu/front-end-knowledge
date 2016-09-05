@@ -1,0 +1,22 @@
+<!-- won't work, because browser eagerly process this attribute -->
+<svg>
+  <circle cx="{{cx}}"></circle>
+</svg>
+
+<!-- using this one: -->
+
+<svg>
+  <circle ng-attr-cx="{{cx}}"></circle>
+</svg>
+
+<svg ng-attr-view_box="{{viewBox}}">
+</svg>
+
+
+other place that must use ngAttr-:
+
+size in <select> elements (see issue 1619)
+placeholder in <textarea> in Internet Explorer 10/11 (see issue 5025)
+type in <button> in Internet Explorer 11 (see issue 14117)
+value in <progress> in Internet Explorer = 11 (see issue 7218)
+

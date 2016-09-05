@@ -1,0 +1,35 @@
+Don't use:
+
+<div style="color: {{ 'orange' }}; font-weight: {{ 'bold' }};" ngStyle="styleString">
+	no good	
+</div>
+
+don't use {{value}} and ngStyle at same time. 
+
+Note: Angular directive attributes take either expressions or interpolation markup with embedded expressions. 
+It is considered bad practice to embed interpolation markup inside an expression:
+<!-- bad -->
+<div ng-show="form{{$index}}.$invalid"></div>
+
+<!-- good -->
+<div ng-show="getForm($index).$invalid"></div>
+
+
+<script type="text/javascript">
+	function getForm(index) {
+	  return $scope['form' + index];
+	}
+</script>
+You can also access the scope with this in your templates:
+<div ng-show="this['form' + $index].$invalid"></div>
+
+
+<h1>Why mixing interpolation and expressions is bad practice:</h1>
+
+- It increases the complexity of the markup
+- There is no guarantee that it works for every directive, because interpolation 
+  itself is a directive. If another directive accesses attribute data before interpolation has run, 
+  it will get the raw interpolation markup and not data.
+- It impacts performance, as interpolation adds another watcher to the scope.
+- Since this is not recommended usage, we do not test for this, and changes to Angular core may break your code.
+

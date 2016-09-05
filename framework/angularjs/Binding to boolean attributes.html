@@ -1,0 +1,19 @@
+ boolean attributes: 
+ disabled, required, selected, checked, readOnly , and open
+
+ <div>
+ 	note 1:
+ 	Their presence as attribute in HTML tag means true, their absence means false.
+ </div>
+
+ <div>
+	note 1:
+	Their value is ignored by browser, e.g. 
+		<button disabled="fdsafdsaf">Button</button>
+		The value of disabled attribute is ignored by browser according W3C standard.
+ </div>
+
+	<div>
+		For all the boolean attribute, there is ng- directive for them. Intepolation won't work, because
+		if attribute is present, the value is always true. 
+	</div>
