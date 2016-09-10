@@ -1,0 +1,21 @@
+<script type="text/javascript">
+	
+	angular.module('docsTabsExample', [])
+	.directive('myPane', function() {
+	  return {
+	    require: ['^^myTabs', 'ngModel'],
+	    restrict: 'E',
+	    transclude: true,
+	    scope: {
+	      title: '@'
+	    },
+	    link: function(scope, element, attrs, controllers) {
+	      var tabsCtrl = controllers[0],
+	          modelCtrl = controllers[1];
+
+	      tabsCtrl.addPane(scope);
+	    },
+	    templateUrl: 'my-pane.html'
+	  };
+	});
+</script>

@@ -1,0 +1,47 @@
+What does this transclude option do, exactly? transclude makes the contents of a directive with this option have access to the scope outside of the directive rather than inside.
+
+<!-- index.html -->
+<div ng-controller="Controller">
+  {{message}}
+  <my-dialog ng-hide="dialogIsHidden" on-close="hideDialog(message)">
+    Check out the contents, {{name}}!
+  </my-dialog>
+</div>
+
+<!-- my-dialog-close.html -->
+<div class="alert">
+  <a href class="close" ng-click="close({message: 'closing for now'})">&times;</a>
+  <div ng-transclude></div> 
+  <!-- ng-transcluede makes the place to inject the content, must present -->
+</div>
+
+<!-- script.js -->
+<script type="text/javascript">
+	angular.module('docsIsoFnBindExample', [])
+	.controller('Controller', ['$scope', '$timeout', function($scope, $timeout) {
+	  $scope.name = 'Tobias';
+	  $scope.message = '';
+	  $scope.hideDialog = function(message) {
+	    $scope.message = message;
+	    $scope.dialogIsHidden = true;
+	    $timeout(function() {
+	      $scope.message = '';
+	      $scope.dialogIsHidden = false;
+	    }, 2000);
+	  };
+	}])
+	.directive('myDialog', function() {
+	  return {
+	    restrict: 'E',
+	    transclude: true,
+	    scope: {
+	      'close': '&onClose'
+	    },
+	    templateUrl: 'my-dialog-close.html',
+	    link: linkFunc
+	  };
+	  function linkFunc(iScope, iElem, iAttrs) {
+	  	iScope.name = 'Nicolas Xu'; // no effect, since transcluded content using outer scope
+	  }
+	});
+</script>
