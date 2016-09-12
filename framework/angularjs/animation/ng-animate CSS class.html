@@ -1,0 +1,32 @@
+
+<h1>ng-animate CSS class will be applied to element when animating using ngAnimate.</h1>
+
+
+
+This is a temporary CSS class and it will be removed once the animation is over 
+
+
+<style type="text/css">
+	
+
+	.zipper.ng-animate {
+	  transition:0.5s linear all;
+	}
+	.zipper.ng-enter {
+	  opacity:0;
+	  /* enter style start point */
+	}
+	.zipper.ng-enter.ng-enter-active {
+	  opacity:1; 
+	  /* enter style destination */
+	}
+	.zipper.ng-leave {
+	  opacity:1;
+	  /* leave style start point */
+	}
+	.zipper.ng-leave.ng-leave-active {
+	  opacity:0;
+	  /* leave style destination */
+	}
+
+</style>

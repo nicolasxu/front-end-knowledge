@@ -1,0 +1,27 @@
+<h1>Each provide access to a $delegate, which is the instantiated service/directive/filter you want to decorate
+
+</h1>
+
+
+<script type="text/javascript">
+	ngular.module('myApp', [])
+
+	.config([ '$provide', function($provide) {
+
+	  $provide.decorator('$log', [
+	    '$delegate',
+	    function $logDecorator($delegate) {
+
+	      var originalWarn = $delegate.warn;
+	      $delegate.warn = function decoratedWarn(msg) {
+	        msg = 'Decorated Warn: ' + msg;
+	        originalWarn.apply($delegate, arguments);
+	      };
+
+	      return $delegate;
+	    }
+	  ]);
+	}]);
+</script>
+
+After the $log service has been instantiated the decorator is fired. The decorator function has a $delegate object injected to provide access to the service that matches the selector in the decorator. This $delegate will be the service you are decorating. The return value of the function provided to the decorator will take place of the service, directive, or filter being decorated.
