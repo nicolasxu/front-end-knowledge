@@ -1,0 +1,18 @@
+
+
+
+<li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+  <span class="badge">{{hero.id}}</span> {{hero.name}}
+</li>
+
+
+<p>
+	
+	(click)="onSelect(hero)"
+
+	The parenthesis identify the <li> element’s click event as the target.
+	The expression to the right of the equal sign calls the AppComponent method, 
+	onSelect(), passing the template input variable hero as an argument. 
+	That’s the same hero variable we defined previously in the ngFor.
+
+</p>
