@@ -1,0 +1,62 @@
+<h1>source: http://javascript.info/tutorial/coordinates</h1>
+
+The right way:
+<div>
+	elem.getBoundingClientRect
+	<p>1. </p>
+	<p>1. It calculate the rect enclose the element</p>
+	<p>2. return {top:2, left:3, right: 10, bottom: 10}</p>
+	<p>3. The coordinates are given relative to `window`, not the document</p>
+
+</div>
+
+To calculete rect relative to document:
+
+<script type="text/javascript">
+	
+	function getOffsetRect(elem) {
+    // (1)
+    var box = elem.getBoundingClientRect()
+    
+    var body = document.body
+    var docElem = document.documentElement
+    
+    // (2)
+    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop
+    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft
+    
+    // (3)
+    var clientTop = docElem.clientTop || body.clientTop || 0
+    var clientLeft = docElem.clientLeft || body.clientLeft || 0
+    
+    // (4)
+    var top  = box.top +  scrollTop - clientTop
+    var left = box.left + scrollLeft - clientLeft
+    
+    return { top: Math.round(top), left: Math.round(left) }
+	}
+
+
+</script> 
+
+
+<script type="text/javascript">
+	// get position relative to document, 
+	var offset = $('#myButton').offset();
+	p.html( "left: " + offset.left + ", top: " + offset.top );
+
+</script>
+
+
+<script type="text/javascript">
+	// get position relative to offset parent
+	var offset = $('#myButton').position();
+
+</script>
+
+
+
+
+
+
+
