@@ -1,0 +1,38 @@
+
+// example
+<li *ngFor="let hero of heroes"
+  [class.selected]="hero === selectedHero"
+  (click)="onSelect(hero)">
+  <span class="badge">{{hero.id}}</span> {{hero.name}}
+</li>
+
+
+// example
+<img [src]="heroImageUrl">
+
+// example
+<button [disabled]="isUnchanged">Cancel is disabled</button>
+
+// example
+<div [ngClass]="classes">[ngClass] binding to the classes property</div>
+
+// example 
+<hero-detail [hero]="currentHero"></hero-detail>
+
+
+One-way in
+People often describe property binding as one-way data binding because it flows a value in one direction, from a component’s data property into a target element property.
+
+We cannot use property binding to pull values out of the target element. We can't bind to a property of the target element to read it. We can only set it.
+
+
+
+
+<h1>[class.selected]="hero === selectedHero"</h1>
+<p>Notice in the template that the class.selected is surrounded in square brackets ([]). This is the syntax for a property binding, a binding in which data flows one way from the data source (the expression hero === selectedHero) to a property of class.
+</p>
+
+
+more about property binding:
+https://angular.io/docs/ts/latest/guide/template-syntax.html#!#property-binding
+

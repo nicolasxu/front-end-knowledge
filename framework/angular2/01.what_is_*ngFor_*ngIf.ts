@@ -14,4 +14,5 @@
 		`
 });
 
-/* ... */
+
+"ngIf and ngFor are called “structural directives” because they can change the structure of portions of the DOM."

@@ -1,0 +1,10 @@
+Property binding or interpolation?
+
+<p><img src="{{heroImageUrl}}"> is the <i>interpolated</i> image.</p>
+<p><img [src]="heroImageUrl"> is the <i>property bound</i> image.</p>
+
+<p><span>"{{title}}" is the <i>interpolated</i> title.</span></p>
+<p>"<span [innerHTML]="title"></span>" is the <i>property bound</i> title.</p>
+
+There is no technical reason to prefer one form to the other. We lean toward readability, which tends to favor interpolation. 
+
