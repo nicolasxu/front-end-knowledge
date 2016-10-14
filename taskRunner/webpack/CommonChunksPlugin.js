@@ -1,6 +1,8 @@
 
 /*
 
+CommonChunksPlugin is only useful when you load js files in more than one chunks. 
+
 You may see a rather major issue: both our components need 
 jQuery and Mustache, which means these dependencies are getting
 duplicated in our chunks, which is not what we want. By default
