@@ -1,0 +1,41 @@
+There's another way to get the user data without the $event variable.
+
+<!-- app/loop-back.component.ts -->
+<script type="text/javascript">
+	@Component({
+	  selector: 'loop-back',
+	  template: `
+	    <input #box (keyup)="0">
+	    <p>{{box.value}}</p>
+	  `
+	})
+	export class LoopbackComponent { }
+</script>
+
+<h1>Why bind the keyup event to a statement "0"? </h1>
+
+Angular only updates the bindings (and therefore the screen) if we do something in response to asynchronous events such as keystrokes.
+
+That's why we bind the keyup event to a statement that does ... well, nothing. We're binding to the number 0, the shortest statement we can think of. That is all it takes to keep Angular happy. 
+
+
+That template reference variable is clearly easier to get to the textbox with that variable than to go through the $event object. 
+
+Using template reference variable to avoid the $event structure. 
+<!-- app/keyup.components.ts (v2) -->
+<script type="text/javascript">
+	@Component({
+	  selector: 'key-up2',
+	  template: `
+	    <input #box (keyup)="onKey(box.value)">
+	    <p>{{values}}</p>
+	  `
+	})
+	export class KeyUpComponent_v2 {
+	  values = '';
+	  onKey(value: string) {
+	    this.values += value + ' | ';
+	  }
+	}
+</script>
+

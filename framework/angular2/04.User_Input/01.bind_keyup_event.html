@@ -1,0 +1,35 @@
+template: `
+  <input (keyup)="onKey($event)">
+  <p>{{values}}</p>
+`
+
+<!-- app/keyup.components.ts -->
+<script type="text/javascript">
+	export class KeyUpComponent_v1 {
+	  values = '';
+
+	  // without strong typing
+	  onKey(event:any) {
+	    this.values += event.target.value + ' | ';
+	  }
+	}	
+</script>
+
+
+<p>The $event is a standard DOM event object</p>
+<p>We cast the $event as an any type, which means we've abandoned strong typing to simplify our code.</p>
+<span>We can cast event to strong type</span>
+
+<script type="text/javascript">
+
+	export class KeyUpComponent_v1 {
+	  values = '';
+
+	  // with strong typing
+	  onKey(event: KeyboardEvent) {
+	    this.values += (<HTMLInputElement>event.target).value + ' | ';
+	  }
+	}
+</script>
+Problem with strong typeing with passing a DOM event into the method:
+too much awareness of template details, too little separation of concerns.

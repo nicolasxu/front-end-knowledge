@@ -1,0 +1,19 @@
+If we only care about enter key, we don't need to do:
+examining every $event.keyCode
+
+
+<!-- app/keyup.components.ts (v3) -->
+
+<script type="text/javascript">
+	
+	@Component({
+	  selector: 'key-up3',
+	  template: `
+	    <input #box (keyup.enter)="values=box.value">
+	    <p>{{values}}</p>
+	  `
+	})
+	export class KeyUpComponent_v3 {
+	  values = '';
+	}	
+</script>
