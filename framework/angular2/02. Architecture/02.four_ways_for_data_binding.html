@@ -1,0 +1,26 @@
+{{hero.name}}
+
+
+[property]="value"
+
+
+(event)="handler"
+
+
+[(ng-model)]="property"
+
+
+example:
+
+<li>{{hero.name}}</li>
+The {{hero.name}} interpolation displays the component's hero.name property value within the <li> tags.
+
+<hero-detail [hero]="selectedHero"></hero-detail>
+The [hero] property binding passes the value of selectedHero from the parent HeroListComponent to the hero property of the child HeroDetailComponent.
+
+<li (click)="selectHero(hero)"></li>
+The (click) event binding calls the component's selectHero method when the user clicks a hero's name.
+
+
+<input [(ngModel)]="hero.name">
+This is two way data binding

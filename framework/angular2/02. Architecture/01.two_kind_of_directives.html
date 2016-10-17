@@ -1,0 +1,22 @@
+structural and attribute directives.
+
+Structural directives alter layout by adding, removing, and replacing elements in DOM.
+	structural directive example:
+	<li *ngFor="let hero of heroes"></li>
+	<hero-detail *ngIf="selectedHero"></hero-detail>
+	structure syntax starts with a "*"
+
+
+
+
+Attribute directives alter the appearance or behavior of an existing element. In templates they look like regular HTML attributes, hence the name.
+	The ngModel directive, which implements two-way data binding, is an example of an attribute directive. 
+	ngModel modifies the behavior of an existing element (typically an <input>) by setting its display value property and responding to change events.
+
+	<input [(ngModel)]="hero.name">
+
+
+
+
+
+
