@@ -1,0 +1,12 @@
+The ngFor directive has the potential to perform poorly, especially with large lists. A small change to one item, an item removed, or an item added can trigger a cascade of DOM manipulations.
+
+Angular can avoid this churn if we give it a tracking function that tells it what we know: that two objects with the same hero.id are the same hero. Here is such a function:
+
+
+Trackby only works when you refresh the page, aka assign the new heros. It is still tracks the each property changes inside
+each hero. 
+
+<script type="text/javascript">
+	trackByHeroes(index: number, hero: Hero) { return hero.id; }
+</script>
+<div *ngFor="let hero of heroes; trackBy:trackByHeroes">({{hero.id}}) {{hero.fullName}}</div>

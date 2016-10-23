@@ -1,0 +1,26 @@
+<!-- HeroDetailComponent.ts (template) -->
+template: `
+<div>
+  <img src="{{heroImageUrl}}">
+  <span [style.text-decoration]="lineThrough">
+    {{prefix}} {{hero?.fullName}}
+  </span>
+  <button (click)="delete()">Delete</button>
+</div>`
+
+
+<script type="text/javascript">
+	
+	// This component make a request but it can't actually delete a hero.
+	deleteRequest = new EventEmitter<Hero>();
+
+	delete() {
+	  this.deleteRequest.emit(this.hero);
+	}
+
+</script>
+
+
+a hosting parent component that binds to the HeroDetailComponent's deleteRequest event.
+<hero-detail (deleteRequest)="deleteHero($event)" [hero]="currentHero"></hero-detail>
+When the deleteRequest event fires, Angular calls the parent component's deleteHero method, passing the hero-to-delete (emitted by HeroDetail) in the $event variable.

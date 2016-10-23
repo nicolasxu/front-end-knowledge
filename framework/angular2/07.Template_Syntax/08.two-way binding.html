@@ -1,0 +1,9 @@
+Event and property	<input [(ngModel)]="heroName">
+
+
+Import FormsModule before using ngModel, and put FormsModule into your appModule imports.
+
+// same as [(ngModel)]
+<input
+  [ngModel]="currentHero.firstName"
+  (ngModelChange)="currentHero.firstName=$event">

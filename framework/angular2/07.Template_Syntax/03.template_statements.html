@@ -1,0 +1,13 @@
+Template statements
+
+A template statement responds to an event raised by a binding target such as an element, component, or directive.
+
+(event)="statement"
+
+A template statement will change application status, otherwise there is no point responding to a event. 
+
+--- statement context
+	Template statements cannot refer to anything in the global namespace. They can’t refer to window or document. They can’t call console.log or Math.max.
+	The onSave in (click)="onSave()" is sure to be a method of the data-bound component instance.
+
+avoid writing complex template statements

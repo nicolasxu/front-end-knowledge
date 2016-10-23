@@ -1,0 +1,10 @@
+<div (myClick)="clickMessage=$event">click with myClick</div>
+
+
+
+@Output('myClick') clicks = new EventEmitter<string>(); //  @Output(alias) propertyName = ...
+
+
+@Directive({
+  outputs: ['clicks:myClick']  // propertyName:alias
+})

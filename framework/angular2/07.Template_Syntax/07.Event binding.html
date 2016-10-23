@@ -1,0 +1,22 @@
+Element event   <button (click) = "onSave()">Save</button>
+Component event <hero-detail (deleteRequest)="deleteHero()"></hero-detail>
+Directive event	<div (myClick)="clicked=$event">click me</div>
+
+
+// same
+<button (click)="onSave()">Save</button>
+<button on-click="onSave()">canonical form</button>
+
+
+<!-- `myClick` is an event on the custom `MyClickDirective` -->
+<div (myClick)="clickMessage=$event">click with myClick</div>
+
+
+
+The binding conveys information about the event, including data values, through an event object named $event.
+
+If the target event is a native DOM element event, then $event is a DOM event object, with properties such as target and target.value.
+
+
+<input [value]="currentHero.firstName"
+       (input)="currentHero.firstName=$event.target.value" >

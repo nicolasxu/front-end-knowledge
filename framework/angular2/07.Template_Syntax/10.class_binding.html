@@ -1,0 +1,24 @@
+class property	<div [class.special]="isSpecial">Special</div>
+
+
+We can add and remove CSS class names from an element’s class attribute with a class binding.
+
+
+[class.class-name]
+
+<!-- reset/override all class names with a binding  -->
+<div class="bad curly special"
+     [class]="badCurly">Bad curly</div>
+
+
+<!-- toggle the "special" class on/off with a property -->
+<div [class.special]="isSpecial">The class binding is special</div>
+
+<!-- binding to `class.special` trumps the class attribute -->
+<div class="special"
+     [class.special]="!isSpecial">This one is not so special
+</div>
+
+
+
+we generally prefer the NgClass directive for managing multiple class names at the same time

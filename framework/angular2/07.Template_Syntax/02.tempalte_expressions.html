@@ -1,0 +1,20 @@
+
+
+A template expression produces a value
+
+this is a tempalte epxression:
+[property]="expression"
+
+
+
+ngular executes the expression and assigns it to a property of a binding target; the target might be an HTML element, a component, or a directive.
+
+-- Expression context
+   They can’t refer to window or document. They can’t call console.log or Math.max. They are restricted to referencing members of the expression context.
+   [disabled]="isUnchanged"
+
+-- Expression guidelines
+    No visible side effects
+		Quick execution
+		Simplicity
+		Idempotence

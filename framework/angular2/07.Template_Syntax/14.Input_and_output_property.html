@@ -1,0 +1,32 @@
+<hero-detail [hero]="currentHero" (deleteRequest)="deleteHero($event)">
+</hero-detail>
+
+<script type="text/javascript">
+	// Target properties must be explicitly marked as inputs or outputs.
+	@Input()  hero: Hero;
+	@Output() deleteRequest = new EventEmitter<Hero>();
+</script>
+
+
+
+<script type="text/javascript">
+	Alternatively, we can identify members in the inputs and outputs arrays of the directive metadata, as in this example:
+	@Component({
+	  inputs: ['hero'],
+	  outputs: ['deleteRequest'],
+	})
+	export class appComponent {
+		hero: Hero;
+		deleteRequest:EventEmitter<Hero> = new EventEmitter<Hero>();
+	}
+
+</script>
+
+We can specify an input/output property either with a decorator or in a metadata array. Don't do both!
+
+
+Input properties usually receive data values. Output properties expose event producers, such as EventEmitter objects.
+
+HeroDetailComponent.hero is an input property from the perspective of HeroDetailComponent because data flows into that property from a template binding expression.
+
+HeroDetailComponent.deleteRequest is an output property from the perspective of HeroDetailComponent because events stream out of that property and toward the handler in a template binding statement.

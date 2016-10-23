@@ -1,0 +1,20 @@
+
+
+<p>One Way binding from data to View</p>
+	{{expression}} Interpolation
+	[target]="expression" Property, Attribute, Class, Style
+	bind-target="expression"
+
+
+<p>One way binding from view to data (event binding)</p>
+	(target) = "statement" Event
+	on-target = "statement"
+
+<p>Two-way binding</p>
+	[(target)] = "expression"
+	bindon-target = "expression"
+
+
+Note: <button [disabled]="isUnchanged">Save</button>
+In fact, once we start data binding, we are no longer working with HTML attributes. We aren't setting attributes. 
+We are setting the properties of DOM elements, components, and directives.

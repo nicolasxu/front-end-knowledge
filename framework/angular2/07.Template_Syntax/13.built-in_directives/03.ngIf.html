@@ -1,0 +1,31 @@
+<div *ngIf="currentHero">Hello, {{currentHero.firstName}}</div>
+
+
+Don't forget the asterisk (*) in front of ngIf.
+
+
+<!-- because of the ngIf guard
+    `nullHero.firstName` never has a chance to fail -->
+<div *ngIf="nullHero">Hello, {{nullHero.firstName}}</div>
+
+<!-- Hero Detail is not in the DOM because isActive is false-->
+<hero-detail *ngIf="isActive"></hero-detail>
+
+
+Hiding a subtree is quite different from excluding a subtree with NgIf.
+
+<!-- isSpecial is true -->
+<div [class.hidden]="!isSpecial">Show with class</div>
+<div [class.hidden]="isSpecial">Hide with class</div>
+
+<!-- HeroDetail is in the DOM but hidden -->
+<hero-detail [class.hidden]="isSpecial"></hero-detail>
+
+<div [style.display]="isSpecial ? 'block' : 'none'">Show with style</div>
+<div [style.display]="isSpecial ? 'none'  : 'block'">Hide with style</div>
+
+
+
+When we hide the element subtree, it remains in the DOM. Components in the subtree are preserved, along with their state. Angular may continue to check for changes even to invisible properties. The subtree may tie up substantial memory and computing resources.
+
+When NgIf is false, Angular physically removes the element subtree from the DOM. It destroys components in the subtree, along with their state, potentially freeing up substantial resources and resulting in better performance for the user.

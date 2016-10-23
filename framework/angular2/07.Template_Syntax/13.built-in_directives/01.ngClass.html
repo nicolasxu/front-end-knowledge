@@ -1,0 +1,18 @@
+<!-- toggle the "special" class on/off with a property -->
+<div [class.special]="isSpecial">The class binding is special</div>
+
+The NgClass directive may be the better choice when we want to add or remove many CSS classes at the same time.
+
+<script type="text/javascript">
+	
+	setClasses() {
+	  let classes =  {
+	    saveable: this.canSave,      // true
+	    modified: !this.isUnchanged, // false
+	    special: this.isSpecial,     // true
+	  };
+	  return classes;
+	}
+</script>
+
+<div [ngClass]="setClasses()">This div is saveable and special</div>

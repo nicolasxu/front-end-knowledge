@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit(theForm)" #theForm="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" name="name" required [(ngModel)]="currentHero.firstName">
+  </div>
+  <button type="submit" [disabled]="!theForm.form.valid">Submit</button>
+</form>
+
+
+What is the value of theForm?
+
+It would be the HTMLFormElement if Angular hadn't taken it over. It's actually ngForm, a reference to the Angular built-in NgForm directive that wraps the native HTMLFormElement and endows it with additional superpowers such as the ability to track the validity of user input.

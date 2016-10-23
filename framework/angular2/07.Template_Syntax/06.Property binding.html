@@ -1,0 +1,26 @@
+Element property    <img [src]="heroImageUrl">
+Component property  <hero-detail [hero]="currentHero"></hero-detail>
+Directive property  <div [ngClass]="{selected: isSelected}"></div>
+
+
+
+
+
+<img [src]="heroImageUrl">
+<img bind-src="heroImageUrl">
+<button [disabled]="isUnchanged">Cancel is disabled</button>
+<div [ngClass]="classes">[ngClass] binding to the classes property</div>
+Technically, Angular is matching the name to a directive input, one of the property names listed in the directive’s inputs array or a property decorated with @Input(). Such inputs map to the directive’s own properties.
+<hero-detail [hero]="currentHero"></hero-detail>
+
+
+
+// same
+<p><img src="{{heroImageUrl}}"> is the <i>interpolated</i> image.</p>
+<p><img [src]="heroImageUrl"> is the <i>property bound</i> image.</p>
+
+
+// CONTENT SECURITY
+evilTitle = 'Template <script>alert("evil never sleeps")</script>Syntax';
+<p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>
+It sanitizes the values before displaying them.

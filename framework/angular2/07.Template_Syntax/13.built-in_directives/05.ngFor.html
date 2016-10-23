@@ -1,0 +1,21 @@
+<div *ngFor="let hero of heroes">{{hero.fullName}}</div>
+
+
+We can also apply an NgFor to a component element, as in this example:
+<hero-detail *ngFor="let hero of heroes" [hero]="hero"></hero-detail>
+Don't forget the asterisk (*) in front of ngFor
+
+
+
+The string assigned to *ngFor is not a template expression. It’s a microsyntax — a little language of its own that Angular interprets:
+Take each hero in the heroes array, store it in the local hero variable, and make it available to the templated HTML for each iteration.
+
+
+
+The let keyword before hero creates a template input variable called hero.
+A template input variable is not the same as a template reference variable!
+
+
+// ngFor with index
+<div *ngFor="let hero of heroes; let i=index">{{i + 1}} - {{hero.fullName}}</div>
+Learn about other special index-like values such as last, even, and odd in the NgFor API reference.

@@ -1,0 +1,31 @@
+<div>Title through uppercase pipe: {{title | uppercase}}</div>
+
+
+<!-- Pipe chaining: convert title to uppercase, then to lowercase -->
+<div>
+  Title through a pipe chain:
+  {{title | uppercase | lowercase}}
+</div>
+
+
+<div>{{currentHero | json}}</div>
+
+
+<div>Birthdate: {{currentHero?.birthdate | date:'longDate'}}</div>
+
+
+The safe navigation operator ( ?. ) and null property paths
+
+The current hero's name is <div>{{currentHero?.firstName}}</div>
+equals:
+<div *ngIf="nullHero">The null hero's name is {{nullHero.firstName}}</div>
+equals:
+The null hero's name is {{nullHero && nullHero.firstName}}
+
+
+
+for a.b.c.d
+
+<div>
+	{{a?.b?.c?.d}}
+</div>
