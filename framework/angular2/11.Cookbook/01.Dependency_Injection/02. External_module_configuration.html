@@ -1,0 +1,17 @@
+<h3>
+    We often register providers in the NgModule rather than in the root 
+    application component. We do this when (a) we expect the service to 
+    be injectable everywhere
+</h3>
+<script>
+    //    app/app.module.ts (providers)
+
+    providers: [
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
+    ]
+    
+    // if you not familar with location provider, please refer here:
+    // https://angular.io/docs/ts/latest/guide/router.html#!#location-strategy
+
+
+</script>

@@ -1,0 +1,55 @@
+<p>
+	@Optional() means this dependency is optional, no error will be 
+  thrown if Angular can't find it in the dependency tree.
+</p>
+
+<p>
+	@Host() means get this dependency from the component where 
+	use this component is used. 
+</p>
+
+<!-- Example: -->
+
+<script>
+	// app/hero-bios.component.ts (HeroBiosAndContactsComponent)
+	@Component({
+		selector: 'hero-bios-and-contacts',
+		template: `
+			<hero-bio [heroId]="1"> <hero-contact></hero-contact> </hero-bio>
+			<hero-bio [heroId]="2"> <hero-contact></hero-contact> </hero-bio>
+			<hero-bio [heroId]="3"> <hero-contact></hero-contact> </hero-bio>`,
+		providers: [HeroService]
+	})
+	export class HeroBiosAndContactsComponent {
+		constructor(logger: LoggerService) {
+			logger.logInfo('Creating HeroBiosAndContactsComponent');
+		}
+	}	
+</script>
+
+<script>
+	// app/hero-contact.component.ts
+	@Component({
+		selector: 'hero-contact',
+		template: `
+		<div>Phone #: {{phoneNumber}}
+		<span *ngIf="hasLogger">!!!</span></div>`
+	})
+	export class HeroContactComponent {
+		hasLogger = false;
+		constructor(
+				@Host() // limit to the host component's instance of the HeroCacheService
+								// which is HeroBioComponent <hero-bio>
+				private heroCache: HeroCacheService,
+				@Host()     // limit search for logger; hides the application-wide logger
+				@Optional() // ok if the logger doesn't exist
+				private loggerService: LoggerService
+		) {
+			if (loggerService) {
+				this.hasLogger = true;
+				loggerService.logInfo('HeroContactComponent can log!');
+			}
+		}
+		get phoneNumber() { return this.heroCache.hero.phone; }
+	}	
+</script>

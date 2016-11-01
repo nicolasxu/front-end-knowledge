@@ -1,0 +1,32 @@
+<h3>Register providers in the root application component, AppComponent.
+    will make it available throughout the whole app. 
+</h3>
+
+<script>
+    // app/app.component.ts (excerpt)
+
+    import { LoggerService }      from './logger.service';
+    import { UserContextService } from './user-context.service';
+    import { UserService }        from './user.service';
+
+    @Component({
+    moduleId: module.id,
+    selector: 'my-app',
+    templateUrl: 'app.component.html',
+    providers: [ LoggerService, UserContextService, UserService ]
+    })
+    export class AppComponent {
+    /* . . . */
+    }    
+    
+</script>
+
+
+
+<!-- usage in child component -->
+<script>
+    // app/hero-bios.component.ts (component constructor injection)
+    constructor(logger: LoggerService) {
+        logger.logInfo('Creating HeroBiosComponent');
+    }    
+</script>

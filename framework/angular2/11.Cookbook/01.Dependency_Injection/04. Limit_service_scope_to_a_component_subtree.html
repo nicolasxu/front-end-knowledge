@@ -1,0 +1,29 @@
+<h3>
+    We can limit the scope of an injected service to a branch of 
+    the application hierarchy by providing that service at the 
+    sub-root component for that branch. 
+</h3>
+
+<!-- example -->
+<script>
+    @Component({
+        selector: 'unsorted-heroes',
+        template: `<div *ngFor="let hero of heroes">{{hero.name}}</div>`,
+        providers: [HeroService]
+    })
+    export class HeroesBaseComponent implements OnInit {
+        constructor(private heroService: HeroService) { }
+    }    
+</script>
+
+<h1>IMPORTANT:
+  We could also provide the HeroService to a 
+  different component elsewhere in the application. 
+  That would result in a different instance of the 
+  service, living in a different injector.  
+
+</h1>
+<h1>So, the abstracted rule is 
+  - Same subtree, same service instance, and only one of this service instance.
+  - Different subtree, different instance of the same service will be created.  
+</h1>
