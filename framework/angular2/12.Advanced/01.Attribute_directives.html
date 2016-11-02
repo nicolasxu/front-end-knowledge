@@ -1,0 +1,37 @@
+<!-- highlight.directive.ts -->
+<script>
+import { Directive, ElementRef, HostListener, Input, Renderer } from '@angular/core';
+@Directive({
+  selector: '[myHighlight]'
+})
+export class HighlightDirective {
+  private _defaultColor = 'red';
+  constructor(private el: ElementRef, private renderer: Renderer) { }
+  @Input() set defaultColor(colorName: string){
+    this._defaultColor = colorName || this._defaultColor;
+  }
+  @Input('myHighlight') highlightColor: string;
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight(this.highlightColor || this._defaultColor);
+  }
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight(null);
+  }
+  private highlight(color: string) {
+    this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', color);
+  }
+}	
+</script>
+
+<!-- Usage -->
+<h1>My First Attribute Directive</h1>
+<h4>Pick a highlight color</h4>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<p [myHighlight]="color">Highlight me!</p>
+<p [myHighlight]="color" [defaultColor]="'violet'">
+  Highlight me too!
+</p>
