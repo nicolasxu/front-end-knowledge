@@ -1,0 +1,39 @@
+https://stackoverflow.com/questions/18837735/check-if-image-exists-on-server-using-javascript
+
+<script>
+  
+
+// You can use the basic way image preloaders work to test if an image exists.
+
+function checkImage(imageSrc, good, bad) {
+    var img = new Image();
+    img.onload = good; 
+    img.onerror = bad;
+    img.src = imageSrc;
+}
+
+checkImage("foo.gif", function(){ alert("good"); }, function(){ alert("bad"); } );
+
+</script>
+
+
+<script>
+  //  Another method
+var image = new Image();
+
+image.onload = function() {
+    // image exists and is loaded
+    document.body.appendChild(image);
+}
+image.onerror = function() {
+    // image did not load
+
+    var err = new Image();
+    err.src = '/error.png';
+
+    document.body.appendChild(err);
+}
+
+image.src = "../imgs/6.jpg";
+
+</script>
