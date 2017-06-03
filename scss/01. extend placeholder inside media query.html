@@ -1,0 +1,45 @@
+<p>http://thesassway.com/intermediate/understanding-placeholder-selectors</p>
+<h1>
+  Since @extend works by adding a selector to another selector without duplicating any of the properties it's actually impossible to join selectors in different @media blocks.
+</h1>
+
+<h1>
+  It does work the other way though. Any media queries surrounding the placeholder selector will be applied to the selectors extending it providing they are not in an @media block:
+</h1>
+
+
+<style type="text/css">
+  
+@media screen {
+  %icon {
+    transition: background-color ease .2s;
+    margin: 0 .5em;
+  }
+}
+
+.error-icon {
+  @extend %icon;
+}
+
+.info-icon {
+  @extend %icon;
+}
+
+
+</style>
+
+
+This will compile to:
+
+<style type="text/css">
+
+@media screen {
+  .error-icon, .info-icon {
+    transition: background-color ease .2s;
+    margin: 0 .5em;
+  }
+}
+  
+
+
+</style>
