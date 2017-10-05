@@ -1,0 +1,15 @@
+Since JSX compiles into calls to React.createElement, 
+the React library must also always be in scope from your JSX code.
+
+<script>
+  
+  import React from 'react';
+  import CustomButton from './CustomButton';
+
+  function WarningButton() {
+    // return React.createElement(CustomButton, {color: 'red'}, null);
+    return <CustomButton color="red" />;
+  }
+
+
+</script>

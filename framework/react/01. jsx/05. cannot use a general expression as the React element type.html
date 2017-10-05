@@ -1,0 +1,43 @@
+You cannot use a general expression as the React element type. 
+If you do want to use a general expression to indicate the type of the element, 
+just assign it to a capitalized variable first.
+
+
+wrong:
+
+<script>
+  
+import React from 'react';
+import { PhotoStory, VideoStory } from './stories';
+
+const components = {
+  photo: PhotoStory,
+  video: VideoStory
+};
+
+function Story(props) {
+  // Wrong! JSX type can't be an expression.
+  return <components[props.storyType] story={props.story} />;
+}
+
+</script>
+
+To fix this, we will assign the type to a capitalized variable first:
+
+
+<script>
+import React from 'react';
+import { PhotoStory, VideoStory } from './stories';
+
+const components = {
+  photo: PhotoStory,
+  video: VideoStory
+};
+
+function Story(props) {
+  // Correct! JSX type can be a capitalized variable.
+  const SpecificStory = components[props.storyType];
+  return <SpecificStory story={props.story} />;
+}
+  
+</script>
