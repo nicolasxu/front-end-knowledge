@@ -1,0 +1,28 @@
+React may batch multiple setState() calls into a single update for performance.
+
+Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
+
+<script>
+  
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+
+
+// Correct
+this.setState((prevState, props) => ({
+  counter: prevState.counter + props.increment
+}));
+
+
+
+// Correct
+this.setState(function(prevState, props) {
+  return {
+    counter: prevState.counter + props.increment
+  };
+});  
+
+
+</script>

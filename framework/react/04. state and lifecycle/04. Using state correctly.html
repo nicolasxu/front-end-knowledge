@@ -1,0 +1,16 @@
+Do Not Modify State Directly
+
+<script>
+
+// Wrong
+this.state.comment = 'Hello';
+
+
+// Correct
+this.setState({comment: 'Hello'});
+
+
+</script>
+
+<h1>The only place where you can assign this.state is the constructor.</h1>
+
