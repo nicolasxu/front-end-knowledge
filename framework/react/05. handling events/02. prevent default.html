@@ -1,0 +1,28 @@
+you cannot return false to prevent default behavior in React. You must call preventDefault explicitly.
+
+in html, below will work
+<a href="#" onclick="console.log('The link was clicked.'); return false">
+  Click me
+</a>
+
+
+In React, this could instead be:
+<script>
+
+function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+    // e is W3C SyntheticEvent
+  }
+
+  return (
+    <a href="#" onClick={handleClick}>
+      Click me
+    </a>
+  );
+}
+  
+
+</script>
+

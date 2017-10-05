@@ -1,0 +1,23 @@
+
+<script>
+class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+  // Warning: this is *experimental* syntax.
+  handleClick = () => {
+    console.log('this is:', this);
+  } // this is class field, NOT class function
+
+  function handleClick2() {
+    console.log('this is:', this)
+    // this is not class field, this will not bind if you don't do it in constructor. 
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        Click me
+      </button>
+    );
+  }
+}
+</script>
