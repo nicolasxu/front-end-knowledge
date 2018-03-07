@@ -1,0 +1,18 @@
+https://vuejs.org/v2/guide/events.html
+
+<button v-on:click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+
+<script>
+  
+// ...
+methods: {
+  warn: function (message, event) {
+    // now we have access to the native event
+    if (event) event.preventDefault()
+    alert(message)
+  }
+}
+
+</script>
